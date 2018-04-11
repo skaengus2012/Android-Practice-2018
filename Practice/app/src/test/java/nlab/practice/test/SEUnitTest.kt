@@ -12,7 +12,7 @@ import org.junit.Assert.*
 class SEUnitTest {
 
     /**
-     * Print "Hello World"
+     * Print "Hello World" -
      */
     @Test
     fun runHelloWorld() {
