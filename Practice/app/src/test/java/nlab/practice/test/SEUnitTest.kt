@@ -4,8 +4,10 @@ import org.junit.Test
 
 /**
  * 코틀린 기본 문법에 대한 테스트 코드 기술.
+ * (Standard Edition.)
  *
- * Standard Edition.
+ * 참고 URL ->
+ * https://github.com/skaengus2012/Android-Practice-2018/issues/1
  *
  * @author ndh1002
  */
