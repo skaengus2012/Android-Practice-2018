@@ -1,5 +1,7 @@
 package nlab.practice.model.duck
 
+import nlab.practice.model.strategy.FlyWithWing
+
 /**
  * 날 수 있는 이름 정의 가능 오리 클래스 정의.
  *

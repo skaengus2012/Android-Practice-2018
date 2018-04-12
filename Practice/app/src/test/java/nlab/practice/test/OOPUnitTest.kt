@@ -1,6 +1,8 @@
 package nlab.practice.test
 
 import nlab.practice.model.duck.*
+import nlab.practice.model.strategy.Heat
+import nlab.practice.model.strategy.Runnable
 import org.junit.Test
 
 /**
@@ -14,7 +16,7 @@ import org.junit.Test
 class OOPUnitTest {
 
     /**
-     * 클래스 사용에 대한 기본 활용 정의.
+     * 클래스 사용에 대한 기본 활용 테스트.
      */
     @Test
     fun testUsingSimpleClass() {
@@ -44,6 +46,42 @@ class OOPUnitTest {
         duck.quack()
         duck.fly()
         println()
+    }
+
+    /**
+     * 봉합 클래스 및 열거형 테스트.
+     *
+     * 의존성 주입체의 타입 확인하길 권장.
+     *
+     * Runnable -> Sealed class
+     * Heat -> Enum
+     */
+    @Test
+    fun testSealedClassAndEnum() {
+
+        CustomType1WingDuck("Doohyun")
+                .apply {
+                    // 의존성 주입.
+                    runnable = Runnable.High()
+                    heat = Heat.Miss
+                }
+                .executeDIBehavior()
+
+        CustomType2WingDuck("Soldier")
+                .apply {
+                    // 의존성 주입.
+                    runnable = Runnable.Normal()
+                    heat = Heat.Critical
+                }
+                .executeDIBehavior()
+
+        RubberDuck()
+                .apply {
+                    // 의존성 주입.
+                    runnable = Runnable.Low()
+                    heat = Heat.Normal
+                }
+                .executeDIBehavior()
     }
 
 }

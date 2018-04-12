@@ -1,4 +1,6 @@
-package nlab.practice.model.duck
+package nlab.practice.model.strategy
+
+import nlab.practice.model.strategy.Flyable
 
 /**
  * 날개를 이용하여, 하늘을 나는 행위 정의.

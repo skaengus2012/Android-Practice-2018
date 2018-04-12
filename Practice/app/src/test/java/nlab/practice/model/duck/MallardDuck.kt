@@ -1,5 +1,7 @@
 package nlab.practice.model.duck
 
+import nlab.practice.model.strategy.FlyWithWing
+
 /**
  * 청둥오리 클래스 정의.
  *
