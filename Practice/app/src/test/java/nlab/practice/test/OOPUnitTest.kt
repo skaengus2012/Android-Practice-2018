@@ -2,6 +2,7 @@ package nlab.practice.test
 
 import nlab.practice.model.duck.*
 import nlab.practice.model.member.MemberVO
+import nlab.practice.model.member.MockMemberDAO
 import nlab.practice.model.strategy.Heat
 import nlab.practice.model.strategy.Runnable
 import org.junit.Test
@@ -93,11 +94,11 @@ class OOPUnitTest {
 
         // 빌더 패턴 대체.
         // NonNull 필드는 무조건 초기화 시켜야함.
-        var member = MemberVO(name = "Doohyun", memberSn = 1, genderFlag = "Male")
+        val member = MemberVO(name = "Doohyun", memberSn = 1, genderFlag = "Male")
 
         // 데이터 복사.
-        var copyMember = member.copy()
-        var copySeparateMember = member.copy(name = "broduck", memberSn = 2)
+        val copyMember = member.copy()
+        val copySeparateMember = member.copy(name = "broduck", memberSn = 2)
 
         // 데이터 출력.
         printMember(member)
@@ -110,6 +111,19 @@ class OOPUnitTest {
      *
      * @param member
      */
-    private fun printMember(member : MemberVO) = println("${member.memberSn}, ${member.name}, ${member.genderFlag}")
+    private fun printMember(member : MemberVO)
+            = println("${member.memberSn}, ${member.name}, ${member.genderFlag}")
+
+    /**
+     * Object 클래스에 대한 테스트
+     */
+    @Test
+    fun testObjectClass() {
+        MockMemberDAO.selectList().let {
+            for (member in it) {
+                printMember(member)
+            }
+        }
+    }
 
 }
