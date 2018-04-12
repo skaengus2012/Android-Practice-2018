@@ -3,8 +3,7 @@ package nlab.practice.test
 import nlab.practice.model.duck.*
 import nlab.practice.model.member.MemberVO
 import nlab.practice.model.member.MockMemberDAO
-import nlab.practice.model.strategy.Heat
-import nlab.practice.model.strategy.Runnable
+import nlab.practice.model.strategy.*
 import org.junit.Test
 
 /**
@@ -130,4 +129,13 @@ class OOPUnitTest {
         }
     }
 
+    /**
+     * Delegate pattern 에 대한 테스트.
+     */
+    @Test
+    fun testDelegatePattern() = Delegate(FlyWithWing(), JumpAbleImpl()).let {
+        // 대리자가 수행할 메소드 호출.
+        it.fly()
+        it.jump()
+    }
 }
