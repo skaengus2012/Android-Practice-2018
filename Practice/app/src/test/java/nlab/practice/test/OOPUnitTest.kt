@@ -1,6 +1,7 @@
 package nlab.practice.test
 
 import nlab.practice.model.duck.*
+import nlab.practice.model.member.MemberVO
 import nlab.practice.model.strategy.Heat
 import nlab.practice.model.strategy.Runnable
 import org.junit.Test
@@ -22,7 +23,7 @@ class OOPUnitTest {
     fun testUsingSimpleClass() {
         val mallardDuck = MallardDuck()
         val rubberDuck = RubberDuck()
-        val customType1Duck = CustomType1WingDuck("broDuck")
+        val customType1Duck = CustomType1WingDuck("broduck")
         val customType2Duck = CustomType2WingDuck("Kang")
 
         runDuckSimulator(mallardDuck)
@@ -83,5 +84,32 @@ class OOPUnitTest {
                 }
                 .executeDIBehavior()
     }
+
+    /**
+     * 데이터 클래스 테스트
+     */
+    @Test
+    fun testDataClass() {
+
+        // 빌더 패턴 대체.
+        // NonNull 필드는 무조건 초기화 시켜야함.
+        var member = MemberVO(name = "Doohyun", memberSn = 1, genderFlag = "Male")
+
+        // 데이터 복사.
+        var copyMember = member.copy()
+        var copySeparateMember = member.copy(name = "broduck", memberSn = 2)
+
+        // 데이터 출력.
+        printMember(member)
+        printMember(copyMember)
+        printMember(copySeparateMember)
+    }
+
+    /**
+     * [member] 를 받아 콘솔에 출력
+     *
+     * @param member
+     */
+    private fun printMember(member : MemberVO) = println("${member.memberSn}, ${member.name}, ${member.genderFlag}")
 
 }
