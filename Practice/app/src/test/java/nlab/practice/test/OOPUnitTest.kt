@@ -88,6 +88,8 @@ class OOPUnitTest {
 
     /**
      * 데이터 클래스 테스트
+     *
+     * MemberVO 는 data class.
      */
     @Test
     fun testDataClass() {
@@ -116,6 +118,8 @@ class OOPUnitTest {
 
     /**
      * Object 클래스에 대한 테스트
+     *
+     * MockMemberDAO 는 object(싱글톤).
      */
     @Test
     fun testObjectClass() {
