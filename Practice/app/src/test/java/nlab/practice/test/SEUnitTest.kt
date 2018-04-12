@@ -5,7 +5,9 @@ import org.junit.Test
 /**
  * 코틀린 기본 문법에 대한 테스트 코드 기술.
  *
- * Standard 프로젝트.
+ * Standard Edition.
+ *
+ * @author ndh1002
  */
 class SEUnitTest {
 
@@ -173,5 +175,47 @@ class SEUnitTest {
         optionalValue = 8
         val value : Int = optionalValue!!
         println("데이터 추출 처리 -> $value")
+    }
+
+    /**
+     * 코틀린에서 제공하는 내장 함수 테스트.
+     *
+     * 내장 함수들은 Kotlin 에서 제공하는 모든 객체에서 사용할 수 있음.
+     * 기본적인 설명
+     */
+    @Test
+    fun testKotlinBasicFunction() {
+
+        // apply : 함수를 호출하는 객체를 이어지는 블록으로 전달, 블록안에서는 호출한 객체를 반환.
+        val numbers : List<Int>? = ArrayList<Int>().apply {
+            // this 키워드를 이용하여, 호출한 객체에 접근이 가능.
+            this.add(1)
+            this.add(2)
+
+            // 해당 함수를 이용하여, 객체 생성 시 초기화 블럭으로 사용이 가능.
+        }
+
+        // let : 함수를 호출하는 객체를 이어지는 블록으로 전달, 블록 내부에서는 처리된 결과를 반환.
+        numbers?.let {
+            // it 키워드를 이용하여, 함수를 호출한 객체에 접근 가능.
+            // 해당 예제에서는 Unit (자바의 Void) 타입을 리턴
+            //              -> 블록 내에서는 return 키워드를 붙이지 않음. 마지막 줄이 리턴 값.
+            println("[Test, apply & let] 블록에서 세팅한 값을 let 블록에서 사용 $it")
+        }
+
+        // run : 인자 없이, 블록 내부의 값을 반환.
+
+        // 사용방식 1 : 익명함수처럼 사용.
+        kotlin.run { println("[Test, run] 일반 익명함수 실행") }
+        // 사용방식 2 : 특정 객체의 호출에 의한 익명함수 실행.
+        numbers?.run { println("[Test, run] numbers 가 존재한다면 실행") }
+
+
+        // with : with 는 인자를 받는 함수로 해당 인자는 내부 블록으로 전달됨. 블록 내부에서는 처리된 결과를 반환.
+        with(numbers) {
+            // this 키워드로 접근 가능. -> 해당 예제에서는 Unit 타입을 리턴.
+            this?.let { println("[Test, with] $it") }
+        }
+
     }
 }
