@@ -219,5 +219,8 @@ class SEUnitTest {
             this?.let { println("[Test, with] $it") }
         }
 
+        // takeIf : 함수를 호출하는 객체를 이어지는 블록으로 전달
+        // 블록 내부에서는 해당 객체에 대한 컨디션을 판단 후 객체에 대한 옵셔널 값을 출력.
+        numbers?.takeIf { numbers.size == 2 }?.let { println(it) }
     }
 }
