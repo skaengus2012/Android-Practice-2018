@@ -1,5 +1,8 @@
 package nlab.practice.test
 
+import nlab.practice.model.duck.CustomType1WingDuck
+import nlab.practice.model.duck.NamedDuck
+import nlab.practice.model.duck.RubberDuck
 import org.junit.Test
 
 /**
@@ -30,4 +33,85 @@ class KeywordUnitTest {
         val numberInt = numberDouble as? Int
         numberInt?.let { println(it) }
     }
+
+    /**
+     * in 키워드를 이용한 포함 여부.
+     */
+    @Test
+    fun testTypeContains() {
+        val numbers = listOf(1,2,3,4)
+
+        // 포함 여부 테스트.
+        assert(4 in numbers)
+
+        // 미포함 여부 테스트.
+        assert(5 !in numbers)
+
+        println("테스트 성공!")
+    }
+
+    /**
+     * in, out 을 이용한 wildcard 테스트.
+     */
+    @Test
+    fun testGenericWildCard() {
+
+        val namedDucks : MutableList<NamedDuck> = mutableListOf(
+                CustomType1WingDuck("Doohyun`s Duck"),
+                RubberDuck()
+        )
+
+        // in 을 이용한 쓰기 전용 함수 처리.
+        addNewCustomDuck(namedDucks, "broduck")
+
+        // out 을 이용한 읽기 전용 함수 정의.
+        printDuckNames(namedDucks)
+
+        // star projections 테스트.
+        println("- star projections 테스트-")
+        printItems(listOf(1,2,3,4))
+        printItems(listOf("A", "B", "C", "D"))
+    }
+
+    /**
+     * out keyword 를 이용한 제네릭 처리.
+     *
+     * <? extends T> 와 대치. -> 해당 키워드는 오직 목록에 대하여 읽기기준 수행만 가능.
+     *
+     * [ducks] 목록을 순회하며, 이름을 출력.
+     *
+     * @param ducks
+     */
+    private fun printDuckNames(ducks : List<out NamedDuck>) {
+        println("- 오리 이름 출력 테스트 -")
+
+        for (duck in ducks) {
+            println(duck.name)
+        }
+    }
+
+    /**
+     * in keyword 를 이용한 제네릭 처리.
+     *
+     * <? super T> 와 대치 -> 해당 키워드는 오직 목록에 대하여 쓰기기준 수행만 가능.
+     *
+     * [ducks] 에 [newDuckName] 을 가진 오리를 추가한다.
+     *
+     * @param ducks
+     * @param newDuckName
+     */
+    private fun addNewCustomDuck(ducks : MutableList<in NamedDuck>, newDuckName : String)
+            = CustomType1WingDuck(newDuckName).let { ducks.add(it) }
+
+
+    /**
+     * Generics 사용 시, 모든 객체에 대한 허용 처리.
+     *
+     * <?> 와 대치.
+     *
+     * [items] 의 내용을 출력.
+     *
+     * @param items
+     */
+    private fun printItems(items : List<*>) = println(items)
 }
