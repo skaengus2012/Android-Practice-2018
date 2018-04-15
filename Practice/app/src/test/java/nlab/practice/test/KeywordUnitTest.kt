@@ -114,4 +114,19 @@ class KeywordUnitTest {
      * @param items
      */
     private fun printItems(items : List<*>) = println(items)
+
+    /**
+     * 객체의 타입을 체크하는 기능 테스트.
+     *
+     * 자바의 instanceOf 와 대치.
+     */
+    @Test
+    fun testInstanceTypeCheck() {
+
+        val rubberDuck : Any = RubberDuck()
+
+        assert(rubberDuck is NamedDuck)
+
+        assert(rubberDuck !is CustomType1WingDuck)
+    }
 }
