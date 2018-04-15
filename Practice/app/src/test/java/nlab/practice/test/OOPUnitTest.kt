@@ -138,4 +138,18 @@ class OOPUnitTest {
         it.fly()
         it.jump()
     }
+
+    /**
+     * where 절을 이용한 제네릭 지정과 초기화 지연 키워드(lateinit) 에 대한 테스트 정의.
+     *
+     * DuckList 클래스를 열어보길 권장.
+     */
+    @Test
+    fun testGenericAndLateInit() {
+        DuckList<NamedDuck>().apply { injectLists(listOf(RubberDuck())) }.let {
+            for(duck in it.ducks) {
+                println(duck.name)
+            }
+        }
+    }
 }
