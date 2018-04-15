@@ -1,6 +1,7 @@
 package nlab.practice.test
 
 import nlab.practice.model.duck.CustomType1WingDuck
+import nlab.practice.model.duck.CustomType2WingDuck as CT2Duck
 import nlab.practice.model.duck.Duck
 import nlab.practice.model.duck.NamedDuck
 import nlab.practice.model.duck.RubberDuck
@@ -19,6 +20,17 @@ typealias MemberPair = Pair<Int, Pair<String, String>>
  * @author ndh1002
  */
 class KeywordUnitTest {
+
+    /**
+     * 별칭 기능 테스트.
+     *
+     * import nlab.practice.model.duck.CustomType2WingDuck as CT2Duck
+     * 와 같이 별칭을 추가할 수 있음.
+     */
+    @Test
+    fun testTypeNicName() {
+        CT2Duck("Doohyun`s Duck").let { println(it.name) }
+    }
 
     /**
      * Type Casting 관련 테스트 제작.
