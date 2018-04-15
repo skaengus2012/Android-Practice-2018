@@ -12,7 +12,7 @@ typealias DuckList = MutableList<Duck>
 typealias MemberPair = Pair<Int, Pair<String, String>>
 
 /**
- * Kotlin keyword 관련 테스트 슈트 정의
+ * Kotlin keyword 관련 기본적인 테스트 슈트 정의
  *
  * 참고 URL
  *  -> https://github.com/skaengus2012/Android-Practice-2018/issues/3
