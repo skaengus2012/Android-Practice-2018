@@ -5,6 +5,7 @@ import nlab.practice.model.duck.Duck
 import nlab.practice.model.duck.NamedDuck
 import nlab.practice.model.duck.RubberDuck
 import org.junit.Test
+import kotlin.properties.Delegates
 
 typealias DuckList = MutableList<Duck>
 
@@ -157,5 +158,53 @@ class KeywordUnitTest {
         for (duck in ducks) {
             duck.fly()
         }
+    }
+
+    /**
+     * Standard Delegate (Lazy) 테스트.
+     *
+     * Lazy 의 경우, 데이터를 바로 바인딩하는 것이 아닌 필요시점에 한번 로딩하는 방식을 말함.
+     */
+    @Test
+    fun testDelegateLazyValue() {
+
+        // lazy 프로퍼티는 기본적으로 스레드 동기화 보장됨.
+        // lazy 키워드에 대해서, mutable 을 이용하려면, setValue 를 구현해야함. Delegate 조건.
+        // lazy 를 상속하든 해서 해보면 어떨까?
+        val slowBindingStrValue: String by lazy {
+            println("데이터 바인딩을 위해, 5초의 시간 필요 -> 바인딩 중...")
+            Thread.sleep(5000)
+
+            "Doohyun"
+        }
+
+        // 각각 다른 스레드에서 해당 값을 출력하도록 처리.
+        Thread({ println(slowBindingStrValue)}).start()
+        Thread({ println(slowBindingStrValue)}).start()
+
+
+        Thread.sleep(6000)
+        println("테스트 종료.")
+    }
+
+    /**
+     * Standard Delegate (Observable) 테스트.
+     *
+     * Observable 의 경우, 수정자에 대한 핸들러를 가지도록 하고 있음.
+     */
+    @Test
+    fun testDelegateObservableValue() {
+
+        var strObservableValue : String by Delegates.observable("초기 값") {
+            _, oldValue, newValue ->
+
+            // _ 는 Delegates.observable 의 대상이 되는 타입(string) 의 reflection 값.
+            // 기본 이름은 property 로 정의.
+
+            println("oldValue : $oldValue, newValue : $newValue")
+        }
+
+        strObservableValue = "Hello"
+        strObservableValue = "world"
     }
 }
