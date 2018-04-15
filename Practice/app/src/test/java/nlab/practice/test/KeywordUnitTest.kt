@@ -8,6 +8,7 @@ import org.junit.Test
 import kotlin.properties.Delegates
 
 typealias DuckList = MutableList<Duck>
+typealias MemberPair = Pair<Int, Pair<String, String>>
 
 /**
  * Kotlin keyword 관련 테스트 슈트 정의
@@ -206,5 +207,41 @@ class KeywordUnitTest {
 
         strObservableValue = "Hello"
         strObservableValue = "world"
+    }
+
+    /**
+     * key-value 쌍에 대한 표현 표시.
+     *
+     * to 키워드를 이용하여, 자바의 Pair 를 만들 수 있음.
+     */
+    @Test
+    fun testEntryExpression() {
+        // 구성원 순번, 이름, 직업 을 Entry 로 표현.
+        val memberPair = 1 to ("Doohyun" to "Android Developer")
+        printMemberEntry(memberPair)
+
+        // 응용.
+        // 구성원 정보에 대한 맵을 다음과 같이 제작할 수 있음.
+        mapOf(
+                2 to ("broduck" to "Web Developer"),
+                3 to ("Kang" to "Web Developer"),
+                4 to ("Soldier" to "Web Developer")
+        ).let {
+            for (memberEntry in it.entries) {
+                val pair = memberEntry.key to memberEntry.value
+                printMemberEntry(pair)
+            }
+        }
+    }
+
+    /**
+     * [memberPair] 에 대한 데이터 표시.
+     *
+     * @param memberPair
+     */
+    private fun printMemberEntry(memberPair : MemberPair) {
+        println("구성원 순번 [${memberPair.first}] 에 대한 정보 표시")
+        println("이름 : ${memberPair.second.first}")
+        println("직업 : ${memberPair.second.second}\n")
     }
 }
