@@ -1,6 +1,7 @@
 package nlab.practice.test
 
 import nlab.practice.model.duck.*
+import nlab.practice.model.innerTest.A
 import nlab.practice.model.member.MemberVO
 import nlab.practice.model.member.MockMemberDAO
 import nlab.practice.model.strategy.*
@@ -151,5 +152,20 @@ class OOPUnitTest {
                 println(duck.name)
             }
         }
+    }
+
+    /**
+     * 내부 클래스에 대한 테스트 정의
+     *
+     * A 클래스를 열어보길 권장.
+     */
+    @Test
+    fun testInnerClass() {
+        // B 인스턴스를 A 객체와는 무관하게 생성 가능.
+        A.B().printNativeAValue()
+
+        // C 인스턴스는 A 객체와 연결. 즉 A 를 만들어야 C 를 만들 수 있음.
+        // A.C() -> 컴파일 에러
+        A().C().printNativeAValue()
     }
 }
