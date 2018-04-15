@@ -40,4 +40,22 @@ class KeywordChat2UnitTest {
         }
     }
 
+    /**
+     * 가변인자 테스트.
+     */
+    @Test
+    fun testVararg() {
+        printNumbers(1, 2, 3, 4)
+    }
+
+    /**
+     * [elements] 에 입력된 데이터를 출력한다.
+     *
+     * @param elements
+     */
+    private fun printNumbers(vararg elements : Int) {
+        for (i in 0 until elements.size) {
+            println(elements[i])
+        }
+    }
 }
