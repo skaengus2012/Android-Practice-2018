@@ -1,9 +1,12 @@
 package nlab.practice.test
 
 import nlab.practice.model.duck.CustomType1WingDuck
+import nlab.practice.model.duck.Duck
 import nlab.practice.model.duck.NamedDuck
 import nlab.practice.model.duck.RubberDuck
 import org.junit.Test
+
+typealias DuckList = MutableList<Duck>
 
 /**
  * Kotlin keyword 관련 테스트 슈트 정의
@@ -128,5 +131,31 @@ class KeywordUnitTest {
         assert(rubberDuck is NamedDuck)
 
         assert(rubberDuck !is CustomType1WingDuck)
+    }
+
+    /**
+     * Type 명이 길 경우, typealias 키워드를 이용해서 단축시킬 수 있음.
+     */
+    @Test
+    fun testTypeAlias() {
+        // Duck list 에 데이터 추가.
+        val ducks : DuckList = ArrayList()
+        with(ducks) {
+            add(CustomType1WingDuck("Doohyun`s Duck"))
+            add(RubberDuck())
+        }
+
+        flyDuckList(ducks)
+    }
+
+    /**
+     * [ducks] 내부의 오리들의 날기 동작 수행.
+     *
+     * @param ducks
+     */
+    private fun flyDuckList(ducks : DuckList) {
+        for (duck in ducks) {
+            duck.fly()
+        }
     }
 }
