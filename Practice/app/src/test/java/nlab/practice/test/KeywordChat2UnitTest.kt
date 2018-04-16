@@ -1,5 +1,6 @@
 package nlab.practice.test
 
+import nlab.practice.model.operatorTest.OperatorSupportList
 import org.junit.Test
 
 /**
@@ -57,5 +58,30 @@ class KeywordChat2UnitTest {
         for (i in 0 until elements.size) {
             println(elements[i])
         }
+    }
+
+    /**
+     * 연산자 오버로딩 테스트.
+     */
+    @Test
+    fun testOperatorOverloading() {
+        // 1,2 가 추가된 아이템.
+        val items1 = OperatorSupportList<Int>().apply {
+            add(1)
+            add(2)
+        }
+
+        // 3,4 가 추가된 아이템.
+        val items2 = OperatorSupportList<Int>().apply {
+            add(3)
+            add(4)
+        }
+
+        val items3 = items1 + items2
+        println(items3)
+
+        // 변경 불가한 목록에만 사용가능.
+        items3 += items1
+        println(items3)
     }
 }
