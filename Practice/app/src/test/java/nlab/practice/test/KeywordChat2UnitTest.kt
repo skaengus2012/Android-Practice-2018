@@ -99,8 +99,12 @@ class KeywordChat2UnitTest {
         // 목록 정의.
         val items = mutableListOf(5, 2, 7, 9, 1)
 
+        // inline function test
         sort(items, { a, b -> a.compareTo(b) })
         println(items)
+
+        // no inline function test
+        printSimulateWithNoInlines({str -> println("inline func -> [$str]")}, {str -> println("no inline func -> [$str]")})
     }
 
     /**
@@ -123,6 +127,20 @@ class KeywordChat2UnitTest {
                 }
             }
         }
+    }
 
+    /**
+     * 문자를 특정방식으로 출력하는 프린터 함수 제작.
+     *
+     * [printer1] 함수는 inline 논리에 따라 컴파일러가 처리
+     *
+     * inline 으로 된 함수에서 특정 부분을 inline 처리하고 싶지 않다면 [printer2] 처럼 noinline keyword 사용.
+     *
+     * @param printer1
+     * @param printer2
+     */
+    private inline fun printSimulateWithNoInlines(printer1 : (str :String) -> Unit,  noinline printer2 : (str: String) -> Unit) {
+        printer1("Hello, Kotlin")
+        printer2("Hello, inline Kotlin")
     }
 }
