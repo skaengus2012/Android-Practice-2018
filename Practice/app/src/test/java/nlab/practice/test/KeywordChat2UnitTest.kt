@@ -105,6 +105,9 @@ class KeywordChat2UnitTest {
 
         // no inline function test
         printSimulateWithNoInlines({str -> println("inline func -> [$str]")}, {str -> println("no inline func -> [$str]")})
+
+        // crossinline test
+        createLoggedRunnable({ println("Hello Cross Inline")})()
     }
 
     /**
@@ -142,5 +145,17 @@ class KeywordChat2UnitTest {
     private inline fun printSimulateWithNoInlines(printer1 : (str :String) -> Unit,  noinline printer2 : (str: String) -> Unit) {
         printer1("Hello, Kotlin")
         printer2("Hello, inline Kotlin")
+    }
+
+    /**
+     * 고차함수가 inline 함수가 아닌,
+     * 다른 곳에서 호출될 때 inline 효과를 보려면 [runnable] 과 같이 crossinline 키워드를 붙여야 한다.
+     *
+     * @param runnable
+     */
+    private inline fun createLoggedRunnable(crossinline runnable: ()  -> Unit) : () -> Unit = {
+        println("\n로거 목적으로 wrapping 된 고차함수.")
+        runnable()
+        println()
     }
 }
