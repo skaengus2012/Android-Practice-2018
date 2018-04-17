@@ -35,6 +35,7 @@ class KeywordChat2UnitTest {
 
         check(number >= 1, {"잘못된 접근입니다."})
 
+        // TODO 꼬리가 호출이 안된다는 데, 원인 찾아봐야함..
         return when(number) {
             1 -> 1
             else -> number * getFactorialResult(number - 1)
@@ -83,5 +84,45 @@ class KeywordChat2UnitTest {
         // 변경 불가한 목록에만 사용가능.
         items3 += items1
         println(items3)
+    }
+
+    /**
+     * 인라인 함수 테스트.
+     *
+     * 고차 함수 사용 시, 패널티에 대한 해소로 inline 함수 적용.
+     *
+     * 고차함수 (람다 등)은 객체로 만들어지면서 함수의 내용을 캡처한다.
+     * -> inline 사용 시, 컴파일러가 고차함수 객체를 만들지 않고 호출하는 시점에 코드를 복사하는 방식으로 처리됨.
+     */
+    @Test
+    fun testInlineFunction() {
+        // 목록 정의.
+        val items = mutableListOf(5, 2, 7, 9, 1)
+
+        sort(items, { a, b -> a.compareTo(b) })
+        println(items)
+    }
+
+    /**
+     * 파라미터로 입력받은 [items] 를 [comparator] 에 따라 정렬하는 함수 정의
+     *
+     * @param items
+     * @param comparator
+     */
+    private inline fun <T> sort(items: MutableList<T>, comparator : (a : T, b : T) -> Int) {
+        val size = items.size
+
+        for (i in (1 .. size).reversed()) {
+            for (j in 1 until i) {
+                val targetA = items[j - 1]
+                val targetB = items[j]
+
+                if (comparator(targetA, targetB) > 0) {
+                    items[j - 1] = targetB
+                    items[j] = targetA
+                }
+            }
+        }
+
     }
 }
