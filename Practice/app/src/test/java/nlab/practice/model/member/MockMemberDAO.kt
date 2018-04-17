@@ -9,6 +9,9 @@ package nlab.practice.model.member
  */
 object MockMemberDAO {
 
+    /**
+     * 구성원 목록을 출력.
+     */
     fun selectList() : List<MemberVO> = listOf(
             MemberVO(1, "강현지", "11110", "Female", "사원"),
             MemberVO(1, "남두현", "11111", "Male", "사원"),
