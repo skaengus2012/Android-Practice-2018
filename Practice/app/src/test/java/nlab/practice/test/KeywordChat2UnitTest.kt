@@ -62,10 +62,10 @@ class KeywordChat2UnitTest {
     }
 
     /**
-     * 연산자 오버로딩 테스트.
+     * 연산자 오버로딩과 InFix 테스트.
      */
     @Test
-    fun testOperatorOverloading() {
+    fun testOperatorOverloadingAndInfix() {
         // 1,2 가 추가된 아이템.
         val items1 = OperatorSupportList<Int>().apply {
             add(1)
@@ -80,10 +80,17 @@ class KeywordChat2UnitTest {
 
         val items3 = items1 + items2
         println(items3)
+        println()
 
         // 변경 불가한 목록에만 사용가능.
         items3 += items1
         println(items3)
+        println()
+
+        // infix 테스트.
+        println("infix 테스트.")
+        items3 minus items2
+        println("infix 로 뺄셈한 결과 [$items3]")
     }
 
     /**

@@ -56,4 +56,11 @@ class OperatorSupportList<T> {
 
         this.items.addAll(items.items)
     }
+
+    /**
+     * [items] 에 있는 데이터를 제거.
+     *
+     * @param items
+     */
+    infix fun minus(items: OperatorSupportList<T>) = this.items.removeAll(items.items)
 }
