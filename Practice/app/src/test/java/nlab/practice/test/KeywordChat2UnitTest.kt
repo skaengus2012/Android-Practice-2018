@@ -108,6 +108,10 @@ class KeywordChat2UnitTest {
 
         // crossinline test
         createLoggedRunnable({ println("Hello Cross Inline")})()
+
+        // refined test
+        printObjectName(String::class.java)
+        printReifiedObjectName<String>()
     }
 
     /**
@@ -158,4 +162,19 @@ class KeywordChat2UnitTest {
         runnable()
         println()
     }
+
+    /**
+     * [clazz] 를 넣어 클래스의 이름을 출력한다.
+     *
+     * @param clazz
+     */
+    private fun <T> printObjectName(clazz: Class<T>) = clazz.simpleName?.let { println(it) }
+
+    /**
+     * 제네릭 <T> 에 해당하는 클래스 이름을 출력한다.
+     *
+     * reified 키워드를 이용한 제네릭 접근.
+     */
+    private inline fun <reified T> printReifiedObjectName() = T::class.java.simpleName?.let { println(it) }
+
 }
