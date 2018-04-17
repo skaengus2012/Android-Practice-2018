@@ -1,4 +1,4 @@
-package nlab.practice.model.member
+package nlab.practice.model.erp
 
 /**
  * 구성원 정보와 조직 정보를 합친 정보.

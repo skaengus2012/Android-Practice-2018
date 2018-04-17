@@ -1,8 +1,8 @@
 package nlab.practice.config
 
-import nlab.practice.model.member.MemberOrganizationVO
-import nlab.practice.model.member.MemberVO
-import nlab.practice.model.member.OrganizationVO
+import nlab.practice.model.erp.MemberOrganizationVO
+import nlab.practice.model.erp.MemberVO
+import nlab.practice.model.erp.OrganizationVO
 
 /**
  * 구성원 정보에 [organizationVO] 를 추가하여, MemberOrganizationVO 를 생산.

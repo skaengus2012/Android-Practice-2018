@@ -1,8 +1,9 @@
 package nlab.practice.test
 
 import nlab.practice.config.toMemberOrganizationVO
-import nlab.practice.model.member.MemberVO
-import nlab.practice.model.member.OrganizationVO
+import nlab.practice.dao.erp.MockOrganizationDAO
+import nlab.practice.model.erp.MemberVO
+import nlab.practice.model.erp.OrganizationVO
 import org.junit.Before
 import org.junit.Test
 
@@ -22,7 +23,7 @@ class ExtensionUnitTest {
     @Before
     fun initData() {
         member = MemberVO(memberSn = 1, name = "남두현")
-        organization = OrganizationVO(1, 1, "네이버 뮤직 - 안드로이드")
+        organization = MockOrganizationDAO.findByNaverMusicAndroid()
     }
 
     /**

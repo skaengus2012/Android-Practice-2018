@@ -1,4 +1,4 @@
-package nlab.practice.model.member
+package nlab.practice.model.erp
 
 /**
  * 구성원 정보 (Value Object) 정의
@@ -13,5 +13,5 @@ data class MemberVO(
         var name : String,
         var employeeId : String? = null,
         var genderFlag : String? = null,
-        var position : String? = null
-)
+        var position : String? = null,
+        var organizationSn : Int? = null)
