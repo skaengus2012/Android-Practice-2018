@@ -19,7 +19,7 @@ typealias MemberPair = Pair<Int, Pair<String, String>>
  *
  * @author ndh1002
  */
-class KeywordUnitTest {
+class KeywordChat1UnitTest {
 
     /**
      * 별칭 기능 테스트.
