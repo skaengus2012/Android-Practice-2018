@@ -1,9 +1,10 @@
 package nlab.practice.test
 
-import nlab.practice.model.duck.*
-import nlab.practice.model.innerTest.A
-import nlab.practice.model.erp.MemberVO
 import nlab.practice.dao.erp.MockMemberDAO
+import nlab.practice.model.duck.*
+import nlab.practice.model.duck.DuckList
+import nlab.practice.model.erp.MemberVO
+import nlab.practice.model.innerTest.A
 import nlab.practice.model.strategy.*
 import org.junit.Test
 

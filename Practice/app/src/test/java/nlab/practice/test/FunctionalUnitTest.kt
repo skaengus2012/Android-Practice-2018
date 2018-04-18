@@ -2,9 +2,9 @@ package nlab.practice.test
 
 import nlab.practice.config.CodeDefinition
 import nlab.practice.config.toMemberOrganizationVO
-import nlab.practice.model.erp.MemberVO
 import nlab.practice.dao.erp.MockMemberDAO
 import nlab.practice.dao.erp.MockOrganizationDAO
+import nlab.practice.model.erp.MemberVO
 import nlab.practice.model.erp.OrganizationVO
 import org.junit.Before
 import org.junit.Test

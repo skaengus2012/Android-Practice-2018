@@ -1,7 +1,7 @@
 package nlab.practice
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import nlab.practice.main.MainItemListAdapter
 import nlab.practice.main.MainItemListAdapter.MainItem
