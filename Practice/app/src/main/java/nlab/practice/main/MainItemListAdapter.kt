@@ -2,6 +2,7 @@ package nlab.practice.main
 
 import android.app.Activity
 import android.content.Intent
+import android.support.annotation.StringRes
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -9,15 +10,16 @@ import android.view.ViewGroup
 import android.widget.TextView
 import kotlinx.android.synthetic.main.item_main.view.*
 import nlab.practice.R
+import nlab.practice.util.resource.convertString
 
 /**
  * 메인 아이템에 들어갈 항목 정의.
  *
  * @author ndh1002
  */
-class MainItemListAdapter(vararg items : MainItem) : RecyclerView.Adapter<MainItemListAdapter.MainItemViewHolder>(){
+class MainItemListAdapter(items : List<MainItem>) : RecyclerView.Adapter<MainItemListAdapter.MainItemViewHolder>(){
 
-    private val items : List<MainItem> = items.toList().reversed()
+    private val items : List<MainItem> = items
 
     /**
      * MainItemListAdapter 에서 사용하는 ViewHolder 정의.
@@ -28,7 +30,7 @@ class MainItemListAdapter(vararg items : MainItem) : RecyclerView.Adapter<MainIt
         val tvLabel : TextView? = itemView.tvLabel
     }
 
-    data class MainItem(val label : String, val clazz: Class<out Activity>)
+    data class MainItem(@StringRes val labelRes : Int, val clazz: Class<out Activity>)
 
     /**
      * View Holder 생산
@@ -54,7 +56,7 @@ class MainItemListAdapter(vararg items : MainItem) : RecyclerView.Adapter<MainIt
 
         holder.tvLabel?.let {
             // 텍스트 바인드.
-            it.text = item.label
+            it.text = convertString(item.labelRes)
 
             // 클릭 시, 액티비티 전환 처리.
             (it.parent as? View)?.setOnClickListener({
