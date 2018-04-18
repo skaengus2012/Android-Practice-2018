@@ -3,7 +3,6 @@
     package="nlab.practice">
 
     <application
-        android:name=".PracticeApplication"
         android:allowBackup="true"
         android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
