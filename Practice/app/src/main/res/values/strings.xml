@@ -3,4 +3,6 @@
 
     <!-- 액티비티 라벨 정의 -->
     <string name="title_dev_tutorial">개발자 튜토리얼</string>
+    <string name="dev_tutorial_edit_message">Enter a Message</string>
+    <string name="dev_tutorial_button_send">SEND</string>
 </resources>
