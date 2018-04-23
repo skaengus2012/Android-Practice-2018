@@ -1,4 +1,4 @@
-package nlab.practice.ui
+package nlab.practice.c1
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle

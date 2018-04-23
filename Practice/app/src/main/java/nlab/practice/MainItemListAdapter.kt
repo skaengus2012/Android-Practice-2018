@@ -1,4 +1,4 @@
-package nlab.practice.main
+package nlab.practice
 
 import android.app.Activity
 import android.content.Intent
@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import kotlinx.android.synthetic.main.item_main.view.*
-import nlab.practice.R
 import nlab.practice.util.resource.ActivityConfigManager
 import kotlin.reflect.KClass
 
@@ -24,7 +23,7 @@ class MainItemListAdapter : RecyclerView.Adapter<MainItemListAdapter.MainItemVie
     init {
         items = ActivityConfigManager.getActivityKClassis()
                 .filter { ActivityConfigManager.isHaveLabel(it) }
-                .map { MainItem(ActivityConfigManager.getLabel(it)!!, it)}
+                .map { MainItem(ActivityConfigManager.getLabel(it)!!, it) }
     }
 
     /**
