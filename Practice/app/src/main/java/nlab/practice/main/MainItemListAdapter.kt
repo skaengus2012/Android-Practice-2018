@@ -2,7 +2,6 @@ package nlab.practice.main
 
 import android.app.Activity
 import android.content.Intent
-import android.support.annotation.StringRes
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -10,16 +9,23 @@ import android.view.ViewGroup
 import android.widget.TextView
 import kotlinx.android.synthetic.main.item_main.view.*
 import nlab.practice.R
-import nlab.practice.util.resource.convertString
+import nlab.practice.util.resource.ActivityConfigManager
+import kotlin.reflect.KClass
 
 /**
  * 메인 아이템에 들어갈 항목 정의.
  *
  * @author ndh1002
  */
-class MainItemListAdapter(items : List<MainItem>) : RecyclerView.Adapter<MainItemListAdapter.MainItemViewHolder>(){
+class MainItemListAdapter : RecyclerView.Adapter<MainItemListAdapter.MainItemViewHolder>(){
 
-    private val items : List<MainItem> = items
+    private val items : List<MainItem>
+
+    init {
+        items = ActivityConfigManager.getActivityKClassis()
+                .filter { ActivityConfigManager.isHaveLabel(it) }
+                .map { MainItem(ActivityConfigManager.getLabel(it)!!, it)}
+    }
 
     /**
      * MainItemListAdapter 에서 사용하는 ViewHolder 정의.
@@ -30,7 +36,7 @@ class MainItemListAdapter(items : List<MainItem>) : RecyclerView.Adapter<MainIte
         val tvLabel : TextView? = itemView.tvLabel
     }
 
-    data class MainItem(@StringRes val labelRes : Int, val clazz: Class<out Activity>)
+    data class MainItem(val label : String, val clazz: KClass<out Activity>)
 
     /**
      * View Holder 생산
@@ -56,11 +62,11 @@ class MainItemListAdapter(items : List<MainItem>) : RecyclerView.Adapter<MainIte
 
         holder.tvLabel?.let {
             // 텍스트 바인드.
-            it.text = convertString(item.labelRes)
+            it.text = item.label
 
             // 클릭 시, 액티비티 전환 처리.
             (it.parent as? View)?.setOnClickListener({
-                v -> Intent(v.context, item.clazz).let { v.context.startActivity(it) }
+                v -> Intent(v.context, item.clazz.java).let { v.context.startActivity(it) }
             })
         }
     }

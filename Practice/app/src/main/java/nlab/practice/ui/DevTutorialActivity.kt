@@ -30,7 +30,8 @@ class DevTutorialActivity : AppCompatActivity() {
     /**
      * DisplayMessage 로 메세지를 보내기 위한 행위 정의
      */
-    fun sendMessage() = Intent(this, DisplayMessageActivity::class.java)
+    private fun sendMessage() =
+            Intent(this, DisplayMessageActivity::class.java)
                     .apply {
                         val message = editText.text?.toString() ?: ""
                         putExtra(EXTRA_MESSAGE, message)

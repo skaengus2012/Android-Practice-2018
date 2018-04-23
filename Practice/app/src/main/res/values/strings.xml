@@ -1,8 +1,11 @@
 <resources>
     <string name="app_name">Android-Practice-2018</string>
 
-    <!-- 액티비티 라벨 정의 -->
+    <!-- 개발자 튜토리얼 -->
     <string name="title_dev_tutorial">개발자 튜토리얼</string>
     <string name="dev_tutorial_edit_message">Enter a Message</string>
     <string name="dev_tutorial_button_send">SEND</string>
+
+    <!-- 데이터 보존 테스트-->
+    <string name="title_data_conserve">데이터 보존 튜토리얼</string>
 </resources>

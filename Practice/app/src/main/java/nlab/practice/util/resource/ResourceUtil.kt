@@ -1,5 +1,6 @@
 package nlab.practice.util.resource
 
+import android.app.Activity
 import android.support.annotation.StringRes
 import nlab.practice.PracticeApplication
 
