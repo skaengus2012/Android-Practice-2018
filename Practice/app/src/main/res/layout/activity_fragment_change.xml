@@ -6,9 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".c3.FragmentChangeActivity">
 
-    <fragment
-        android:id="@+id/viewFragment"
-        android:name="nlab.practice.c2.SimpleViewFragment"
+    <FrameLayout
+        android:id="@+id/layoutFragmentContainer"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/layoutButton"
