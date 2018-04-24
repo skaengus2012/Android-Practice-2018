@@ -2,8 +2,8 @@ package nlab.practice.util.resource
 
 import android.app.Activity
 import nlab.practice.R
-import nlab.practice.c2.DataConserveActivity
 import nlab.practice.c1.DevTutorialActivity
+import nlab.practice.c2.DataConserveActivity
 import kotlin.reflect.KClass
 
 /**

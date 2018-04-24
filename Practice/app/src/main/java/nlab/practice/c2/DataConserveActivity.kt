@@ -1,7 +1,8 @@
 package nlab.practice.c2
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_data_conserve.*
 import nlab.practice.R
 
 /**
@@ -13,14 +14,26 @@ import nlab.practice.R
  */
 class DataConserveActivity : AppCompatActivity() {
 
-    var dataFragment : DataFragment? = null
+    private var dataFragment : DataFragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_data_conserve)
 
-        // 데이터 프래그먼트 초기화.
-        setDataFragment()
+        btnChangedData.setOnClickListener({ changeMyDataVOTo_권순필() })
+    }
+
+    /**
+     * 현재 저장된 MyDataVO 를 출력한다.
+     *
+     * @return
+     */
+    fun getMyDataVO() : DataFragment.MyDataVO? {
+        if (dataFragment == null) {
+            setDataFragment()
+        }
+
+        return dataFragment?.myData
     }
 
     /**
@@ -39,8 +52,7 @@ class DataConserveActivity : AppCompatActivity() {
      * @return
      */
     private fun createNewDataFragmentAndRegisterFM() : DataFragment {
-        val fragment = DataFragment().apply { myData = createDoohuynMyData() }
-
+        val fragment = DataFragment().apply { myData = createMyDataVOFor_남두현() }
 
         supportFragmentManager.beginTransaction()
                 .add(fragment, DataFragment.GetTag())
@@ -50,9 +62,27 @@ class DataConserveActivity : AppCompatActivity() {
     }
 
     /**
-     * Doohyun 에 해당하는 정보를 생산
+     * 데이터를 권순필 상태로 변경하고, 뷰를 반영한다.
+     */
+    private fun changeMyDataVOTo_권순필() {
+        val changeTargetData = createMyDataVOFor_권순필()
+
+        dataFragment?.myData = changeTargetData
+
+        (viewFragment as? SimpleViewFragment)?.bindData(changeTargetData)
+    }
+
+    /**
+     * 남두현 에 해당하는 정보를 생산
      *
      * @return
      */
-    private fun createDoohuynMyData() : DataFragment.MyDataVO = DataFragment.MyDataVO(1, "Doohyun")
+    private fun createMyDataVOFor_남두현() : DataFragment.MyDataVO = DataFragment.MyDataVO(1, "남두현")
+
+    /**
+     * 권순필 에 해당하는 정보를 생산.
+     *
+     * @return
+     */
+    private fun createMyDataVOFor_권순필() : DataFragment.MyDataVO = DataFragment.MyDataVO(2, "권순필")
 }

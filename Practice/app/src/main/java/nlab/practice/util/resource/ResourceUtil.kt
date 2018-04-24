@@ -1,7 +1,7 @@
 package nlab.practice.util.resource
 
-import android.app.Activity
 import android.support.annotation.StringRes
+import android.widget.Toast
 import nlab.practice.PracticeApplication
 
 /**
@@ -13,3 +13,10 @@ import nlab.practice.PracticeApplication
  * @return
  */
 fun convertString(@StringRes strRes : Int) : String = PracticeApplication.getContext().getString(strRes)
+
+/**
+ * 토스트를 표시.
+ *
+ * @param message
+ */
+fun showToast(message : String) = Toast.makeText(PracticeApplication.getContext(), message, Toast.LENGTH_SHORT).show()
