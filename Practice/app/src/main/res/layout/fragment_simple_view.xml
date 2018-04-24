@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".c2.SimpleViewFragment">
+    tools:context=".issue9.SimpleViewFragment">
 
     <TextView
         android:id="@+id/tvMemberSn"

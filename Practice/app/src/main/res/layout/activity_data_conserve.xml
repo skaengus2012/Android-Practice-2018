@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".c2.DataConserveActivity">
+    tools:context=".issue9.DataConserveActivity">
 
     <fragment
         android:id="@+id/viewFragment"
-        android:name="nlab.practice.c2.SimpleViewFragment"
+        android:name="nlab.practice.issue9.SimpleViewFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/btnChangedData"

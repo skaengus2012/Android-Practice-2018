@@ -19,26 +19,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".c1.DevTutorialActivity">
+        <activity android:name=".issue8.DevTutorialActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
-        <activity android:name=".c1.DisplayMessageActivity">
+        <activity android:name=".issue8.DisplayMessageActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="nlab.practice.c1.DevTutorialActivity" />
+                android:value="nlab.practice.issue8.DevTutorialActivity" />
 
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
-        <activity android:name=".c2.DataConserveActivity">
+        <activity android:name=".issue9.DataConserveActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
-        <activity android:name=".c3.FragmentChangeActivity">
+        <activity android:name=".issue20.FragmentChangeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>

@@ -1,4 +1,4 @@
-package nlab.practice.c3
+package nlab.practice.issue20
 
 
 import android.os.Bundle
@@ -47,8 +47,8 @@ class CountFragment : Fragment() {
         }
     }
 
-    var count : Int? = null
-    @ColorRes var textColorRes : Int? = null
+    private var count : Int? = null
+    @ColorRes private var textColorRes : Int? = null
 
     /**
      * 번들에서 fragment 에 바인딩 될 값을 세팅.
