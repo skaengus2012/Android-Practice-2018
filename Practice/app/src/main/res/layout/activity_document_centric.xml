@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".issue10.DocumentCentricActivity">
+
+    <Button
+        android:id="@+id/btnCreateDocument"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/document_centric_button_create_document"
+        app:layout_constraintBottom_toTopOf="@+id/btnRemoveDocument"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <Button
+        android:id="@+id/btnRemoveDocument"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/document_centric_button_remove_document"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnCreateDocument" />
+
+</android.support.constraint.ConstraintLayout>

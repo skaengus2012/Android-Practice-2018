@@ -28,7 +28,6 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="nlab.practice.issue8.DevTutorialActivity" />
-
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
@@ -39,6 +38,16 @@
             </intent-filter>
         </activity>
         <activity android:name=".issue20.FragmentChangeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".issue10.DocumentCentricActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".issue10.NewDocumentActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
