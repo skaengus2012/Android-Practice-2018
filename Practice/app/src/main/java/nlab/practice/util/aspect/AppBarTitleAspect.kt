@@ -2,7 +2,7 @@ package nlab.practice.util.aspect
 
 import android.app.Activity
 import android.util.Log
-import nlab.practice.util.resource.ActivityConfigManager
+import nlab.practice.util.resource.AppBarConfigManager
 import org.aspectj.lang.JoinPoint
 import org.aspectj.lang.annotation.After
 import org.aspectj.lang.annotation.Aspect
@@ -27,10 +27,10 @@ class AppBarTitleAspect {
     fun atferOnCreate(joinPoint : JoinPoint) {
 
         (joinPoint.target as? Activity)
-                ?.takeIf { ActivityConfigManager.isHaveLabel(it::class) }
+                ?.takeIf { AppBarConfigManager.isHaveLabel(it::class) }
                 ?.let {
                     Log.i(TAG, "run aspect -> ${joinPoint.target.javaClass.simpleName}")
-                    it.title = ActivityConfigManager.getLabel(it::class)!!
+                    it.title = AppBarConfigManager.getLabel(it::class)!!
                 }
     }
 }

@@ -4,6 +4,7 @@ import android.app.Activity
 import nlab.practice.R
 import nlab.practice.c1.DevTutorialActivity
 import nlab.practice.c2.DataConserveActivity
+import nlab.practice.c3.FragmentChangeActivity
 import kotlin.reflect.KClass
 
 /**
@@ -11,7 +12,7 @@ import kotlin.reflect.KClass
  *
  * @author ndh1002
  */
-object ActivityConfigManager {
+object AppBarConfigManager {
 
     /**
      * activity 명에 대한 라벨 그룹.
@@ -19,7 +20,8 @@ object ActivityConfigManager {
     private val titleGroup : Map<KClass<out Activity>, String> =
             linkedMapOf(
                     DevTutorialActivity::class to convertString(R.string.title_dev_tutorial),
-                    DataConserveActivity::class to convertString(R.string.title_data_conserve)
+                    DataConserveActivity::class to convertString(R.string.title_data_conserve),
+                    FragmentChangeActivity::class to convertString(R.string.title_fragment_changed)
             )
 
     /**

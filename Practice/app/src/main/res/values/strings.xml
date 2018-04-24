@@ -6,8 +6,13 @@
     <string name="dev_tutorial_edit_message">Enter a Message</string>
     <string name="dev_tutorial_button_send">SEND</string>
 
-    <!-- 데이터 보존 테스트-->
+    <!-- 데이터 보존 테스트 -->
     <string name="title_data_conserve">데이터 보존 튜토리얼</string>
     <string name="data_conserve_button_change_data">CHANGE DATA</string>
+
+    <!-- 프래그먼트 교체 연습 -->
+    <string name="title_fragment_changed">프래그먼트 교체 튜토리얼</string>
+    <string name="fragment_changed_button_change_fragment">CHANGE FRAGMENT</string>
+    <string name="fragment_changed_button_stack_fragment">STACK FRAGMENT</string>
 
 </resources>

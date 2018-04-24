@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import kotlinx.android.synthetic.main.item_main.view.*
-import nlab.practice.util.resource.ActivityConfigManager
+import nlab.practice.util.resource.AppBarConfigManager
 import kotlin.reflect.KClass
 
 /**
@@ -21,9 +21,9 @@ class MainItemListAdapter : RecyclerView.Adapter<MainItemListAdapter.MainItemVie
     private val items : List<MainItem>
 
     init {
-        items = ActivityConfigManager.getActivityKClassis()
-                .filter { ActivityConfigManager.isHaveLabel(it) }
-                .map { MainItem(ActivityConfigManager.getLabel(it)!!, it) }
+        items = AppBarConfigManager.getActivityKClassis()
+                .filter { AppBarConfigManager.isHaveLabel(it) }
+                .map { MainItem(AppBarConfigManager.getLabel(it)!!, it) }
     }
 
     /**
