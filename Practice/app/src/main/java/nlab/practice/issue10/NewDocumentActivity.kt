@@ -1,6 +1,7 @@
 package nlab.practice.issue10
 
 import android.content.Intent
+import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -24,6 +25,8 @@ class NewDocumentActivity : AppCompatActivity() {
 
         setTextByCount(intent)
         tvAlreadyCreated.visibility = View.GONE
+
+        btnRemoveDocument.setOnClickListener({ exitDocument() })
     }
 
     /**
@@ -49,6 +52,21 @@ class NewDocumentActivity : AppCompatActivity() {
             checkNotNull(this)
 
             tvCount.text = this!!
+        }
+    }
+
+    /**
+     * 도큐먼트 종료.
+     *
+     * 화면을 종료하며, 앱 태스크도 같이 삭제.
+     * -> 하지만 프로세스도 종료되는 것은 아님.
+     *
+     */
+    private fun exitDocument() {
+        // FIXME ndh1002 API 21 이하는 아래 정보를 확인해보자.
+        // https://stackoverflow.com/questions/27368525/finishandremovetask-available-on-api-21
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            finishAndRemoveTask()
         }
     }
 }
