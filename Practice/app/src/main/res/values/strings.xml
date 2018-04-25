@@ -17,8 +17,10 @@
 
     <!-- 개요화면 연습 -->
     <string name="title_document_centric">개요화면 튜토리얼</string>
-    <string name="document_centric_button_create_document">CREATE DOCUMENT</string>
+    <string name="document_centric_button_new_document">NEW DOCUMENT</string>
+    <string name="document_centric_button_new_document_with_multi_task">NEW DOCUMENT with MultiTask</string>
     <string name="document_centric_button_remove_document">REMOVE DOCUMENT</string>
     <string name="document_centric_new_document_simple_text">New Document</string>
+    <string name="document_centric_already_created">Already Created</string>
 
 </resources>

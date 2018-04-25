@@ -7,15 +7,26 @@
     tools:context=".issue10.DocumentCentricActivity">
 
     <Button
-        android:id="@+id/btnCreateDocument"
+        android:id="@+id/btnNewDocument"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/document_centric_button_create_document"
-        app:layout_constraintBottom_toTopOf="@+id/btnRemoveDocument"
+        android:text="@string/document_centric_button_new_document"
+        app:layout_constraintBottom_toTopOf="@+id/btnNewDocumentWithMultiTask"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.4"
         app:layout_constraintVertical_chainStyle="packed" />
+
+    <Button
+        android:id="@+id/btnNewDocumentWithMultiTask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/document_centric_button_new_document_with_multi_task"
+        app:layout_constraintBottom_toTopOf="@+id/btnRemoveDocument"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnNewDocument" />
 
     <Button
         android:id="@+id/btnRemoveDocument"
@@ -25,6 +36,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnCreateDocument" />
+        app:layout_constraintTop_toBottomOf="@+id/btnNewDocumentWithMultiTask" />
 
 </android.support.constraint.ConstraintLayout>

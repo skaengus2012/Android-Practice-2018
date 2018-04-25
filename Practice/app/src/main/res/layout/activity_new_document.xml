@@ -7,14 +7,45 @@
     tools:context=".issue10.NewDocumentActivity">
 
     <TextView
+        android:id="@+id/tvAlreadyCreated"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/document_centric_new_document_simple_text"
-        android:textSize="40sp"
+        android:text="@string/document_centric_already_created"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2" />
+
+    <TextView
+        android:id="@+id/tvLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/document_centric_new_document_simple_text"
+        android:textSize="40sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tvCount"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/tvCount"
         app:layout_constraintVertical_bias="0.3" />
+
+    <TextView
+        android:id="@+id/tvCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:text="1"
+        android:textColor="@color/colorAccent"
+        android:textSize="55sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/tvLabel"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3" />
+
 
 </android.support.constraint.ConstraintLayout>
