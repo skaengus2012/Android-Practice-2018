@@ -3,6 +3,7 @@ package nlab.practice.util.resource
 import android.app.Activity
 import nlab.practice.R
 import nlab.practice.issue10.DocumentCentricActivity
+import nlab.practice.issue11.CustomViewTutorialActivity
 import nlab.practice.issue8.DevTutorialActivity
 import nlab.practice.issue9.DataConserveActivity
 import nlab.practice.issue20.FragmentChangeActivity
@@ -23,7 +24,8 @@ object AppBarConfigManager {
                     DevTutorialActivity::class to convertString(R.string.title_dev_tutorial),
                     DataConserveActivity::class to convertString(R.string.title_data_conserve),
                     FragmentChangeActivity::class to convertString(R.string.title_fragment_changed),
-                    DocumentCentricActivity::class to convertString(R.string.title_document_centric)
+                    DocumentCentricActivity::class to convertString(R.string.title_document_centric),
+                    CustomViewTutorialActivity::class to convertString(R.string.title_custom_view)
             )
 
     /**

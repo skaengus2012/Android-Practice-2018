@@ -23,4 +23,7 @@
     <string name="document_centric_new_document_simple_text">New Document</string>
     <string name="document_centric_already_created">Already Created</string>
 
+    <!-- 커스텀뷰 연습 -->
+    <string name="title_custom_view">커스텀 뷰 튜토리얼</string>
+
 </resources>
