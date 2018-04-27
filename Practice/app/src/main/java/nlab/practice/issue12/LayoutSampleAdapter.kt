@@ -26,7 +26,7 @@ class LayoutSampleAdapter : RecyclerView.Adapter<LayoutSampleAdapter.LayoutSampl
             , viewType: ViewType) : RecyclerView.ViewHolder(convertView) {
 
         init {
-            Log.i(LayoutSampleAdapter::class.java.simpleName, "세부적인 View 생성 ${viewType.name}")
+            Log.i(LayoutSampleAdapter::javaClass.name, "세부적인 View 생성 ${viewType.name}")
 
             val view = LayoutInflater.from(convertView.context).inflate(viewType.layoutRes, null)
             convertView.layoutExample.addView(view)
