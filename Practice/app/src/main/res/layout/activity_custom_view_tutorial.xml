@@ -14,7 +14,20 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3"
         app:lineColor="@color/colorPrimaryDark"
         app:maxValue="10" />
+
+    <nlab.practice.issue11.MyLoginButton
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        app:bg="@color/lineWeakGray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.6"
+        app:text="@string/custom_view_button_label_google_login"
+        app:textColor="@android:color/holo_red_light" />
 
 </android.support.constraint.ConstraintLayout>

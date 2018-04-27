@@ -2,9 +2,15 @@
 <resources>
 
     <declare-styleable name="MyProgressBar">
-        <attr name="maxValue" format="integer" />
-        <attr name="currentValue" format="integer" />
-        <attr name="lineColor" format="color" />
+        <attr name="maxValue" format="reference|integer" />
+        <attr name="currentValue" format="reference|integer" />
+        <attr name="lineColor" format="reference|color" />
+    </declare-styleable>
+
+    <declare-styleable name="MyLoginButton">
+        <attr name="bg" format="reference|color" />
+        <attr name="textColor" format="reference|color" />
+        <attr name="text" format="reference|string" />
     </declare-styleable>
 
 </resources>
