@@ -27,5 +27,13 @@
     <string name="title_custom_view">커스텀 뷰 튜토리얼</string>
     <string name="custom_view_logo_description">LOGO</string>
     <string name="custom_view_button_label_google_login">Google 로 로그인</string>
+    
+    <!-- ConstraintLayout 연습 -->
+    <string name="title_constraint_layout">ConstraintLayout 튜토리얼</string>
+    <string name="constraint_layout_title_relative_position">Relative Position 튜토리얼</string>
+    <string name="constraint_layout_title_center_position">Center Position 튜토리얼</string>
+    <string name="constraint_layout_visibility_behavior">Visibility Behavior 튜토리얼</string>
+    <string name="constraint_layout_dimensions">Dimensions 튜토리얼</string>
+    <string name="constraint_layout_ratio">Ratio 튜토리얼</string>
 
 </resources>

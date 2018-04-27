@@ -12,5 +12,4 @@
         <attr name="textColor" format="reference|color" />
         <attr name="text" format="reference|string" />
     </declare-styleable>
-
 </resources>
