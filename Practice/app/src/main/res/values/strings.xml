@@ -38,5 +38,11 @@
     <string name="constraint_layout_visibility_behavior">Visibility Behavior 튜토리얼</string>
     <string name="constraint_layout_dimensions">Dimensions 튜토리얼</string>
     <string name="constraint_layout_ratio">Ratio 튜토리얼</string>
+    <string name="constraint_layout_guideLine">Guide LINE 튜토리얼</string>
+    <string name="constraint_layout_barrier">Barrier 튜토리얼</string>
+    <string name="constraint_layout_chain_style_spread">Chain Style - Spread</string>
+    <string name="constraint_layout_chain_style_spread_inside">Chain Style - Spread inside</string>
+    <string name="constraint_layout_chain_style_weighted">Chain Style - weighted</string>
+    <string name="constraint_layout_chain_style_packed">Chain Style - packed</string>
 
 </resources>

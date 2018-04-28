@@ -58,7 +58,9 @@
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
-        <activity android:name=".issue12.ConstraintLayoutTutorialActivity">
+        <activity
+            android:name=".issue12.ConstraintLayoutTutorialActivity"
+            android:windowSoftInputMode="stateAlwaysHidden">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
