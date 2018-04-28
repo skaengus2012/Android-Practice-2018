@@ -39,6 +39,10 @@
     <string name="constraint_layout_btn_center_bias_70_percent">CENTER BIAS 70% BUTTON</string>
     
     <string name="constraint_layout_visibility_behavior">Visibility Behavior 튜토리얼</string>
+    <string name="constraint_layout_btn_a">A</string>
+    <string name="constraint_layout_btn_b_with_a">B (A is visibility)</string>
+    <string name="constraint_layout_btn_b_without_a">B (A is gone~~)</string>
+
     <string name="constraint_layout_dimensions">Dimensions 튜토리얼</string>
     <string name="constraint_layout_ratio">Ratio 튜토리얼</string>
     <string name="constraint_layout_guideLine">Guide LINE 튜토리얼</string>

@@ -22,6 +22,7 @@ class MainItemListAdapter : RecyclerView.Adapter<MainItemListAdapter.MainItemVie
 
     init {
         items = AppBarConfigManager.getActivityKClassis()
+                .reversed()
                 .filter { AppBarConfigManager.isHaveLabel(it) }
                 .map { MainItem(AppBarConfigManager.getLabel(it)!!, it) }
     }
