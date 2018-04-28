@@ -80,5 +80,7 @@
     <string name="app_bar_menu_select_1">선택메뉴 (1)</string>
     <string name="app_bar_menu_select_2">선택메뉴 (2)</string>
     <string name="app_bar_menu_sub">서브메뉴</string>
+    <string name="message_app_bar_favorite">즐겨찾기가 눌렸습니다.</string>
+    <string name="message_app_bar_setting">일반메뉴가 눌렸습니다.</string>
 
 </resources>

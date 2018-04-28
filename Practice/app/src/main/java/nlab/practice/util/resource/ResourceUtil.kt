@@ -32,3 +32,10 @@ fun convertColor(@ColorRes colorRes: Int) : Int = ContextCompat.getColor(Practic
  * @param message
  */
 fun showToast(message : String) = Toast.makeText(PracticeApplication.getContext(), message, Toast.LENGTH_SHORT).show()
+
+/**
+ * 토스트를 표시.
+ *
+ * @param strRes
+ */
+fun showToast(@StringRes strRes : Int) = showToast(convertString(strRes))
