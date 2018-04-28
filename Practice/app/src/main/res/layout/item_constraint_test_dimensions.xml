@@ -1,12 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="177dp"
-        android:gravity="center|left"
-        android:text="Hello World2222" />
+    <Button
+        android:id="@+id/btnFixed"
+        style="@style/constraintDimensionsTestButton"
+        android:layout_width="100dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/constraint_layout_fixed"
+        app:layout_constraintBottom_toTopOf="@+id/btnWrapContents"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnWrapContents"
+        style="@style/constraintDimensionsTestButton"
+        android:layout_width="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:text="@string/constraint_layout_wrap_content_padding_30"
+        app:layout_constraintBottom_toTopOf="@+id/btnMatchConstraint"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnFixed" />
+
+    <Button
+        android:id="@+id/btnMatchConstraint"
+        style="@style/constraintDimensionsTestButton"
+        android:layout_width="0dp"
+        android:layout_marginBottom="10dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:text="@string/constraint_layout_match_constraint"
+        app:layout_constraintBottom_toTopOf="@+id/btnMatchConstraintWithMargin"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnWrapContents" />
+
+    <Button
+        android:id="@+id/btnMatchConstraintWithMargin"
+        style="@style/constraintDimensionsTestButton"
+        android:layout_width="0dp"
+        android:layout_marginBottom="10dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:text="@string/constraint_layout_match_constraint_left_20"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnMatchConstraint" />
 
 </android.support.constraint.ConstraintLayout>

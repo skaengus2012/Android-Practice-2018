@@ -44,6 +44,11 @@
     <string name="constraint_layout_btn_b_without_a">B (A is gone~~)</string>
 
     <string name="constraint_layout_dimensions">Dimensions 튜토리얼</string>
+    <string name="constraint_layout_fixed">Fixed</string>
+    <string name="constraint_layout_wrap_content_padding_30">wrap_content - padding 30</string>
+    <string name="constraint_layout_match_constraint">0dp - match constraint</string>
+    <string name="constraint_layout_match_constraint_left_20">0dp - match constraint - margin left 20</string>
+    
     <string name="constraint_layout_ratio">Ratio 튜토리얼</string>
     <string name="constraint_layout_guideLine">Guide LINE 튜토리얼</string>
     <string name="constraint_layout_barrier">Barrier 튜토리얼</string>
