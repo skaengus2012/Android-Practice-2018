@@ -30,11 +30,14 @@
     
     <!-- ConstraintLayout 연습 -->
     <string name="title_constraint_layout">ConstraintLayout 튜토리얼</string>
-    <string name="constraint_layout_title_relative_position">Relative Position 튜토리얼</string>
-    <string name="hint_constraint_layout_hello_world_1">HELLO WORLD 1</string>
-    <string name="hint_constraint_layout_hello_world_2">HELLO WORLD 2</string>
     
-    <string name="constraint_layout_title_center_position">Center Position 튜토리얼</string>
+    <string name="constraint_layout_title_side">Side 제약 튜토리얼</string>
+    <string name="hint_constraint_layout_hello_world_1">Constraint HELLO WORLD1</string>
+    <string name="hint_constraint_layout_hello_world_2">Constraint HELLO WORLD2</string>
+    
+    <string name="constraint_layout_title_center">Center 제약 튜토리얼</string>
+    <string name="constraint_layout_btn_center_bias_70_percent">CENTER BIAS 70% BUTTON</string>
+    
     <string name="constraint_layout_visibility_behavior">Visibility Behavior 튜토리얼</string>
     <string name="constraint_layout_dimensions">Dimensions 튜토리얼</string>
     <string name="constraint_layout_ratio">Ratio 튜토리얼</string>

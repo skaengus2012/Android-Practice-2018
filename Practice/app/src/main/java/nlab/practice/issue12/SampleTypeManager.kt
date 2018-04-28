@@ -17,8 +17,8 @@ object SampleTypeManager {
     data class SampleType(@StringRes val titlesRes : Int, @LayoutRes val layoutRes : Int)
 
     private val sampleTypes = listOf(
-            SampleType(R.string.constraint_layout_title_relative_position, R.layout.item_constraint_test_relative_postion),
-            SampleType(R.string.constraint_layout_title_center_position, R.layout.item_constraint_test_center_position),
+            SampleType(R.string.constraint_layout_title_side, R.layout.item_constraint_side),
+            SampleType(R.string.constraint_layout_title_center, R.layout.item_constraint_test_center),
             SampleType(R.string.constraint_layout_visibility_behavior, R.layout.item_constraint_test_visibility_behavior),
             SampleType(R.string.constraint_layout_dimensions, R.layout.item_constraint_test_dimensions),
             SampleType(R.string.constraint_layout_ratio, R.layout.item_constraint_test_ratio),
