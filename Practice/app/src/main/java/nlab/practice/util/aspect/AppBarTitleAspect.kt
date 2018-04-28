@@ -17,7 +17,7 @@ import org.aspectj.lang.annotation.Pointcut
 class AppBarTitleAspect {
 
     companion object {
-        const val TAG = "Title LOG"
+        const val TAG = "AspectJ"
     }
 
     @Pointcut("execution(* android.app.Activity.onCreate(..))")

@@ -27,4 +27,15 @@
         -->
     </style>
 
+    <!-- toolbar textSize 변경 -->
+    <style name="myToolbarTextAppearance" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+
+    <!-- toolbar icon color 변경 -->
+    <style name="myToolbarIconColor" parent="AppTheme">
+        <item name="android:textColorSecondary">@color/colorPrimary</item>
+    </style>
+
 </resources>

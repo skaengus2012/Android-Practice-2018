@@ -75,6 +75,7 @@
 
     <!-- App Bar 연습 -->
     <string name="title_app_bar_tutorial">Appbar - Menu 연습</string>
+    <string name="title_app_bar_custom_bar">Toolbar 연습</string>
     <string name="app_bar_favorite">즐겨찾기</string>
     <string name="app_bar_menu_basic">일반메뉴</string>
     <string name="app_bar_menu_select_1">선택메뉴 (1)</string>

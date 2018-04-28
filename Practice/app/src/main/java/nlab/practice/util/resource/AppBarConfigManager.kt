@@ -7,6 +7,7 @@ import nlab.practice.issue11.CustomViewTutorialActivity
 import nlab.practice.issue12.ConstraintLayoutTutorialActivity
 import nlab.practice.issue13.ConstraintSetTutorialActivity
 import nlab.practice.issue14.AppBarTutorialActivity
+import nlab.practice.issue17.CustomToolBarTutorialActivity
 import nlab.practice.issue8.DevTutorialActivity
 import nlab.practice.issue9.DataConserveActivity
 import nlab.practice.issue20.FragmentChangeActivity
@@ -31,7 +32,8 @@ object AppBarConfigManager {
                     CustomViewTutorialActivity::class to convertString(R.string.title_custom_view),
                     ConstraintLayoutTutorialActivity::class to convertString(R.string.title_constraint_layout),
                     ConstraintSetTutorialActivity::class to convertString(R.string.title_constraint_set_animation),
-                    AppBarTutorialActivity::class to convertString(R.string.title_app_bar_tutorial)
+                    AppBarTutorialActivity::class to convertString(R.string.title_app_bar_tutorial),
+                    CustomToolBarTutorialActivity::class to convertString(R.string.title_app_bar_custom_bar)
             )
 
     /**
