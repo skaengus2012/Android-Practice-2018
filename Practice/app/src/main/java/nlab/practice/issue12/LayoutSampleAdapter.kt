@@ -12,8 +12,14 @@ import nlab.practice.R
  *
  * @author ndh1002
  */
-class LayoutSampleAdapter(private val items : List<LayoutSampleAdapter.Sample>)
+class LayoutSampleAdapter
     : RecyclerView.Adapter<LayoutSampleAdapter.LayoutSampleViewHolder>(){
+
+    var items : List<LayoutSampleAdapter.Sample>? = null
+    set(value) {
+        field = value
+        notifyDataSetChanged()
+    }
 
     /**
      * 해당 어댑터에서 사용할 샘플.
@@ -36,9 +42,27 @@ class LayoutSampleAdapter(private val items : List<LayoutSampleAdapter.Sample>)
             tvTitle.text = sample.title
 
             layoutExample.run {
-                removeAllViews()
+                // 현재 아이템 뷰에 또 다른 부모가 있다면 제거.
+                removeParentIfNoneEqualsMe(this, sample.itemView)
+
+                // 자식이 존재할 경우 삭제.
+                takeIf { childCount != 0 }?.let { removeViewAt(0) }
+
+                // 뷰 추가.
                 addView(sample.itemView)
             }
+        }
+
+        /**
+         * [itemView] 의 부모가 [layout] 이 아니라면, 현재 [itemView] 의 부모를 제거한다.
+         *
+         * @param layout
+         * @param itemView
+         */
+        private fun removeParentIfNoneEqualsMe(layout : ViewGroup, itemView : View) {
+            itemView.parent
+                    .takeIf { (it != null).and(it !== layout) }
+                    ?.let { (it as ViewGroup).removeView(itemView) }
         }
     }
 
@@ -47,9 +71,9 @@ class LayoutSampleAdapter(private val items : List<LayoutSampleAdapter.Sample>)
                     .inflate(R.layout.layout_constraint_example_template, parent, false)
                     .let { LayoutSampleViewHolder(it) }
 
-    override fun getItemCount(): Int = items.size
+    override fun getItemCount(): Int = items?.size ?: 0
 
     override fun onBindViewHolder(holder: LayoutSampleViewHolder, position: Int) {
-        holder.bindData(items[position])
+        holder.bindData(items!![position])
     }
 }

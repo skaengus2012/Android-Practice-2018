@@ -23,6 +23,8 @@ class ConstraintLayoutTutorialActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_constraint_layout_tutorial)
 
+        lvSamples.adapter = LayoutSampleAdapter()
+
         ConstraintViewInitAsyncTask(this).execute()
     }
 
@@ -71,11 +73,8 @@ class ConstraintLayoutTutorialActivity : AppCompatActivity() {
             super.onPostExecute(result)
 
             activityWeakRef.get()?.run {
-                this.lvSamples.adapter = LayoutSampleAdapter(result)
+                (this.lvSamples.adapter as LayoutSampleAdapter).items = result
             }
-
         }
-
-
     }
 }
