@@ -50,6 +50,10 @@
     <string name="constraint_layout_match_constraint_left_20">0dp - match constraint - margin left 20</string>
     
     <string name="constraint_layout_ratio">Ratio 튜토리얼</string>
+    <string name="constraint_ratio_simple">Simple Ratio 1:1</string>
+    <string name="constraint_ratio_h_2_1">All match_constraint and Ratio h,2:1</string>
+    <string name="constraint_ratio_w_2_1">All match_constraint and Ratio w,2:1</string>
+    
     <string name="constraint_layout_guideLine">Guide LINE 튜토리얼</string>
     <string name="constraint_layout_barrier">Barrier 튜토리얼</string>
     <string name="constraint_layout_chain_style_spread">Chain Style - Spread</string>
