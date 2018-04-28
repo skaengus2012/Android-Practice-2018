@@ -64,6 +64,7 @@
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
+        <activity android:name=".issue13.ConstraintSetTutorialActivity"></activity>
     </application>
 
 </manifest>

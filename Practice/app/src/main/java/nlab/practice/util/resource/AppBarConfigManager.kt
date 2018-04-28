@@ -5,6 +5,7 @@ import nlab.practice.R
 import nlab.practice.issue10.DocumentCentricActivity
 import nlab.practice.issue11.CustomViewTutorialActivity
 import nlab.practice.issue12.ConstraintLayoutTutorialActivity
+import nlab.practice.issue13.ConstraintSetTutorialActivity
 import nlab.practice.issue8.DevTutorialActivity
 import nlab.practice.issue9.DataConserveActivity
 import nlab.practice.issue20.FragmentChangeActivity
@@ -27,7 +28,8 @@ object AppBarConfigManager {
                     FragmentChangeActivity::class to convertString(R.string.title_fragment_changed),
                     DocumentCentricActivity::class to convertString(R.string.title_document_centric),
                     CustomViewTutorialActivity::class to convertString(R.string.title_custom_view),
-                    ConstraintLayoutTutorialActivity::class to convertString(R.string.title_constraint_layout)
+                    ConstraintLayoutTutorialActivity::class to convertString(R.string.title_constraint_layout),
+                    ConstraintSetTutorialActivity::class to convertString(R.string.title_constraint_set_animation)
             )
 
     /**
