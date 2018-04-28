@@ -66,5 +66,8 @@
     <string name="constraint_layout_chain_style_spread_inside">Chain Style - Spread inside</string>
     <string name="constraint_layout_chain_style_weighted">Chain Style - weighted</string>
     <string name="constraint_layout_chain_style_packed">Chain Style - packed</string>
+    <string name="constraint_chain_button_1">View 1</string>
+    <string name="constraint_chain_button_2">View 2</string>
+    <string name="constraint_chain_button_3">View 3</string>
 
 </resources>
