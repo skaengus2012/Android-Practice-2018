@@ -69,7 +69,16 @@
     <string name="constraint_chain_button_1">View 1</string>
     <string name="constraint_chain_button_2">View 2</string>
     <string name="constraint_chain_button_3">View 3</string>
-    
+
+    <!-- ConstraintSet 연습 -->
     <string name="title_constraint_set_animation">ConstraintSet 애니메이션</string>
+
+    <!-- App Bar 연습 -->
+    <string name="title_app_bar_tutorial">Appbar - Menu 연습</string>
+    <string name="app_bar_favorite">즐겨찾기</string>
+    <string name="app_bar_menu_basic">일반메뉴</string>
+    <string name="app_bar_menu_select_1">선택메뉴 (1)</string>
+    <string name="app_bar_menu_select_2">선택메뉴 (2)</string>
+    <string name="app_bar_menu_sub">서브메뉴</string>
 
 </resources>

@@ -7,4 +7,9 @@
     <color name="lineWeakGray">#e8e8e8</color>
 
     <color name="clickEffectGray">#e8e8e8</color>
+
+    <color name="skyBlue">#87CEEB</color>
+
+    <color name="colorAppBarThemeTutorial">#00E676</color>
+    <color name="colorAppBarThemeTutorialDark">#00C853</color>
 </resources>

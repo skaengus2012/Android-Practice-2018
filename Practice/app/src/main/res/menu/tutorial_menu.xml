@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/actionFavorite"
+        android:icon="@drawable/ic_favorite_black_48dp"
+        android:title="@string/app_bar_favorite"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/actionSetting"
+        android:orderInCategory="1"
+        android:title="@string/app_bar_menu_basic"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/actionSelect1"
+        android:checkable="true"
+        android:orderInCategory="2"
+        android:title="@string/app_bar_menu_select_1"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/actionSelect2"
+        android:checkable="true"
+        android:orderInCategory="3"
+        android:title="@string/app_bar_menu_select_2"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/actionSub"
+        android:orderInCategory="4"
+        android:title="@string/app_bar_menu_sub"
+        app:showAsAction="never">
+
+        <menu>
+            <item
+                android:id="@+id/actionSubFavorite"
+                android:icon="@drawable/ic_favorite_black_48dp"
+                android:orderInCategory="6"
+                android:title="@string/app_bar_favorite"
+                app:showAsAction="withText" />
+
+            <item
+                android:id="@+id/actionSubSetting"
+                android:icon="@drawable/ic_settings_black_24dp"
+                android:orderInCategory="5"
+                android:title="@string/app_bar_menu_basic"
+                app:showAsAction="withText" />
+        </menu>
+
+    </item>
+
+</menu>
