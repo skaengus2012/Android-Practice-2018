@@ -58,6 +58,10 @@
     <string name="constraint_guide_line">GUIDE LINE</string>
 
     <string name="constraint_layout_barrier">Barrier 튜토리얼</string>
+    <string name="constraint_barrier_tv_label_1">ABC</string>
+    <string name="constraint_barrier_edit_first">글씨 입력</string>
+    <string name="constraint_barrier_message">안녕하세요.\n방어막 테스트입니다.\n음.. 무슨 말을 쓸까\n에디트 텍스트의 글을 수정해보시겠어요?</string>
+
     <string name="constraint_layout_chain_style_spread">Chain Style - Spread</string>
     <string name="constraint_layout_chain_style_spread_inside">Chain Style - Spread inside</string>
     <string name="constraint_layout_chain_style_weighted">Chain Style - weighted</string>
