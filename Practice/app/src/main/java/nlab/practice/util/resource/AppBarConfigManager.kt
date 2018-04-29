@@ -10,6 +10,7 @@ import nlab.practice.issue14.AppBarTutorialActivity
 import nlab.practice.issue15.ViewStubTutorialActivity
 import nlab.practice.issue16.ShadowClippingActivity
 import nlab.practice.issue17.CustomToolBarTutorialActivity
+import nlab.practice.issue18.DragAndDropTutorialActivity
 import nlab.practice.issue8.DevTutorialActivity
 import nlab.practice.issue9.DataConserveActivity
 import nlab.practice.issue20.FragmentChangeActivity
@@ -37,7 +38,8 @@ object AppBarConfigManager {
                     AppBarTutorialActivity::class to convertString(R.string.title_app_bar_tutorial),
                     CustomToolBarTutorialActivity::class to convertString(R.string.title_app_bar_custom_bar),
                     ViewStubTutorialActivity::class to convertString(R.string.title_view_stub_tutorial),
-                    ShadowClippingActivity::class to convertString(R.string.title_shadow_and_clipping_tutorial)
+                    ShadowClippingActivity::class to convertString(R.string.title_shadow_and_clipping_tutorial),
+                    DragAndDropTutorialActivity::class to convertString(R.string.title_drag_and_drop_tutorial)
             )
 
     /**

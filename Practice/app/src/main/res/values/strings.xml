@@ -96,4 +96,8 @@
     <string name="clipping_message_able_clipping">클리핑 실행</string>
     <string name="clipping_message_disable_clipping">클리핑 중지</string>
 
+    <!-- 드래그 & 드롭 연습 -->
+    <string name="title_drag_and_drop_tutorial">드래그 앤 드롭 연습</string>
+    <string name="drag_and_drop_text">SAMPLE TEXT</string>
+
 </resources>
