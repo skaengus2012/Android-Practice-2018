@@ -88,4 +88,12 @@
     <string name="title_view_stub_tutorial">View Stub 연습</string>
     <string name="view_stub_btn_message">Hello, View Stub</string>
 
+    <!-- 쉐도우 - 클리핑 연습 -->
+    <string name="title_shadow_and_clipping_tutorial">쉐도우 - 클리핑 연습</string>
+    <string name="shadow_and_clipping_btn_label">Button</string>
+    <string name="shadow_label">쉐도우 예제</string>
+    <string name="clipping_label">클리핑 예제</string>
+    <string name="clipping_message_able_clipping">클리핑 실행</string>
+    <string name="clipping_message_disable_clipping">클리핑 중지</string>
+
 </resources>
