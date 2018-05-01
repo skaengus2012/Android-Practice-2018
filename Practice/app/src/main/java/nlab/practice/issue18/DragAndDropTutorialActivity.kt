@@ -86,8 +86,6 @@ class DragAndDropTutorialActivity : AppCompatActivity() {
             else -> false
 
         }
-
-
     })
 
 }
