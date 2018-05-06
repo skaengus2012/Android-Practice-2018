@@ -1,4 +1,4 @@
-package nlab.practice.model.strategy
+package nlab.practice.db.model.strategy
 
 /**
  * Delegate 패턴.

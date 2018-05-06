@@ -1,4 +1,4 @@
-package nlab.practice.model.strategy
+package nlab.practice.db.model.strategy
 
 /**
  * 봉합 클래스 정의.

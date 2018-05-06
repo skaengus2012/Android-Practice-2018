@@ -1,4 +1,4 @@
-package nlab.practice.model.erp
+package nlab.practice.db.model.erp
 
 /**
  * 구성원 정보 (Value Object) 정의

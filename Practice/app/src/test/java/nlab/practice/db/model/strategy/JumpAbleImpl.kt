@@ -1,4 +1,4 @@
-package nlab.practice.model.strategy
+package nlab.practice.db.model.strategy
 
 /**
  * JumpAble 인터페이스에 대한 구현.

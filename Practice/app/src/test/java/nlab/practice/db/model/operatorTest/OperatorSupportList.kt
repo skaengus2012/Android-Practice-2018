@@ -1,4 +1,4 @@
-package nlab.practice.model.operatorTest
+package nlab.practice.db.model.operatorTest
 
 /**
  * 연산자 오버로딩을 구현할 수 있는 클래스 정의 (operator keyword)

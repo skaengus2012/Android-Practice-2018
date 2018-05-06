@@ -1,4 +1,4 @@
-package nlab.practice.model.strategy
+package nlab.practice.db.model.strategy
 
 /**
  * 날개를 이용하여, 하늘을 나는 행위 정의.

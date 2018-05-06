@@ -1,7 +1,7 @@
 package nlab.practice.dao.erp
 
-import nlab.practice.config.CodeDefinition
-import nlab.practice.model.erp.MemberVO
+import nlab.practice.common.CodeDefinition
+import nlab.practice.db.model.erp.MemberVO
 
 /**
  * MemberVO 를 제공하는 DAO 제작

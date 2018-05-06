@@ -1,4 +1,4 @@
-package nlab.practice.model.innerTest
+package nlab.practice.db.model.innerTest
 
 /**
  * inner 클래스 테스트.

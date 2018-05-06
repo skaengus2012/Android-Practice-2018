@@ -1,4 +1,4 @@
-package nlab.practice.model.strategy
+package nlab.practice.db.model.strategy
 
 /**
  * 날 수 있다는 것을 명시한 인터페이스

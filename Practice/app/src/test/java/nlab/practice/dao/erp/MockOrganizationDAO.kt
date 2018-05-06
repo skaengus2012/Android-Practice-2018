@@ -1,6 +1,6 @@
 package nlab.practice.dao.erp
 
-import nlab.practice.model.erp.OrganizationVO
+import nlab.practice.db.model.erp.OrganizationVO
 
 /**
  * OrganizationVO 를 제작하는 DAO 제작

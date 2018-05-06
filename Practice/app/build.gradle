@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 apply plugin: 'org.jetbrains.dokka'
 
 apply plugin: 'com.archinamon.aspectj'
@@ -44,6 +46,9 @@ dependencies {
 
     implementation 'com.andkulikov:transitionseverywhere:1.7.9'
 
+    // Ndroid 구축.
+    implementation 'com.github.skaengus2012:Ndroid:v0.4.5-beta'
+
     //android arch component.
     implementation "android.arch.lifecycle:extensions:1.1.1"
     implementation "android.arch.lifecycle:viewmodel:1.1.1"
@@ -52,7 +57,7 @@ dependencies {
     implementation "android.arch.paging:runtime:1.0.0-rc1"
 
     annotationProcessor "android.arch.lifecycle:compiler:1.1.1"
-    annotationProcessor "android.arch.persistence.room:compiler:1.0.0"
+    kapt "android.arch.persistence.room:compiler:1.0.0"
 
 
     // Test

@@ -2,8 +2,8 @@ package nlab.practice.test
 
 import nlab.practice.config.toMemberOrganizationVO
 import nlab.practice.dao.erp.MockOrganizationDAO
-import nlab.practice.model.erp.MemberVO
-import nlab.practice.model.erp.OrganizationVO
+import nlab.practice.db.model.erp.MemberVO
+import nlab.practice.db.model.erp.OrganizationVO
 import org.junit.Before
 import org.junit.Test
 
@@ -34,5 +34,17 @@ class ExtensionUnitTest {
         // 확장 함수 정의.
         // 해당 확장함수는 ExtensionConfig.kt 에 존재.
         member.toMemberOrganizationVO(organization).let { println(it) }
+    }
+
+    @Test
+    fun testForDebugging() {
+
+        println("Hello")
+        println("Hello 2")
+        println("Hello 3")
+
+
+        println("Hello 4")
+
     }
 }

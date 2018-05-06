@@ -1,4 +1,4 @@
-package nlab.practice.model.erp
+package nlab.practice.db.model.erp
 
 /**
  * 조직을 표현한 정보 정의

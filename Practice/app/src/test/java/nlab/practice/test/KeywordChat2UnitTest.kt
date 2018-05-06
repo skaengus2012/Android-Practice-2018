@@ -1,6 +1,6 @@
 package nlab.practice.test
 
-import nlab.practice.model.operatorTest.OperatorSupportList
+import nlab.practice.db.model.operatorTest.OperatorSupportList
 import org.junit.Test
 
 /**

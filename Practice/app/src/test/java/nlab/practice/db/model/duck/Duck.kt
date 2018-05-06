@@ -1,6 +1,6 @@
-package nlab.practice.model.duck
+package nlab.practice.db.model.duck
 
-import nlab.practice.model.strategy.Flyable
+import nlab.practice.db.model.strategy.Flyable
 
 /**
  * 기본이 되는 오리 클래스 정의.

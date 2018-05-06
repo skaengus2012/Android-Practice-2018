@@ -1,7 +1,7 @@
-package nlab.practice.model.duck
+package nlab.practice.db.model.duck
 
-import nlab.practice.model.strategy.Heat
-import nlab.practice.model.strategy.Runnable
+import nlab.practice.db.model.strategy.Heat
+import nlab.practice.db.model.strategy.Runnable
 
 /**
  * 이름을 가지는 오리 클래스 정의.

@@ -1,4 +1,4 @@
-package nlab.practice.model.duck
+package nlab.practice.db.model.duck
 
 /**
  * 고무오리 클래스 정의.

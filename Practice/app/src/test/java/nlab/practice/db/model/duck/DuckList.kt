@@ -1,4 +1,4 @@
-package nlab.practice.model.duck
+package nlab.practice.db.model.duck
 
 /**
  * Duck 종류만 담을 수 있는 목록 클래스 제작.

@@ -1,12 +1,12 @@
 package nlab.practice.test
 
-import nlab.practice.model.duck.CustomType1WingDuck
-import nlab.practice.model.duck.Duck
-import nlab.practice.model.duck.NamedDuck
-import nlab.practice.model.duck.RubberDuck
+import nlab.practice.db.model.duck.CustomType1WingDuck
+import nlab.practice.db.model.duck.Duck
+import nlab.practice.db.model.duck.NamedDuck
+import nlab.practice.db.model.duck.RubberDuck
 import org.junit.Test
 import kotlin.properties.Delegates
-import nlab.practice.model.duck.CustomType2WingDuck as CT2Duck
+import nlab.practice.db.model.duck.CustomType2WingDuck as CT2Duck
 
 typealias DuckList = MutableList<Duck>
 typealias MemberPair = Pair<Int, Pair<String, String>>
