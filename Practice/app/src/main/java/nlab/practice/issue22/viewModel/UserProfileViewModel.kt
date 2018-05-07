@@ -24,5 +24,16 @@ class UserProfileViewModel : ViewModel() {
 
     var user : UserLive? = null
 
+    /**
+     * [name] 정보 업데이트.
+     *
+     * @param name
+     */
+    fun updateName(name : String) {
+        user?.value?.run {
+            this.name = name
 
+            UserRepository.update(this)
+        }
+    }
 }

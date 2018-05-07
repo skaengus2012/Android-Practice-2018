@@ -107,5 +107,6 @@
     <string name="label_aac_male">남자</string>
     <string name="label_aac_female">여자</string>
     <string name="format_aac_age" formatted="false">%d살</string>
+    <string name="label_aac_update_profile">유저정보 업데이트</string>
 
 </resources>

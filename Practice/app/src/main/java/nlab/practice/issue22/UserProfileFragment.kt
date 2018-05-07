@@ -5,6 +5,7 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,6 +44,12 @@ class UserProfileFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_user_profile, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        btnUpdateName.setOnClickListener { updateName() }
+    }
+
     /**
      * ViewModel 생성.
      *
@@ -56,14 +63,32 @@ class UserProfileFragment : Fragment() {
 
         viewModel.user?.observe(this, Observer {
             it?.let {
-                tvName.text = it.name
-                tvAge.text = it.age.let { age -> String.format(convertString(R.string.format_aac_age), age) }
-                tvGender.text = if (it.genderFlag == CodeDefinition.GENDER_FLAG.Male) {
+                Log.d(UserProfileFragment::class.java.simpleName, "뷰 업데이트.")
+
+                // 이름 세팅.
+                tvName.setText(it.name)
+
+                // 나이 세팅.
+                it.age.let { age -> String.format(convertString(R.string.format_aac_age), age)}
+                        .run { tvAge.text = this }
+
+
+                // 성별 세팅.
+                if (it.genderFlag == CodeDefinition.GENDER_FLAG.Male) {
                     convertString(R.string.label_aac_male)
                 } else {
                     convertString(R.string.label_aac_female)
-                }
+                }.run { tvGender.text = this }
             }
         })
+    }
+
+    /**
+     * 이름 정보 업데이트.
+     */
+    private fun updateName() {
+        val name = tvName.text.toString()
+
+        viewModel.updateName(name)
     }
 }
