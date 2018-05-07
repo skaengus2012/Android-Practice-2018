@@ -52,7 +52,7 @@ class FragmentChangeActivity : AppCompatActivity() {
      * @return
      */
     private fun replaceFragmentByStack() {
-        val fragment = CountFragment.Create(fragmentCount++, R.color.colorPrimary)
+        val fragment = CountFragment.create(fragmentCount++, R.color.colorPrimary)
 
         createReplaceTransaction(fragment).addToBackStack(null).commit()
     }
@@ -60,7 +60,7 @@ class FragmentChangeActivity : AppCompatActivity() {
     /**
      * 스택을 쌓지 않는 프래그먼트 생산.
      */
-    private fun createNoneStackFragment() : CountFragment = CountFragment.Create(fragmentCount++, R.color.colorAccent)
+    private fun createNoneStackFragment() : CountFragment = CountFragment.create(fragmentCount++, R.color.colorAccent)
 
 
     /**

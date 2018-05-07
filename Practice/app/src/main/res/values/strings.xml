@@ -100,4 +100,12 @@
     <string name="title_drag_and_drop_tutorial">드래그 앤 드롭 연습</string>
     <string name="drag_and_drop_text">SAMPLE TEXT</string>
 
+    <string name="title_aac_tutorial">안드로이드 아키텍처 컴포넌트 연습</string>
+    <string name="hint_aac_name">이름</string>
+    <string name="hint_aac_age">나이</string>
+    <string name="hint_aac_gender">성별</string>
+    <string name="label_aac_male">남자</string>
+    <string name="label_aac_female">여자</string>
+    <string name="format_aac_age" formatted="false">%d살</string>
+
 </resources>

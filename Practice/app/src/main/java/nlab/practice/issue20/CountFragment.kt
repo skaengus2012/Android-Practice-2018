@@ -31,8 +31,8 @@ class CountFragment : Fragment() {
          * @param textColorRes
          * @return
          */
-        fun Create(count : Int, @ColorRes textColorRes : Int) : CountFragment =
-                CountFragment().apply { arguments = CreateBundle(count, textColorRes) }
+        fun create(count : Int, @ColorRes textColorRes : Int) : CountFragment =
+                CountFragment().apply { arguments = createBundle(count, textColorRes) }
 
         /**
          * [count] 와 [textColorRes] 값을 가진 번들 생산.
@@ -41,7 +41,7 @@ class CountFragment : Fragment() {
          * @param textColorRes
          * @return
          */
-        private fun CreateBundle(count : Int, @ColorRes textColorRes : Int) : Bundle = Bundle().apply {
+        private fun createBundle(count : Int, @ColorRes textColorRes : Int) : Bundle = Bundle().apply {
             putInt(ARGUMENT_COUNT, count)
             putInt(ARGUMENT_TEXT_COLOR_RES, textColorRes)
         }

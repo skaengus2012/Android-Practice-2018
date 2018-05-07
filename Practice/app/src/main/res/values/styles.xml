@@ -36,6 +36,12 @@
     <!-- toolbar icon color 변경 -->
     <style name="myToolbarIconColor" parent="AppTheme">
         <item name="android:textColorSecondary">@color/colorPrimary</item>
+    </style>e
+
+    <style name="aacTutorialTextView" parent="Base.Widget.AppCompat.TextView.SpinnerItem">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textColorHint">@color/gray</item>
+        <item name="android:textSize">25sp</item>
     </style>
 
 </resources>

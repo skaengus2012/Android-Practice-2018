@@ -48,6 +48,7 @@ dependencies {
 
     // Ndroid 구축.
     implementation 'com.github.skaengus2012:Ndroid:v0.4.5-beta'
+    implementation 'io.reactivex.rxjava2:rxkotlin:2.2.0'
 
     //android arch component.
     implementation "android.arch.lifecycle:extensions:1.1.1"
@@ -58,7 +59,6 @@ dependencies {
 
     annotationProcessor "android.arch.lifecycle:compiler:1.1.1"
     kapt "android.arch.persistence.room:compiler:1.0.0"
-
 
     // Test
     testImplementation "android.arch.persistence.room:testing:1.0.0"
