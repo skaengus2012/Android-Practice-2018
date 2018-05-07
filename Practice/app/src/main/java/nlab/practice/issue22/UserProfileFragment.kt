@@ -48,6 +48,7 @@ class UserProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         btnUpdateName.setOnClickListener { updateName() }
+        btnRefresh.setOnClickListener{ viewModel.refreashUser() }
     }
 
     /**
