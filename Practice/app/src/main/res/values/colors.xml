@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
+    <color name="gray">#9E9E9E</color>
     <color name="lineWeakGray">#e8e8e8</color>
 
     <color name="clickEffectGray">#e8e8e8</color>
