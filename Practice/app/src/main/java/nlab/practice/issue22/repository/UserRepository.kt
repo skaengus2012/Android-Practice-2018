@@ -1,7 +1,5 @@
 package nlab.practice.issue22.repository
 
-import Ndroid.appFactory.util.business.AsyncBuilder
-import android.util.Log
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -29,9 +27,6 @@ object UserRepository {
         Observable.create<User> {
                     val user = MockWebService.getUser(userId)
                     it.onNext(user)
-
-                    Log.e("sad", "adsd")
-
                     it.onComplete()
                 }
                 .subscribeOn(Schedulers.io())
