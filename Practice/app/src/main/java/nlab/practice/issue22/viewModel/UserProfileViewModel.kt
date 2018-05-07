@@ -1,12 +1,10 @@
 package nlab.practice.issue22.viewModel
 
-import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import nlab.practice.issue22.model.User
 import nlab.practice.issue22.repository.UserRepository
 
-typealias UserLive = LiveData<User>
 typealias UserMutableLive = MutableLiveData<User>
 
 /**
@@ -22,7 +20,7 @@ class UserProfileViewModel : ViewModel() {
         field?.run { user = UserRepository.getUser(this) }
     }
 
-    var user : UserLive? = null
+    var user : UserMutableLive? = null
 
     /**
      * [name] 정보 업데이트.
@@ -35,5 +33,12 @@ class UserProfileViewModel : ViewModel() {
 
             UserRepository.update(this)
         }
+    }
+
+    /**
+     * 유저정보 리플레쉬.
+     */
+    fun refreashUser() {
+        userId?.run { UserRepository.refreashUser(this, { user?.value = it }) }
     }
 }
