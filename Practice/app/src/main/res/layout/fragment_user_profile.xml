@@ -5,6 +5,7 @@
     tools:context=".issue22.UserProfileFragment">
 
     <data>
+        <import type="nlab.practice.util.resource.StringUtilKt"/>
 
         <variable
             name="user"
@@ -51,7 +52,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_aac_gender"
-                android:text="@{user.genderString}"
+                android:text="@{StringUtilKt.convertGenderLabel(user.genderFlag)}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvAge" />
         </android.support.constraint.ConstraintLayout>

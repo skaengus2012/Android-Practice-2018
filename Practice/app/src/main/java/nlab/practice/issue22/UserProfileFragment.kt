@@ -13,10 +13,8 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_user_profile.*
 
 import nlab.practice.R
-import nlab.practice.common.CodeDefinition
 import nlab.practice.databinding.FragmentUserProfileBinding
 import nlab.practice.issue22.viewModel.UserProfileViewModel
-import nlab.practice.util.resource.convertString
 
 /**
  * 안드로이드 아키텍처 컴포넌트 연습을 위한 프래그먼트.
