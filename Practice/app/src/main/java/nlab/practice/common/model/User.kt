@@ -1,4 +1,4 @@
-package nlab.practice.issue22.model
+package nlab.practice.common.model
 
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey

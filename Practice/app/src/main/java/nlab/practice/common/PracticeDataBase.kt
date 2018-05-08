@@ -4,8 +4,8 @@ import android.arch.persistence.room.Database
 import android.arch.persistence.room.Room
 import android.arch.persistence.room.RoomDatabase
 import nlab.practice.PracticeApplication
-import nlab.practice.issue22.dao.UserDao
-import nlab.practice.issue22.model.User
+import nlab.practice.common.dao.UserDao
+import nlab.practice.common.model.User
 
 /**
  * 이 앱에서 사용하는 로컬 DB 프로퍼티를 정의

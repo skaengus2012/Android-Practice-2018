@@ -1,7 +1,7 @@
-package nlab.practice.issue22.dao
+package nlab.practice.common.dao
 
 import android.arch.persistence.room.*
-import nlab.practice.issue22.model.User
+import nlab.practice.common.model.User
 
 @Dao
 interface UserDao {

@@ -9,7 +9,7 @@
 
         <variable
             name="user"
-            type="nlab.practice.issue22.model.User" />
+            type="nlab.practice.common.model.User" />
 
     </data>
 

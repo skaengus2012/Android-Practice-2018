@@ -100,6 +100,7 @@
     <string name="title_drag_and_drop_tutorial">드래그 앤 드롭 연습</string>
     <string name="drag_and_drop_text">SAMPLE TEXT</string>
 
+    <!-- 안드로이드 아키텍처 컴포넌트 연습 -->
     <string name="title_aac_tutorial">안드로이드 아키텍처 컴포넌트 연습</string>
     <string name="hint_aac_name">이름</string>
     <string name="hint_aac_age">나이</string>
@@ -109,5 +110,8 @@
     <string name="format_aac_age" formatted="false">%d살</string>
     <string name="label_aac_update_profile">유저정보 업데이트</string>
     <string name="label_aac_update_refresh">유저정보 리프레쉬</string>
+
+    <!-- 옵저버블 데이터 바인딩 연습-->
+    <string name="title_observable_data_binding_tutorial">옵저버블 데디엍 바인딩 연습</string>
 
 </resources>

@@ -15,6 +15,7 @@ import nlab.practice.issue8.DevTutorialActivity
 import nlab.practice.issue9.DataConserveActivity
 import nlab.practice.issue20.FragmentChangeActivity
 import nlab.practice.issue22.UserActivity
+import nlab.practice.issue24.ObservableDataBindingActivity
 import kotlin.reflect.KClass
 
 /**
@@ -41,7 +42,8 @@ object AppBarConfigManager {
                     ViewStubTutorialActivity::class to convertString(R.string.title_view_stub_tutorial),
                     ShadowClippingActivity::class to convertString(R.string.title_shadow_and_clipping_tutorial),
                     DragAndDropTutorialActivity::class to convertString(R.string.title_drag_and_drop_tutorial),
-                    UserActivity::class to convertString(R.string.title_aac_tutorial)
+                    UserActivity::class to convertString(R.string.title_aac_tutorial),
+                    ObservableDataBindingActivity::class to convertString(R.string.title_observable_data_binding_tutorial)
             )
 
     /**

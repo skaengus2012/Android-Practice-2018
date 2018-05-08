@@ -1,9 +1,9 @@
-package nlab.practice.issue22.viewModel
+package nlab.practice.issue22
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
-import nlab.practice.issue22.model.User
-import nlab.practice.issue22.repository.UserRepository
+import nlab.practice.common.model.User
+import nlab.practice.common.repository.UserRepository
 
 typealias UserMutableLive = MutableLiveData<User>
 
@@ -39,6 +39,6 @@ class UserProfileViewModel : ViewModel() {
      * 유저정보 리플레쉬.
      */
     fun refreshUser() {
-        userId?.run { UserRepository.refreashUser(this, { user?.value = it }) }
+        userId?.run { UserRepository.refreshUser(this, { user?.value = it }) }
     }
 }

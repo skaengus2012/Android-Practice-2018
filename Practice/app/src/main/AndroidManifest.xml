@@ -109,6 +109,7 @@
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
+        <activity android:name=".issue24.ObservableDataBindingActivity"></activity>
     </application>
 
 </manifest>
