@@ -48,6 +48,7 @@ class UserProfileFragment : Fragment() {
                             R.layout.fragment_user_profile,
                             container,
                             false)
+
         return dataBinding.root
     }
 
@@ -71,7 +72,7 @@ class UserProfileFragment : Fragment() {
 
         viewModel.user?.observe(this, Observer {
             it?.let {
-                Log.d(UserProfileFragment::class.java.simpleName, "뷰 업데이트.")
+                Log.d(UserProfileFragment::class.java.simpleName, "[정보] 뷰 업데이트.")
 
                 dataBinding.user = it
             }
