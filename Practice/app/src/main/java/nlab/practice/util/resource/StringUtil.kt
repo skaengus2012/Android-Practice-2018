@@ -9,9 +9,12 @@ import nlab.practice.common.CodeDefinition
  * @param genderFlag
  * @return
  */
-fun convertGenderLabel(genderFlag : String?) : String = genderFlag?.run {
-    when (this) {
-        CodeDefinition.GENDER_FLAG.Male -> convertString(R.string.label_aac_male)
-        else -> convertString(R.string.label_aac_female)
-    }
-} ?: ""
+fun convertGenderLabel(genderFlag : String?) : String? = genderFlag
+        ?.takeIf { it in arrayOf(CodeDefinition.GENDER_FLAG.Male, CodeDefinition.GENDER_FLAG.FeMale) }
+        ?.run {
+            when (this) {
+                CodeDefinition.GENDER_FLAG.Male -> convertString(R.string.label_aac_male)
+                CodeDefinition.GENDER_FLAG.FeMale -> convertString(R.string.label_aac_female)
+                else -> null
+            }
+        }
