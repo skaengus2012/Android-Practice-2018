@@ -50,8 +50,6 @@ class UserProfileFragment : Fragment() {
                             R.layout.fragment_user_profile,
                             container,
                             false)
-
-        dataBinding.maleCode = CodeDefinition.GENDER_FLAG.Male
         return dataBinding.root
     }
 

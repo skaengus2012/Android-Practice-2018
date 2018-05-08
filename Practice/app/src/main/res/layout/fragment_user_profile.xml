@@ -10,9 +10,6 @@
             name="user"
             type="nlab.practice.issue22.model.User" />
 
-        <variable
-            name="maleCode"
-            type="String" />
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -54,7 +51,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_aac_gender"
-                android:text="@{user.genderFlag.equals(maleCode) ? @string/label_aac_male : @string/label_aac_female}"
+                android:text="@{user.genderString}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvAge" />
         </android.support.constraint.ConstraintLayout>
