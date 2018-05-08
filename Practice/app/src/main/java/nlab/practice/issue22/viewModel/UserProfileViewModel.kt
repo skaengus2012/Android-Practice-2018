@@ -38,7 +38,7 @@ class UserProfileViewModel : ViewModel() {
     /**
      * 유저정보 리플레쉬.
      */
-    fun refreashUser() {
+    fun refreshUser() {
         userId?.run { UserRepository.refreashUser(this, { user?.value = it }) }
     }
 }
