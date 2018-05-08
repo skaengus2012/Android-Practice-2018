@@ -14,5 +14,4 @@ data class User(
         val userId : String,
         var name : String,
         var age : Int,
-        var genderFlag : String
-)
+        var genderFlag : String)

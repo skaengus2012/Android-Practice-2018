@@ -1,60 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     tools:context=".issue22.UserProfileFragment">
+
+    <data>
+        <import type="nlab.practice.util.resource.StringUtilKt"/>
+
+        <variable
+            name="user"
+            type="nlab.practice.issue22.model.User" />
+
+    </data>
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="10dp">
+        android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/tvName"
-            style="@style/aacTutorialTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/hint_aac_name"
-            android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@+id/tvAge"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.1"
-            app:layout_constraintVertical_chainStyle="packed" />
 
-        <TextView
-            android:id="@+id/tvAge"
-            style="@style/aacTutorialTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/hint_aac_age"
-            app:layout_constraintBottom_toTopOf="@+id/tvGender"
-            app:layout_constraintTop_toBottomOf="@+id/tvName" />
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp">
 
-        <TextView
-            android:id="@+id/tvGender"
-            style="@style/aacTutorialTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/hint_aac_gender"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvAge" />
+            <EditText
+                android:id="@+id/tvName"
+                style="@style/aacTutorialTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_aac_name"
+                android:inputType="textPersonName"
+                android:text="@{user.name}"
+                app:layout_constraintBottom_toTopOf="@+id/tvAge"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.1"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <TextView
+                android:id="@+id/tvAge"
+                style="@style/aacTutorialTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_aac_age"
+                android:text="@{@string/format_aac_age(user.age)}"
+                app:layout_constraintBottom_toTopOf="@+id/tvGender"
+                app:layout_constraintTop_toBottomOf="@+id/tvName" />
+
+            <TextView
+                android:id="@+id/tvGender"
+                style="@style/aacTutorialTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_aac_gender"
+                android:text="@{StringUtilKt.convertGenderLabel(user.genderFlag)}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvAge" />
+        </android.support.constraint.ConstraintLayout>
+
+
+        <Button
+            android:id="@+id/btnUpdateName"
+            android:layout_width="match_parent"
+            android:layout_height="@android:dimen/app_icon_size"
+            android:text="@string/label_aac_update_profile"
+            app:layout_constraintBottom_toTopOf="@+id/btnRefresh" />
+
+        <Button
+            android:id="@+id/btnRefresh"
+            android:layout_width="match_parent"
+            android:layout_height="@android:dimen/app_icon_size"
+            android:text="@string/label_aac_update_refresh"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
     </android.support.constraint.ConstraintLayout>
 
-
-    <Button
-        android:id="@+id/btnUpdateName"
-        android:layout_width="match_parent"
-        android:layout_height="@android:dimen/app_icon_size"
-        android:text="@string/label_aac_update_profile"
-        app:layout_constraintBottom_toTopOf="@+id/btnRefresh" />
-
-    <Button
-        android:id="@+id/btnRefresh"
-        android:layout_width="match_parent"
-        android:layout_height="@android:dimen/app_icon_size"
-        android:text="@string/label_aac_update_refresh"
-        app:layout_constraintBottom_toBottomOf="parent" />
-
-</android.support.constraint.ConstraintLayout>
+</layout>

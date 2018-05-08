@@ -3,6 +3,7 @@ package nlab.practice.issue22
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
+import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.util.Log
@@ -12,9 +13,8 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_user_profile.*
 
 import nlab.practice.R
-import nlab.practice.common.CodeDefinition
+import nlab.practice.databinding.FragmentUserProfileBinding
 import nlab.practice.issue22.viewModel.UserProfileViewModel
-import nlab.practice.util.resource.convertString
 
 /**
  * 안드로이드 아키텍처 컴포넌트 연습을 위한 프래그먼트.
@@ -38,10 +38,18 @@ class UserProfileFragment : Fragment() {
 
     // 뷰모델 정의.
     private lateinit var viewModel : UserProfileViewModel
+    private lateinit var dataBinding : FragmentUserProfileBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_user_profile, container, false)
+
+        dataBinding = DataBindingUtil.inflate(
+                            inflater,
+                            R.layout.fragment_user_profile,
+                            container,
+                            false)
+
+        return dataBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -64,22 +72,9 @@ class UserProfileFragment : Fragment() {
 
         viewModel.user?.observe(this, Observer {
             it?.let {
-                Log.d(UserProfileFragment::class.java.simpleName, "뷰 업데이트.")
+                Log.d(UserProfileFragment::class.java.simpleName, "[정보] 뷰 업데이트.")
 
-                // 이름 세팅.
-                tvName.setText(it.name)
-
-                // 나이 세팅.
-                it.age.let { age -> String.format(convertString(R.string.format_aac_age), age)}
-                        .run { tvAge.text = this }
-
-
-                // 성별 세팅.
-                if (it.genderFlag == CodeDefinition.GENDER_FLAG.Male) {
-                    convertString(R.string.label_aac_male)
-                } else {
-                    convertString(R.string.label_aac_female)
-                }.run { tvGender.text = this }
+                dataBinding.user = it
             }
         })
     }
