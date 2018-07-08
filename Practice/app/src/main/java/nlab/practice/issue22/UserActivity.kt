@@ -28,7 +28,7 @@ class UserActivity : AppCompatActivity() {
      * @param userId
      */
     private fun attachFragment(userId : String) {
-        userProfileFragment = UserProfileFragment.create(userId)
+        userProfileFragment = UserProfileFragment.newInstance(userId)
 
         supportFragmentManager
                 .beginTransaction()

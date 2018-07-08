@@ -2,6 +2,7 @@ package nlab.practice.common.repository
 
 import android.arch.lifecycle.MutableLiveData
 import io.reactivex.Observable
+import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import nlab.practice.common.PracticeDataBase
@@ -66,6 +67,14 @@ object UserRepository {
 
         return result
     }
+
+    /**
+     * 유저정보 목록을 조회한다.
+     *
+     * @return
+     */
+    fun getUsersSingle() : Single<List<User>>
+            = Single.fromCallable { MockUserWebService.getUsers() }
 
     /**
      * [userId] 를 이용하여, 목에서 데이터 조회.

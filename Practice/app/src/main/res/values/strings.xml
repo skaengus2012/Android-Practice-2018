@@ -112,6 +112,6 @@
     <string name="label_aac_update_refresh">유저정보 리프레쉬</string>
 
     <!-- 옵저버블 데이터 바인딩 연습-->
-    <string name="title_observable_data_binding_tutorial">옵저버블 데디엍 바인딩 연습</string>
+    <string name="title_observable_data_binding_tutorial">옵저버블 데이터 바인딩 연습</string>
 
 </resources>

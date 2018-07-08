@@ -12,17 +12,19 @@ object MockOrganizationDAO {
     /**
      * 네이버 뮤직 조직 조회
      */
-    private fun findByNaverMusicAndroid() : OrganizationVO =
+    fun findByNaverMusicAndroid() : OrganizationVO =
             OrganizationVO(1, "네이버 뮤직 - 안드로이드")
 
     /**
      * 마이다스 웹솔루션 조회
      */
-    private fun findByMidasWebSolution() : OrganizationVO =
+    fun findByMidasWebSolution() : OrganizationVO =
             OrganizationVO(2, "마이다스 웹솔루션 - 응용")
 
     /**
      * 조직목록 출력.
+     *
+     * @return
      */
     fun selectList() : List<OrganizationVO> = listOf(findByNaverMusicAndroid(), findByMidasWebSolution())
 }

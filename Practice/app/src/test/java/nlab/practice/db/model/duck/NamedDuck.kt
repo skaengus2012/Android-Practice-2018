@@ -11,10 +11,9 @@ import nlab.practice.db.model.strategy.Runnable
  *
  * @author ndh1002
  */
-open class NamedDuck(name : String) : Duck() {
+open class NamedDuck(var name : String) : Duck() {
 
     // 코틀린에서는 기본적으로 변수/상수에 대해 접근제한을 사용하지 않음. (PUBLIC)
-    var name : String = name
     var heat : Heat? = null
     var runnable : Runnable? = null
 

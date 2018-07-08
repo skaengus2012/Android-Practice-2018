@@ -30,7 +30,7 @@ class UserProfileFragment : Fragment() {
          *
          * @param userId
          */
-        fun create(userId : String) : UserProfileFragment =
+        fun newInstance(userId : String) : UserProfileFragment =
                 Bundle().apply { putString(ARGUMENT_USER_ID, userId) }
                         .let { UserProfileFragment().apply { arguments = it } }
     }
@@ -42,11 +42,8 @@ class UserProfileFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        dataBinding = DataBindingUtil.inflate(
-                            inflater,
-                            R.layout.fragment_user_profile,
-                            container,
-                            false)
+        dataBinding =
+                FragmentUserProfileBinding.inflate(inflater, container, false)
 
         return dataBinding.root
     }

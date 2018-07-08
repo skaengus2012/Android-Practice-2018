@@ -1,31 +1,35 @@
 package nlab.practice.issue24
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModel
-import android.databinding.ObservableField
-import nlab.practice.common.model.User
+import android.app.Application
+import android.arch.lifecycle.AndroidViewModel
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 import nlab.practice.common.repository.UserRepository
-import nlab.practice.common.repository.UsersMutableLive
-
-typealias UserObservable = ObservableField<User>
+import nlab.practice.util.resource.add
 
 /**
  * 옵저버블 데이터 테스트를 위한 뷰모델 클래스 정의
  *
  * @author Doohyun
  */
-class ObservableDataBindingViewModel : ViewModel() {
+class ObservableDataBindingViewModel(application: Application) : AndroidViewModel(application) {
 
-    val users : UsersMutableLive = UserRepository.getUsers().apply {
-        observeForever {
-            it?.takeIf { !it.isEmpty() }?.run {
-                user.set(it[0])
-            }
-        }
+    private val mDisposable : CompositeDisposable = CompositeDisposable()
+
+    override fun onCleared() {
+        super.onCleared()
+        mDisposable.clear()
     }
 
-    val user : UserObservable = UserObservable()
-
-
-
+    /**
+     * 데이터 조회
+     */
+    fun loadUser() {
+        UserRepository.getUsersSingle()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe()
+                .add(mDisposable)
+    }
 }
