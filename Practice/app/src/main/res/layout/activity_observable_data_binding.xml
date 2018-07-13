@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
-	<data>
-		<variable name="viewModel" type="nlab.practice.issue24.ObservableDataBindingViewModel"/>
-	</data>
 
-	<android.support.constraint.ConstraintLayout
-		xmlns:android="http://schemas.android.com/apk/res/android"
-		xmlns:app="http://schemas.android.com/apk/res-auto"
-		xmlns:tools="http://schemas.android.com/tools"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		tools:context=".issue24.ObservableDataBindingActivity">
+    <data>
 
-	</android.support.constraint.ConstraintLayout>
+        <variable
+            name="viewModel"
+            type="nlab.practice.issue24.ObservableDataBindingViewModel" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".issue24.ObservableDataBindingActivity">
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:bindAdapterViewItems="@{viewModel.users}"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
+
+    </android.support.constraint.ConstraintLayout>
 </layout>
