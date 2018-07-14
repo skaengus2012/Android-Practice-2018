@@ -3,11 +3,9 @@ package nlab.practice.issue24
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.databinding.ObservableArrayList
-import android.util.Log
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
-import nlab.practice.common.model.User
 import nlab.practice.common.repository.UserRepository
 import nlab.practice.util.resource.add
 
@@ -17,13 +15,12 @@ import nlab.practice.util.resource.add
  * @author Doohyun
  */
 class ObservableDataBindingViewModel(application: Application) : AndroidViewModel(application) {
-    private val mDisposable : CompositeDisposable = CompositeDisposable()
-
+    private val _disposable : CompositeDisposable = CompositeDisposable()
     val users : ObservableArrayList<SimpleUserItemViewModel> = ObservableArrayList()
 
     override fun onCleared() {
         super.onCleared()
-        mDisposable.clear()
+        _disposable.clear()
     }
 
     /**
@@ -33,18 +30,14 @@ class ObservableDataBindingViewModel(application: Application) : AndroidViewMode
         UserRepository.getUsersSingle()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe (
-                        {
-                            it.map { SimpleUserItemViewModel(it) }
-                                .let {
-                                    users.clear()
-                                    users.addAll(it)
-                                    Log.e("sadds", " " + users.size)
-                                }
-                        },
-
-                        {it.printStackTrace()}
-                )
-                .add(mDisposable)
+                .subscribe  {
+                    users ->
+                    users.map { SimpleUserItemViewModel(it) }
+                            .let {
+                                this.users.clear()
+                                this.users.addAll(it)
+                            }
+                }
+                .add(_disposable)
     }
 }
