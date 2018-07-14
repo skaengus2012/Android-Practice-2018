@@ -51,7 +51,7 @@ dependencies {
     implementation 'com.andkulikov:transitionseverywhere:1.7.9'
 
     // Ndroid 구축.
-    implementation 'com.github.skaengus2012:Ndroid:v0.4.5-beta'
+    implementation 'com.github.skaengus2012:Ndroid:v0.5.1-beta'
     implementation 'io.reactivex.rxjava2:rxkotlin:2.2.0'
 
     //android arch component.
