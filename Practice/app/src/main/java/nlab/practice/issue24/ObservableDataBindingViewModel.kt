@@ -18,20 +18,21 @@ class ObservableDataBindingViewModel(application: Application) : AndroidViewMode
     private val _disposable : CompositeDisposable = CompositeDisposable()
     val users : ObservableArrayList<SimpleUserItemViewModel> = ObservableArrayList()
 
+
     override fun onCleared() {
         super.onCleared()
         _disposable.clear()
     }
 
     /**
-     * 데이터 조회
+     * 유저 정보 조회
      */
-    fun loadUser() {
+    fun readUsers() {
         UserRepository.getUsersSingle()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe  {
-                    users ->
+                .subscribe  { users
+                    ->
                     users.map { SimpleUserItemViewModel(it) }
                             .let {
                                 this.users.clear()

@@ -63,7 +63,8 @@ class UserProfileFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        viewModel = ViewModelProviders.of(this).get(UserProfileViewModel::class.java)
+        viewModel = ViewModelProviders.of(this)
+                .get(UserProfileViewModel::class.java)
                 .apply { userId = arguments?.getString(ARGUMENT_USER_ID) }
 
         viewModel.user?.observe(this, Observer {

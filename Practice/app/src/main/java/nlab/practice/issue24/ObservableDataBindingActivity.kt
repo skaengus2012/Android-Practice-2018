@@ -30,6 +30,6 @@ class ObservableDataBindingActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        mViewModel.loadUser()
+        mViewModel.readUsers()
     }
 }

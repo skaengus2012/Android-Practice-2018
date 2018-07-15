@@ -18,7 +18,9 @@
     <!-- 개요화면 연습 -->
     <string name="title_document_centric">개요화면 튜토리얼</string>
     <string name="document_centric_button_new_document">NEW DOCUMENT</string>
-    <string name="document_centric_button_new_document_with_multi_task">NEW DOCUMENT with MultiTask</string>
+    <string name="document_centric_button_new_document_with_multi_task">NEW DOCUMENT with
+        MultiTask
+    </string>
     <string name="document_centric_button_remove_document">REMOVE DOCUMENT</string>
     <string name="document_centric_new_document_simple_text">New Document</string>
     <string name="document_centric_already_created">Already Created</string>
@@ -47,7 +49,9 @@
     <string name="constraint_layout_fixed">Fixed</string>
     <string name="constraint_layout_wrap_content_padding_30">wrap_content - padding 30</string>
     <string name="constraint_layout_match_constraint">0dp - match constraint</string>
-    <string name="constraint_layout_match_constraint_left_20">0dp - match constraint - margin left 20</string>
+    <string name="constraint_layout_match_constraint_left_20">0dp - match constraint - margin left
+        20
+    </string>
 
     <string name="constraint_layout_ratio">Ratio 튜토리얼</string>
     <string name="constraint_ratio_simple">Simple Ratio 1:1</string>
@@ -60,7 +64,9 @@
     <string name="constraint_layout_barrier">Barrier 튜토리얼</string>
     <string name="constraint_barrier_tv_label_1">ABC</string>
     <string name="constraint_barrier_edit_first">글씨 입력</string>
-    <string name="constraint_barrier_message">안녕하세요.\n방어막 테스트입니다.\n음.. 무슨 말을 쓸까\n에디트 텍스트의 글을 수정해보시겠어요?</string>
+    <string name="constraint_barrier_message">안녕하세요.\n방어막 테스트입니다.\n음.. 무슨 말을 쓸까\n에디트 텍스트의 글을
+        수정해보시겠어요?
+    </string>
 
     <string name="constraint_layout_chain_style_spread">Chain Style - Spread</string>
     <string name="constraint_layout_chain_style_spread_inside">Chain Style - Spread inside</string>
@@ -113,5 +119,6 @@
 
     <!-- 옵저버블 데이터 바인딩 연습-->
     <string name="title_observable_data_binding_tutorial">옵저버블 데이터 바인딩 연습</string>
+    <string name="title_action_live_event_tutorial">Live Event 연습</string>
 
 </resources>
