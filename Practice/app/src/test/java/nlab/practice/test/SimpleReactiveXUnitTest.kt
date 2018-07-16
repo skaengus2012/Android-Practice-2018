@@ -1,9 +1,12 @@
 package nlab.practice.test
 
+import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.ObservableEmitter
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
+import nlab.practice.db.model.reactive.StringMessage
+import org.junit.Before
 import org.junit.Test
 
 /**
@@ -73,6 +76,75 @@ class SimpleReactiveXUnitTest {
         }
 
         Thread.sleep(5000)
+    }
+
+    private lateinit var completableTarget : Observable<StringMessage>
+
+    /**
+     * Completable 로 변경할 Observable 초기화
+     */
+    @Before
+    fun initObservableToCompletable() {
+        val sleepTimes = arrayOf(1000L, 2000, 3000)
+
+        completableTarget =
+                Observable.create{ emitter : ObservableEmitter<StringMessage>
+                    ->
+                    for (i in 0 until sleepTimes.size) {
+                        Thread.sleep(sleepTimes[i])
+                        emitter.onNext(StringMessage(message = "Observable to Complete -> next $i", sleepTime = sleepTimes[sleepTimes.size - (i + 1)]))
+                    }
+
+                    emitter.onComplete()
+                }
+    }
+
+    /**
+     * Observable to Completable (Ordered)
+     *
+     * - concatMap 을 사용. 변경된 Completable 이 완료되어야 다음 Completable 을 수행하는 방식
+     * - 즉, 데이터 도착 후 처리가 완료되어야 다음 이벤트 처리가 이루어짐
+     */
+    @Test
+    fun doObservableToCompletableOrdered() {
+        completableTarget
+                .subscribeOn(Schedulers.io())
+                .concatMapCompletable { strMessage
+                    ->
+                    Completable.fromAction {
+                                println("Data received. Sleep...")
+                                Thread.sleep(strMessage.sleepTime)
+                                println("Print [${strMessage.message}]. Job complete")
+                            }
+                            .subscribeOn(Schedulers.io())
+                }
+                .subscribe()
+
+        Thread.sleep(10000)
+    }
+
+    /**
+     * Observable to Completable (None Ordered)
+     *
+     * - merge 을 사용.
+     * - 이벤트 처리가 완료하지 않아도 다음 이벤트를 바로 받아 처리
+     */
+    @Test
+    fun doObservableToCompletableNoneOrdered() {
+        completableTarget
+                .subscribeOn(Schedulers.io())
+                .flatMapCompletable { strMessage
+                    ->
+                    Completable.fromAction {
+                        println("Data received. Sleep...")
+                        Thread.sleep(strMessage.sleepTime)
+                        println("Print [${strMessage.message}]. Job complete")
+                    }
+                            .subscribeOn(Schedulers.io())
+                }
+                .subscribe()
+
+        Thread.sleep(10000)
     }
 
 }
