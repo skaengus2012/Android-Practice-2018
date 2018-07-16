@@ -33,7 +33,7 @@ class KeywordChat2UnitTest {
      */
     private tailrec fun getFactorialResult(number : Int) : Int {
 
-        check(number >= 1, {"잘못된 접근입니다."})
+        check(number >= 1) {"잘못된 접근입니다."}
 
         // TODO 꼬리가 호출이 안된다는 데, 원인 찾아봐야함..
         return when(number) {
@@ -153,7 +153,7 @@ class KeywordChat2UnitTest {
      * @param printer1
      * @param printer2
      */
-    private inline fun printSimulateWithNoInlines(printer1 : (str :String) -> Unit,  noinline printer2 : (str: String) -> Unit) {
+    private inline fun printSimulateWithNoInlines(printer1 : (String) -> Unit,  noinline printer2 : (String) -> Unit) {
         printer1("Hello, Kotlin")
         printer2("Hello, inline Kotlin")
     }

@@ -58,14 +58,14 @@ class FunctionalUnitTest {
                 organizations
                         .filter { it.organizationSn == member.organizationSn }
                         .map { member.toMemberOrganizationVO(it) }
-        }.forEach({ println(it) })
+        }.forEach { println(it) }
     }
 
     /**
      * 맵을 이쁘게 출력할 수 있는 확장함수 추가.
      */
     private fun <T, U> Map<T, U>.prettyPrintGroup() {
-        keys.forEach( { println("$it = ${get(it)}")} )
+        keys.forEach{ println("$it = ${get(it)}") }
     }
 
     /**
@@ -147,7 +147,7 @@ class FunctionalUnitTest {
 
         // 조직 순번에 대하여, 구성원 이름 목록을 출력한다.
         members.groupingBy { it.organizationSn }
-                .fold("", { value, memberVo -> value + "${memberVo.name} "})
+                .fold("") { value, memberVo -> value + "${memberVo.name} "}
                 .prettyPrintGroup()
         println()
 
