@@ -1,124 +1,128 @@
 <resources>
-    <string name="app_name">Android-Practice-2018</string>
+	<string name="app_name">Android-Practice-2018</string>
 
-    <!-- 개발자 튜토리얼 -->
-    <string name="title_dev_tutorial">개발자 튜토리얼</string>
-    <string name="dev_tutorial_edit_message">Enter a Message</string>
-    <string name="dev_tutorial_button_send">SEND</string>
+	<!-- 개발자 튜토리얼 -->
+	<string name="title_dev_tutorial">개발자 튜토리얼</string>
+	<string name="dev_tutorial_edit_message">Enter a Message</string>
+	<string name="dev_tutorial_button_send">SEND</string>
 
-    <!-- 데이터 보존 테스트 -->
-    <string name="title_data_conserve">데이터 보존 튜토리얼</string>
-    <string name="data_conserve_button_change_data">CHANGE DATA</string>
+	<!-- 데이터 보존 테스트 -->
+	<string name="title_data_conserve">데이터 보존 튜토리얼</string>
+	<string name="data_conserve_button_change_data">CHANGE DATA</string>
 
-    <!-- 프래그먼트 교체 연습 -->
-    <string name="title_fragment_changed">프래그먼트 교체 튜토리얼</string>
-    <string name="fragment_changed_button_change_fragment">CHANGE FRAGMENT</string>
-    <string name="fragment_changed_button_stack_fragment">STACK FRAGMENT</string>
+	<!-- 프래그먼트 교체 연습 -->
+	<string name="title_fragment_changed">프래그먼트 교체 튜토리얼</string>
+	<string name="fragment_changed_button_change_fragment">CHANGE FRAGMENT</string>
+	<string name="fragment_changed_button_stack_fragment">STACK FRAGMENT</string>
 
-    <!-- 개요화면 연습 -->
-    <string name="title_document_centric">개요화면 튜토리얼</string>
-    <string name="document_centric_button_new_document">NEW DOCUMENT</string>
-    <string name="document_centric_button_new_document_with_multi_task">NEW DOCUMENT with
-        MultiTask
-    </string>
-    <string name="document_centric_button_remove_document">REMOVE DOCUMENT</string>
-    <string name="document_centric_new_document_simple_text">New Document</string>
-    <string name="document_centric_already_created">Already Created</string>
+	<!-- 개요화면 연습 -->
+	<string name="title_document_centric">개요화면 튜토리얼</string>
+	<string name="document_centric_button_new_document">NEW DOCUMENT</string>
+	<string name="document_centric_button_new_document_with_multi_task">NEW DOCUMENT with
+		MultiTask
+	</string>
+	<string name="document_centric_button_remove_document">REMOVE DOCUMENT</string>
+	<string name="document_centric_new_document_simple_text">New Document</string>
+	<string name="document_centric_already_created">Already Created</string>
 
-    <!-- 커스텀뷰 연습 -->
-    <string name="title_custom_view">커스텀 뷰 튜토리얼</string>
-    <string name="custom_view_logo_description">LOGO</string>
-    <string name="custom_view_button_label_google_login">Google 로 로그인</string>
+	<!-- 커스텀뷰 연습 -->
+	<string name="title_custom_view">커스텀 뷰 튜토리얼</string>
+	<string name="custom_view_logo_description">LOGO</string>
+	<string name="custom_view_button_label_google_login">Google 로 로그인</string>
 
-    <!-- ConstraintLayout 연습 -->
-    <string name="title_constraint_layout">ConstraintLayout 튜토리얼</string>
+	<!-- ConstraintLayout 연습 -->
+	<string name="title_constraint_layout">ConstraintLayout 튜토리얼</string>
 
-    <string name="constraint_layout_title_side">Side 제약 튜토리얼</string>
-    <string name="hint_constraint_layout_hello_world_1">Constraint HELLO WORLD1</string>
-    <string name="hint_constraint_layout_hello_world_2">Constraint HELLO WORLD2</string>
+	<string name="constraint_layout_title_side">Side 제약 튜토리얼</string>
+	<string name="hint_constraint_layout_hello_world_1">Constraint HELLO WORLD1</string>
+	<string name="hint_constraint_layout_hello_world_2">Constraint HELLO WORLD2</string>
 
-    <string name="constraint_layout_title_center">Center 제약 튜토리얼</string>
-    <string name="constraint_layout_btn_center_bias_70_percent">CENTER BIAS 70% BUTTON</string>
+	<string name="constraint_layout_title_center">Center 제약 튜토리얼</string>
+	<string name="constraint_layout_btn_center_bias_70_percent">CENTER BIAS 70% BUTTON</string>
 
-    <string name="constraint_layout_visibility_behavior">Visibility Behavior 튜토리얼</string>
-    <string name="constraint_layout_btn_a">A</string>
-    <string name="constraint_layout_btn_b_with_a">B (A is visibility)</string>
-    <string name="constraint_layout_btn_b_without_a">B (A is gone~~)</string>
+	<string name="constraint_layout_visibility_behavior">Visibility Behavior 튜토리얼</string>
+	<string name="constraint_layout_btn_a">A</string>
+	<string name="constraint_layout_btn_b_with_a">B (A is visibility)</string>
+	<string name="constraint_layout_btn_b_without_a">B (A is gone~~)</string>
 
-    <string name="constraint_layout_dimensions">Dimensions 튜토리얼</string>
-    <string name="constraint_layout_fixed">Fixed</string>
-    <string name="constraint_layout_wrap_content_padding_30">wrap_content - padding 30</string>
-    <string name="constraint_layout_match_constraint">0dp - match constraint</string>
-    <string name="constraint_layout_match_constraint_left_20">0dp - match constraint - margin left
-        20
-    </string>
+	<string name="constraint_layout_dimensions">Dimensions 튜토리얼</string>
+	<string name="constraint_layout_fixed">Fixed</string>
+	<string name="constraint_layout_wrap_content_padding_30">wrap_content - padding 30</string>
+	<string name="constraint_layout_match_constraint">0dp - match constraint</string>
+	<string name="constraint_layout_match_constraint_left_20">0dp - match constraint - margin left
+		20
+	</string>
 
-    <string name="constraint_layout_ratio">Ratio 튜토리얼</string>
-    <string name="constraint_ratio_simple">Simple Ratio 1:1</string>
-    <string name="constraint_ratio_h_2_1">All match_constraint and Ratio h,2:1</string>
-    <string name="constraint_ratio_w_2_1">All match_constraint and Ratio w,2:1</string>
+	<string name="constraint_layout_ratio">Ratio 튜토리얼</string>
+	<string name="constraint_ratio_simple">Simple Ratio 1:1</string>
+	<string name="constraint_ratio_h_2_1">All match_constraint and Ratio h,2:1</string>
+	<string name="constraint_ratio_w_2_1">All match_constraint and Ratio w,2:1</string>
 
-    <string name="constraint_layout_guideLine">Guide LINE 튜토리얼</string>
-    <string name="constraint_guide_line">GUIDE LINE</string>
+	<string name="constraint_layout_guideLine">Guide LINE 튜토리얼</string>
+	<string name="constraint_guide_line">GUIDE LINE</string>
 
-    <string name="constraint_layout_barrier">Barrier 튜토리얼</string>
-    <string name="constraint_barrier_tv_label_1">ABC</string>
-    <string name="constraint_barrier_edit_first">글씨 입력</string>
-    <string name="constraint_barrier_message">안녕하세요.\n방어막 테스트입니다.\n음.. 무슨 말을 쓸까\n에디트 텍스트의 글을
-        수정해보시겠어요?
-    </string>
+	<string name="constraint_layout_barrier">Barrier 튜토리얼</string>
+	<string name="constraint_barrier_tv_label_1">ABC</string>
+	<string name="constraint_barrier_edit_first">글씨 입력</string>
+	<string name="constraint_barrier_message">안녕하세요.\n방어막 테스트입니다.\n음.. 무슨 말을 쓸까\n에디트 텍스트의 글을
+		수정해보시겠어요?
+	</string>
 
-    <string name="constraint_layout_chain_style_spread">Chain Style - Spread</string>
-    <string name="constraint_layout_chain_style_spread_inside">Chain Style - Spread inside</string>
-    <string name="constraint_layout_chain_style_weighted">Chain Style - weighted</string>
-    <string name="constraint_layout_chain_style_packed">Chain Style - packed</string>
-    <string name="constraint_chain_button_1">View 1</string>
-    <string name="constraint_chain_button_2">View 2</string>
-    <string name="constraint_chain_button_3">View 3</string>
+	<string name="constraint_layout_chain_style_spread">Chain Style - Spread</string>
+	<string name="constraint_layout_chain_style_spread_inside">Chain Style - Spread inside</string>
+	<string name="constraint_layout_chain_style_weighted">Chain Style - weighted</string>
+	<string name="constraint_layout_chain_style_packed">Chain Style - packed</string>
+	<string name="constraint_chain_button_1">View 1</string>
+	<string name="constraint_chain_button_2">View 2</string>
+	<string name="constraint_chain_button_3">View 3</string>
 
-    <!-- ConstraintSet 연습 -->
-    <string name="title_constraint_set_animation">ConstraintSet 애니메이션</string>
+	<!-- ConstraintSet 연습 -->
+	<string name="title_constraint_set_animation">ConstraintSet 애니메이션</string>
 
-    <!-- App Bar 연습 -->
-    <string name="title_app_bar_tutorial">Appbar - Menu 연습</string>
-    <string name="title_app_bar_custom_bar">Toolbar 연습</string>
-    <string name="app_bar_favorite">즐겨찾기</string>
-    <string name="app_bar_menu_basic">일반메뉴</string>
-    <string name="app_bar_menu_select_1">선택메뉴 (1)</string>
-    <string name="app_bar_menu_select_2">선택메뉴 (2)</string>
-    <string name="app_bar_menu_sub">서브메뉴</string>
-    <string name="message_app_bar_favorite">즐겨찾기가 눌렸습니다.</string>
-    <string name="message_app_bar_setting">일반메뉴가 눌렸습니다.</string>
+	<!-- App Bar 연습 -->
+	<string name="title_app_bar_tutorial">Appbar - Menu 연습</string>
+	<string name="title_app_bar_custom_bar">Toolbar 연습</string>
+	<string name="app_bar_favorite">즐겨찾기</string>
+	<string name="app_bar_menu_basic">일반메뉴</string>
+	<string name="app_bar_menu_select_1">선택메뉴 (1)</string>
+	<string name="app_bar_menu_select_2">선택메뉴 (2)</string>
+	<string name="app_bar_menu_sub">서브메뉴</string>
+	<string name="message_app_bar_favorite">즐겨찾기가 눌렸습니다.</string>
+	<string name="message_app_bar_setting">일반메뉴가 눌렸습니다.</string>
 
-    <!-- View Stub 연습 -->
-    <string name="title_view_stub_tutorial">View Stub 연습</string>
-    <string name="view_stub_btn_message">Hello, View Stub</string>
+	<!-- View Stub 연습 -->
+	<string name="title_view_stub_tutorial">View Stub 연습</string>
+	<string name="view_stub_btn_message">Hello, View Stub</string>
 
-    <!-- 쉐도우 - 클리핑 연습 -->
-    <string name="title_shadow_and_clipping_tutorial">쉐도우 - 클리핑 연습</string>
-    <string name="shadow_and_clipping_btn_label">Button</string>
-    <string name="shadow_label">쉐도우 예제</string>
-    <string name="clipping_label">클리핑 예제</string>
-    <string name="clipping_message_able_clipping">클리핑 실행</string>
-    <string name="clipping_message_disable_clipping">클리핑 중지</string>
+	<!-- 쉐도우 - 클리핑 연습 -->
+	<string name="title_shadow_and_clipping_tutorial">쉐도우 - 클리핑 연습</string>
+	<string name="shadow_and_clipping_btn_label">Button</string>
+	<string name="shadow_label">쉐도우 예제</string>
+	<string name="clipping_label">클리핑 예제</string>
+	<string name="clipping_message_able_clipping">클리핑 실행</string>
+	<string name="clipping_message_disable_clipping">클리핑 중지</string>
 
-    <!-- 드래그 & 드롭 연습 -->
-    <string name="title_drag_and_drop_tutorial">드래그 앤 드롭 연습</string>
-    <string name="drag_and_drop_text">SAMPLE TEXT</string>
+	<!-- 드래그 & 드롭 연습 -->
+	<string name="title_drag_and_drop_tutorial">드래그 앤 드롭 연습</string>
+	<string name="drag_and_drop_text">SAMPLE TEXT</string>
 
-    <!-- 안드로이드 아키텍처 컴포넌트 연습 -->
-    <string name="title_aac_tutorial">안드로이드 아키텍처 컴포넌트 연습</string>
-    <string name="hint_aac_name">이름</string>
-    <string name="hint_aac_age">나이</string>
-    <string name="hint_aac_gender">성별</string>
-    <string name="label_aac_male">남자</string>
-    <string name="label_aac_female">여자</string>
-    <string name="format_aac_age" formatted="false">%d살</string>
-    <string name="label_aac_update_profile">유저정보 업데이트</string>
-    <string name="label_aac_update_refresh">유저정보 리프레쉬</string>
+	<!-- 안드로이드 아키텍처 컴포넌트 연습 -->
+	<string name="title_aac_tutorial">안드로이드 아키텍처 컴포넌트 연습</string>
+	<string name="hint_aac_name">이름</string>
+	<string name="hint_aac_age">나이</string>
+	<string name="hint_aac_gender">성별</string>
+	<string name="label_aac_male">남자</string>
+	<string name="label_aac_female">여자</string>
+	<string name="format_aac_age" formatted="false">%d살</string>
+	<string name="label_aac_update_profile">유저정보 업데이트</string>
+	<string name="label_aac_update_refresh">유저정보 리프레쉬</string>
 
-    <!-- 옵저버블 데이터 바인딩 연습-->
-    <string name="title_observable_data_binding_tutorial">옵저버블 데이터 바인딩 연습</string>
-    <string name="title_action_live_event_tutorial">Live Event 연습</string>
+	<!-- 옵저버블 데이터 바인딩 연습-->
+	<string name="title_observable_data_binding_tutorial">옵저버블 데이터 바인딩 연습</string>
+	<string name="title_action_live_event_tutorial">Live Event 연습</string>
+
+	<!-- Recycler View 최적화 연습 -->
+	<string name="title_recycler_view_optimize">Recycler View 최적화 연구</string>
+	<string name="label_recycler_view_separate_type">Separate Type</string>
 
 </resources>

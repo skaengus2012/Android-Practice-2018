@@ -17,6 +17,7 @@ import nlab.practice.issue20.FragmentChangeActivity
 import nlab.practice.issue22.UserActivity
 import nlab.practice.issue24.LiveEventTutorialActivity
 import nlab.practice.issue24.ObservableDataBindingActivity
+import nlab.practice.issue27.RecyclerOptimizeTestActivity
 import kotlin.reflect.KClass
 
 /**
@@ -45,7 +46,8 @@ object AppBarConfigManager {
                     DragAndDropTutorialActivity::class to convertString(R.string.title_drag_and_drop_tutorial),
                     UserActivity::class to convertString(R.string.title_aac_tutorial),
                     ObservableDataBindingActivity::class to convertString(R.string.title_observable_data_binding_tutorial),
-                    LiveEventTutorialActivity::class to convertString(R.string.title_action_live_event_tutorial)
+                    LiveEventTutorialActivity::class to convertString(R.string.title_action_live_event_tutorial),
+                    RecyclerOptimizeTestActivity::class to convertString(R.string.title_recycler_view_optimize)
             )
 
     /**
