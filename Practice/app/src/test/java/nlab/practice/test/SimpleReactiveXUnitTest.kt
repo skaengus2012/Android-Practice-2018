@@ -109,15 +109,7 @@ class SimpleReactiveXUnitTest {
     fun doObservableToCompletableOrdered() {
         completableTarget
                 .subscribeOn(Schedulers.io())
-                .concatMapCompletable { strMessage
-                    ->
-                    Completable.fromAction {
-                                println("Data received. Sleep...")
-                                Thread.sleep(strMessage.sleepTime)
-                                println("Print [${strMessage.message}]. Job complete")
-                            }
-                            .subscribeOn(Schedulers.io())
-                }
+                .concatMapCompletable { createMessagePrinterCompletable(it) }
                 .subscribe()
 
         Thread.sleep(10000)
@@ -133,18 +125,23 @@ class SimpleReactiveXUnitTest {
     fun doObservableToCompletableNoneOrdered() {
         completableTarget
                 .subscribeOn(Schedulers.io())
-                .flatMapCompletable { strMessage
-                    ->
-                    Completable.fromAction {
-                        println("Data received. Sleep...")
-                        Thread.sleep(strMessage.sleepTime)
-                        println("Print [${strMessage.message}]. Job complete")
-                    }
-                            .subscribeOn(Schedulers.io())
-                }
+                .flatMapCompletable { createMessagePrinterCompletable(it) }
                 .subscribe()
 
         Thread.sleep(10000)
     }
 
+    /**
+     * [strMessage] 을 출력하는 Completable 를 생산
+     *
+     * @param strMessage
+     * @return
+     */
+    private fun createMessagePrinterCompletable(strMessage : StringMessage) : Completable =
+            Completable.fromAction {
+                        println("Data received. Sleep...")
+                        Thread.sleep(strMessage.sleepTime)
+                        println("Print [${strMessage.message}]. Job complete")
+                    }
+                    .subscribeOn(Schedulers.io())
 }
