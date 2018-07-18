@@ -18,7 +18,7 @@ import java.util.*
  */
 class AdapterViewItemAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val _items = arrayOf(-1, 1, -1, 1, -1, 1, -1, 1)
+    private val _items = arrayOf(0, 1, 0, 2, 0, 3, 0, 1, 0, 2, 0, 3, 0, 1, 0, 2)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -27,34 +27,36 @@ class AdapterViewItemAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         return if(isSeparateViewType) {
             layoutInflater.inflate(R.layout.item_adapter_view_seperator, parent, false).let { SeparateTypeItemViewHolder(it) }
         } else {
-            layoutInflater.inflate(R.layout.item_adapter_view, parent, false).let { AdapterViewItemViewHolder(it) }
+            layoutInflater.inflate(R.layout.item_adapter_view, parent, false).let { AdapterViewItemViewHolder(it, viewType) }
         }
     }
 
     override fun getItemCount(): Int = _items.size
 
-    override fun getItemViewType(position: Int): Int {
-        val isSeparateType = _items[position] == -1
-        return if (isSeparateType) 0 else 1
-    }
+    override fun getItemViewType(position: Int): Int = _items[position]
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as? AdapterViewItemViewHolder)?.let { (holder.adapterView.adapter).notifyDataSetChanged() }
+       // (holder as? AdapterViewItemViewHolder)?.let { (holder.adapterView.adapter).notifyDataSetChanged() }
     }
 
     /**
      * RecyclerView 를 가지는 ViewHolder 정의
      */
-    class AdapterViewItemViewHolder(view : View) : RecyclerView.ViewHolder(view) {
+    class AdapterViewItemViewHolder(view : View, type : Int) : RecyclerView.ViewHolder(view) {
 
         val adapterView : RecyclerView = view.adapterView
 
         init {
             view.adapterView.let {
                 val randomValue = Random().nextInt(5) + 3
+                val items = createColorItems(randomValue)
 
                 it.layoutManager = createHorizontalScrolledGridLayoutManager(it.context, randomValue)
-                it.adapter = ColorItemAdapter(createColorItems(randomValue))
+                it.adapter = when(type) {
+                    1 -> ColorItemAdapter.Type1(items)
+                    2 -> ColorItemAdapter.Type2(items)
+                    else -> ColorItemAdapter.Type3(items)
+                }
             }
         }
     }
