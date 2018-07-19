@@ -1,4 +1,4 @@
-package nlab.practice.test
+package nlab.practice.reactivetest
 
 import io.reactivex.Completable
 import io.reactivex.Observable

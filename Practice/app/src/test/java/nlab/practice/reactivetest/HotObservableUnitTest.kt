@@ -1,4 +1,4 @@
-package nlab.practice.test
+package nlab.practice.reactivetest
 
 import io.reactivex.Observable
 import io.reactivex.subjects.*
@@ -75,10 +75,12 @@ class HotObservableUnitTest {
         connectedObservable.subscribe { println("Subscribe #1 => $it, CurrentThread [${Thread.currentThread()}]") }
         connectedObservable.subscribe { println("Subscribe #2 => $it") }
 
-        Thread.sleep(500)
+        Thread.sleep(2000)
         println("[Connect 시작] 데이터 발행 시작")
+        // connect 가 불리면, 그 시간부터 데이터를 전달 시작
         connectedObservable.connect()
 
+        // connect 가 불린 이 후부터는 PublishSubject 와 같은 기능을 수행하는 것으로 보임.
         Thread.sleep(2000)
         connectedObservable.subscribe { println("Subscribe #3 => $it") }
 
