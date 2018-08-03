@@ -121,4 +121,9 @@
     <string name="title_observable_data_binding_tutorial">옵저버블 데이터 바인딩 연습</string>
     <string name="title_action_live_event_tutorial">Live Event 연습</string>
 
+    <!-- Long Text 에 대한 실험 -->
+    <string name="title_long_text_ellipsize_test">Long Text Ellipsize 에 대한 실험</string>
+    <string name="label_long_text_ellipsize_fixed_label">Fixed Label Space</string>
+    <string name="hint_long_text_ellipsize_fixed_label">Please input long size name text</string>
+
 </resources>
