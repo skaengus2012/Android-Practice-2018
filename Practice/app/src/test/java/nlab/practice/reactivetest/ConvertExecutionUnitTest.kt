@@ -48,6 +48,24 @@ class ConvertExecutionUnitTest {
         Thread.sleep(30000)
     }
 
+    /**
+     * SwitchMap : 순서 보장에 있어서 concatMap 과 비슷하지만, 순서를 맞추기 위한 중간 데이터는 중단하고 새 데이터를 실행.
+     *
+     * 마지막 데이터 실행은 보장
+     */
+    @Test
+    fun doSwitchMap() {
+        val numbers = arrayOf(1,3,5)
+
+        Observable.interval(1, TimeUnit.SECONDS)
+                .take(numbers.size.toLong())
+                .map { numbers[it.toInt()] }
+                .switchMap { number -> Observable.interval(6, TimeUnit.SECONDS).take(2).map { number } }
+                .subscribe { println(it) }
+
+        Thread.sleep(30000)
+    }
+
 
     /**
      * Concat 형태 Single 데이터를 묶어서 처리
