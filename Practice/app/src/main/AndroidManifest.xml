@@ -109,16 +109,23 @@
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
-		<activity android:name=".issue24.ObservableDataBindingActivity">
-			<intent-filter>
-				<action android:name="android.intent.action.VIEW"/>
-			</intent-filter>
-		</activity>
-		<activity android:name=".issue24.LiveEventTutorialActivity">
-			<intent-filter>
-				<action android:name="android.intent.action.VIEW"/>
-			</intent-filter>
-		</activity>
+        <activity android:name=".issue24.ObservableDataBindingActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".issue24.LiveEventTutorialActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".issue28.LongTextEllipsizeTestActivity"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
