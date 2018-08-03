@@ -86,5 +86,27 @@ class ConvertExecutionUnitTest {
         Thread.sleep(10000)
     }
 
+    /**
+     * Scan 은 reduce 와 기능이 비슷하지만, 중간 과정의 데이터를 Stream 으로 넘겨주는 형태
+     */
+    @Test
+    fun doScan() {
+        Observable.fromArray(1,2,3,4,5)
+                .scan(0 ) {
+                    n1, n2
+                    ->
+                    n1 + n2
+                }
+                .subscribe { println("누적계 테스트 : $it") }
+    }
 
+    /**
+     * 2개 이상의 Observable 을 결합할 때 사용, 한쪽의 Observable 이 끝나지 않는다면 처리될 때까지 발행을 기다림
+     *
+     * -> folk & join library 와 비슷한 감이 있음.
+     */
+    @Test
+    fun doZip() {
+        // todo Zip 해야함.
+    }
 }
