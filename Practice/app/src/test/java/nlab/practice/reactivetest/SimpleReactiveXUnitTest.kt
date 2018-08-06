@@ -19,7 +19,6 @@ class SimpleReactiveXUnitTest {
 
     /**
      * Kotlin 에서는 람다 사용을 위해, 인터페이스를 지정할 필요가 없음 (IConsumer, IExConsumer 등)
-     * -> 꼭 그런건 아님....... 인터페이스 명시해야하는 구조도 존재.
      *
      * 이 의미는 람다 내부의 Checked 예외에서 이득을 볼 수 있음
      * ex. 기존의 reactiveX 쪽 함수형 인터페이스들은 모든 메소드에 Checked 예외를 throw 하도록 함 -> 일반적인 람다 사용 시 예외 처리해야함

@@ -1,10 +1,9 @@
 package nlab.practice.reactivetest
 
 import io.reactivex.Observable
-import io.reactivex.ObservableSource
-import io.reactivex.Observer
 import io.reactivex.Single
-import io.reactivex.functions.BiFunction
+import io.reactivex.rxkotlin.Observables
+import io.reactivex.rxkotlin.zipWith
 import io.reactivex.schedulers.Schedulers
 import org.junit.Test
 import java.util.concurrent.TimeUnit
@@ -145,13 +144,13 @@ class ConvertExecutionUnitTest {
                     emitter.onComplete()
                 }
 
-        val zipObservable : Observable<String> =
-                Observable.zip(
-                        stringObservable.subscribeOn(Schedulers.io()),
-                        numberObservable.subscribeOn(Schedulers.io()),
-                        BiFunction { t1, t2 -> "합쳐진 결과 : $t1 $t2" }
-                )
-        zipObservable
+        Observables.zip(
+                stringObservable.subscribeOn(Schedulers.io()),
+                numberObservable.subscribeOn(Schedulers.io())){
+                    t1, t2
+                    ->
+                    "합쳐진 결과 : $t1 $t2"
+                }
                 .observeOn(Schedulers.trampoline())
                 .subscribe { println(it) }
 
@@ -163,14 +162,15 @@ class ConvertExecutionUnitTest {
      */
     @Test
     fun doCombineLatest() {
-        val combineSource : Observable<String> =
-                Observable.combineLatest(
-                        Observable.fromArray(1,2,3,4,5).zipWith(Observable.interval(1, TimeUnit.SECONDS), BiFunction {number, _ -> number}),
-                        Observable.fromArray("A", "B","C", "D").zipWith(Observable.interval(2, TimeUnit.SECONDS), BiFunction {str, _ -> str}),
-                        BiFunction { t1, t2 ->  "합쳐진 결과 : $t1 $t2"}
-                )
+        Observables.combineLatest(
+                Observable.fromArray(1,2,3,4,5).zipWith(Observable.interval(1, TimeUnit.SECONDS)) {number, _ -> number},
+                Observable.fromArray("A", "B","C", "D").zipWith(Observable.interval(2, TimeUnit.SECONDS)) {str, _ -> str}) {
+                    t1, t2
+                    ->
+                    "합쳐진 결과 : $t1 $t2"
+                }
+                .subscribe { println(it) }
 
-        combineSource.subscribe { println(it) }
         Thread.sleep(20000)
     }
 
@@ -179,13 +179,13 @@ class ConvertExecutionUnitTest {
      */
     @Test
     fun doMerge() {
-        val mergeSource : Observable<String> =
-                Observable.merge(
-                        Observable.fromArray(1,2,3,4,5).zipWith(Observable.interval(1, TimeUnit.SECONDS), BiFunction {number, _ -> number.toString()}),
-                        Observable.fromArray("A", "B","C", "D").zipWith(Observable.interval(2, TimeUnit.SECONDS), BiFunction {str, _ -> str})
+        Observable.merge(
+                        Observable.fromArray(1,2,3,4,5).zipWith(Observable.interval(1, TimeUnit.SECONDS)) {number, _ -> number.toString()},
+                        Observable.fromArray("A", "B","C", "D").zipWith(Observable.interval(2, TimeUnit.SECONDS)) {str, _ -> str}
                 )
+                .observeOn(Schedulers.trampoline())
+                .subscribe{ println(it) }
 
-        mergeSource.observeOn(Schedulers.trampoline()).subscribe{ println(it) }
         Thread.sleep(20000)
     }
 
@@ -194,13 +194,13 @@ class ConvertExecutionUnitTest {
      */
     @Test
     fun doConcat() {
-        val mergeSource : Observable<String> =
-                Observable.concat (
-                        Observable.fromArray(1,2,3,4,5).zipWith(Observable.interval(1, TimeUnit.SECONDS), BiFunction {number, _ -> number.toString()}),
-                        Observable.fromArray("A", "B","C", "D").zipWith(Observable.interval(2, TimeUnit.SECONDS), BiFunction {str, _ -> str})
+        Observable.concat (
+                        Observable.fromArray(1,2,3,4,5).zipWith(Observable.interval(1, TimeUnit.SECONDS)) {number, _ -> number.toString()},
+                        Observable.fromArray("A", "B","C", "D").zipWith(Observable.interval(2, TimeUnit.SECONDS)) {str, _ -> str}
                 )
+                .observeOn(Schedulers.trampoline())
+                .subscribe{ println(it) }
 
-        mergeSource.observeOn(Schedulers.trampoline()).subscribe{ println(it) }
         Thread.sleep(20000)
     }
 
@@ -209,13 +209,15 @@ class ConvertExecutionUnitTest {
      */
     @Test
     fun doConcatCreate() {
-        val mergeSource2 : Observable<String> =
-                Observable.concat (Observable.create {
-                    it.onNext(Observable.fromArray(1,2,3,4,5).zipWith(Observable.interval(1, TimeUnit.SECONDS), BiFunction {number, _ -> number.toString()}))
-                    it.onNext(Observable.fromArray("A", "B","C", "D").zipWith(Observable.interval(2, TimeUnit.SECONDS), BiFunction {str, _ -> str}))
-                })
+        val observable : Observable<String> = Observable.concat (Observable.create {
+            it.onNext(Observable.fromArray(1,2,3,4,5).zipWith(Observable.interval(1, TimeUnit.SECONDS)) {number, _ -> number.toString()})
+            it.onNext(Observable.fromArray("A", "B","C", "D").zipWith(Observable.interval(2, TimeUnit.SECONDS)) {str, _ -> str})
 
-        mergeSource2.observeOn(Schedulers.trampoline()).subscribe { println(it) }
+            it.onComplete()
+        })
+
+        observable.observeOn(Schedulers.trampoline()).subscribe{ println(it) }
+
         Thread.sleep(20000)
     }
 }
