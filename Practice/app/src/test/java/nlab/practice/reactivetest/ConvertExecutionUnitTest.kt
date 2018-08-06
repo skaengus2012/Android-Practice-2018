@@ -1,7 +1,10 @@
 package nlab.practice.reactivetest
 
 import io.reactivex.Observable
+import io.reactivex.ObservableSource
+import io.reactivex.Observer
 import io.reactivex.Single
+import io.reactivex.functions.BiFunction
 import io.reactivex.schedulers.Schedulers
 import org.junit.Test
 import java.util.concurrent.TimeUnit
@@ -74,11 +77,20 @@ class ConvertExecutionUnitTest {
      */
     @Test
     fun doSingleOnConcatWith() {
+        val concatObservable : Single<Int> =
+                Single.fromCallable {
+                    Thread.sleep(3000)
+                    5
+                }
+                .subscribeOn(Schedulers.io())
+                .observeOn(Schedulers.trampoline())
+
+
         Single.fromCallable {
-                    Thread.sleep(5000)
+                    Thread.sleep(2000)
                     1
                 }
-                .concatWith { Single.just(5).subscribe(it) }
+                .concatWith { concatObservable.subscribe(it) }
                 .subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.trampoline())
                 .subscribe { println(it) }
@@ -107,6 +119,103 @@ class ConvertExecutionUnitTest {
      */
     @Test
     fun doZip() {
-        // todo Zip 해야함.
+        val stringObservable : Observable<String> =
+                Observable.create {
+                    emitter
+                    ->
+                    arrayOf("A", "B", "C", "D").forEach {
+                        Thread.sleep(1000)
+                        println("문자 발행 $it")
+                        emitter.onNext(it)
+                    }
+
+                    emitter.onComplete()
+                }
+
+        val numberObservable : Observable<Int> =
+                Observable.create {
+                    emitter
+                    ->
+                    arrayOf(1, 2, 3, 4, 5).forEach {
+                        Thread.sleep(1500)
+                        println("숫자 발행 $it")
+                        emitter.onNext(it)
+                    }
+
+                    emitter.onComplete()
+                }
+
+        val zipObservable : Observable<String> =
+                Observable.zip(
+                        stringObservable.subscribeOn(Schedulers.io()),
+                        numberObservable.subscribeOn(Schedulers.io()),
+                        BiFunction { t1, t2 -> "합쳐진 결과 : $t1 $t2" }
+                )
+        zipObservable
+                .observeOn(Schedulers.trampoline())
+                .subscribe { println(it) }
+
+        Thread.sleep(20000)
+    }
+
+    /**
+     * combineLatest 두 개 이상의 Observable 을 바탕으로 각각의 값이 변경될 때, 마지막 데이터를 바탕으로 묶어주는 함수.
+     */
+    @Test
+    fun doCombineLatest() {
+        val combineSource : Observable<String> =
+                Observable.combineLatest(
+                        Observable.fromArray(1,2,3,4,5).zipWith(Observable.interval(1, TimeUnit.SECONDS), BiFunction {number, _ -> number}),
+                        Observable.fromArray("A", "B","C", "D").zipWith(Observable.interval(2, TimeUnit.SECONDS), BiFunction {str, _ -> str}),
+                        BiFunction { t1, t2 ->  "합쳐진 결과 : $t1 $t2"}
+                )
+
+        combineSource.subscribe { println(it) }
+        Thread.sleep(20000)
+    }
+
+    /**
+     * 가장 단순한 결합 함수로, 아무것도 관여하지 않고 먼저 입력되는 데이터를 그대로 발행
+     */
+    @Test
+    fun doMerge() {
+        val mergeSource : Observable<String> =
+                Observable.merge(
+                        Observable.fromArray(1,2,3,4,5).zipWith(Observable.interval(1, TimeUnit.SECONDS), BiFunction {number, _ -> number.toString()}),
+                        Observable.fromArray("A", "B","C", "D").zipWith(Observable.interval(2, TimeUnit.SECONDS), BiFunction {str, _ -> str})
+                )
+
+        mergeSource.observeOn(Schedulers.trampoline()).subscribe{ println(it) }
+        Thread.sleep(20000)
+    }
+
+    /**
+     * 첫번째 Observable 이 끝나야, 두번째 Observable 을 수행
+     */
+    @Test
+    fun doConcat() {
+        val mergeSource : Observable<String> =
+                Observable.concat (
+                        Observable.fromArray(1,2,3,4,5).zipWith(Observable.interval(1, TimeUnit.SECONDS), BiFunction {number, _ -> number.toString()}),
+                        Observable.fromArray("A", "B","C", "D").zipWith(Observable.interval(2, TimeUnit.SECONDS), BiFunction {str, _ -> str})
+                )
+
+        mergeSource.observeOn(Schedulers.trampoline()).subscribe{ println(it) }
+        Thread.sleep(20000)
+    }
+
+    /**
+     * Concat 다른 Observable 생성 방식
+     */
+    @Test
+    fun doConcatCreate() {
+        val mergeSource2 : Observable<String> =
+                Observable.concat (Observable.create {
+                    it.onNext(Observable.fromArray(1,2,3,4,5).zipWith(Observable.interval(1, TimeUnit.SECONDS), BiFunction {number, _ -> number.toString()}))
+                    it.onNext(Observable.fromArray("A", "B","C", "D").zipWith(Observable.interval(2, TimeUnit.SECONDS), BiFunction {str, _ -> str}))
+                })
+
+        mergeSource2.observeOn(Schedulers.trampoline()).subscribe { println(it) }
+        Thread.sleep(20000)
     }
 }
