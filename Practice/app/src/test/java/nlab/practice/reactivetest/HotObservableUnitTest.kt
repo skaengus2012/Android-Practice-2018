@@ -64,7 +64,7 @@ class HotObservableUnitTest {
      * 구독시점부터의 데이터가 전달
      */
     @Test
-    fun doConnectableObservable() {
+    fun doConnectedObservable() {
         // interval 자체는 다른 스레드에서 실행하는 것으로 보임
         val intervalObservable =
                 Observable.interval(1, TimeUnit.SECONDS).take(10)
