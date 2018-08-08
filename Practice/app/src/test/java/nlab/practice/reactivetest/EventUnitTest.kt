@@ -26,9 +26,7 @@ class EventUnitTest {
     fun initPreSetObservable() {
         _preSetObservable =
                 Observable.fromArray(1,2,3,4,5)
-                    .zipWith(
-                            Observable.interval(500, TimeUnit.MILLISECONDS)
-                    ) {
+                    .zipWith(Observable.interval(500, TimeUnit.MILLISECONDS)) {
                         number, _
                         ->
                         number
@@ -58,6 +56,36 @@ class EventUnitTest {
 
         Thread.sleep(1000)
         compositeDisposable.clear()
+    }
+
+    /**
+     * doOnEach -> onNext, onComplete, onError 한번에 처리.
+     *
+     * doOnLifeCycle -> doSubscribe, doOnDispose 를 동시에 사용
+     */
+    @Test
+    fun doEventOtherFunction() {
+        Observable.fromArray(1,2,3,4,5)
+                .zipWith(Observable.interval(500, TimeUnit.MILLISECONDS)) {
+                    number, _
+                    ->
+                    number
+                }
+                .doOnEach {
+                    if (it.isOnNext) println("doOnNext : ${it.value}")
+                    if (it.isOnComplete) println("doOnComplete")
+                    if (it.isOnError) println("doOnError")
+                }
+                .doOnLifecycle(
+                        // subscribe function
+                        { println("doOnSubscribe -> isDisposed ${it.isDisposed}") },
+
+                        // dispose function
+                        { println("doOnDispose") }
+                )
+                .subscribe()
+
+        Thread.sleep(5000)
     }
 
     /**
