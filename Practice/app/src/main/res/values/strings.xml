@@ -126,4 +126,8 @@
     <string name="label_long_text_ellipsize_fixed_label">Fixed Label Space</string>
     <string name="hint_long_text_ellipsize_fixed_label">Please input long size name text</string>
 
+    <!-- Event Bus 관련 화면 정의 -->
+    <string name="title_event_bus_text">Event Bus Tutorial 화면</string>
+    <string name="label_simple_produce">Simple Produce</string>
+
 </resources>

@@ -18,6 +18,7 @@ import nlab.practice.issue22.UserActivity
 import nlab.practice.issue24.LiveEventTutorialActivity
 import nlab.practice.issue24.ObservableDataBindingActivity
 import nlab.practice.issue28.LongTextEllipsizeTestActivity
+import nlab.practice.issue29.EventBusTutorialActivity
 import kotlin.reflect.KClass
 
 /**
@@ -30,7 +31,7 @@ object AppBarConfigManager {
     /**
      * activity 명에 대한 라벨 그룹.
      */
-    private val titleGroup : Map<KClass<out Activity>, String> =
+    private val titleGroup : LinkedHashMap<KClass<out Activity>, String> =
             linkedMapOf(
                     DevTutorialActivity::class to convertString(R.string.title_dev_tutorial),
                     DataConserveActivity::class to convertString(R.string.title_data_conserve),
@@ -47,7 +48,8 @@ object AppBarConfigManager {
                     UserActivity::class to convertString(R.string.title_aac_tutorial),
                     ObservableDataBindingActivity::class to convertString(R.string.title_observable_data_binding_tutorial),
                     LiveEventTutorialActivity::class to convertString(R.string.title_action_live_event_tutorial),
-                    LongTextEllipsizeTestActivity::class to convertString(R.string.title_long_text_ellipsize_test)
+                    LongTextEllipsizeTestActivity::class to convertString(R.string.title_long_text_ellipsize_test),
+                    EventBusTutorialActivity::class to convertString(R.string.title_event_bus_text)
             )
 
     /**
