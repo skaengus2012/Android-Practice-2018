@@ -16,6 +16,8 @@ import nlab.practice.util.resource.showToast
  * Event Bus 튜토리얼 화면 정의
  *
  * @see { https://github.com/skaengus2012/Android-Practice-2018/issues/29 }
+ * -> 조금 불편한 듯 (Publisher & Subscribe 패턴을 사용하지만, 어노테이션 기반이라 자유롭지 않음.
+ * -> 또한 이미 등록된 타입에 대해서는 에러를 내보내고 있음.
  *
  * @author Doohyun
  */
