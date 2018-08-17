@@ -21,7 +21,6 @@ class NxBusUnitTest {
 
         NxBus.post("Post Data 1")
         NxBus.post("Post Data 2")
-
     }
 
 }
