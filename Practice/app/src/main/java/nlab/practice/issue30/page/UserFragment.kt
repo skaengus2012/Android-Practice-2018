@@ -1,18 +1,17 @@
 package nlab.practice.issue30.page
 
 
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+import kotlinx.android.synthetic.main.fragment_user.view.*
 import nlab.practice.R
-import nlab.practice.common.model.User
 
-
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import nlab.practice.databinding.FragmentUserBinding
+import nlab.practice.issue30.NavigationController
 
 /**
  * User 의 데이터를 표시하는 프래그먼트 정의
@@ -21,16 +20,27 @@ private const val ARG_PARAM2 = "param2"
  */
 class UserFragment : Fragment() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user, container, false)
+    private lateinit var _viewModel : UserViewModel
+
+    private val _navigationController : NavigationController by lazy {
+        NavigationController(R.id.layoutFragment, childFragmentManager)
     }
 
+    override fun onCreateView(
+            inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-    interface UserSupplier {
-        fun getUser() : User
+        val binding = FragmentUserBinding.inflate(inflater, container, false)
+        _viewModel = ViewModelProviders.of(this).get(UserViewModel::class.java)
 
-        fun goToUser()
+        binding.viewModel = _viewModel
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        view.btnUserEnd.setOnClickListener { _navigationController.goToUserEnd() }
+
+        _viewModel.initUser()
     }
 }

@@ -9,21 +9,16 @@ import android.view.ViewGroup
 
 import nlab.practice.R
 
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
 /**
- * Duck 데이터를 표시하는 페이지 정의
+ * Note 화면 정의
  *
  * @author Doohyun
  */
-class DuckFragment : Fragment() {
+class NoteFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_duck, container, false)
+        return inflater.inflate(R.layout.fragment_note, container, false)
     }
-
-
 }

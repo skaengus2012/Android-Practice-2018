@@ -10,8 +10,10 @@ import android.arch.persistence.room.PrimaryKey
  */
 @Entity
 data class User(
-        @PrimaryKey
-        val userId : String,
+        @PrimaryKey val userId : String,
         var name : String,
         var age : Int,
-        var genderFlag : String)
+        var genderFlag : String) {
+
+    fun getAgeToString() : String = age.toString()
+}
