@@ -9,20 +9,17 @@ import android.view.ViewGroup
 
 import nlab.practice.R
 
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
 /**
- * 네비게이션 화면을 담당하는 프래그먼트
+ * User End 페이지 프래그먼트
  *
  * @author Doohyun
  */
-class MainFragment : Fragment() {
+class UserEndFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main, container, false)
+        return inflater.inflate(R.layout.fragment_user_end, container, false)
     }
 
 
