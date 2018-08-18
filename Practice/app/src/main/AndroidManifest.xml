@@ -131,6 +131,7 @@
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
+        <activity android:name=".issue30.NavigationActivity"></activity>
     </application>
 
 </manifest>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto">
+  <item
+    android:id="@+id/menu_user"
+    android:enabled="true"
+    android:icon="@drawable/ic_face_black_24dp"
+    android:title="@string/menu_top_user_page"
+    app:showAsAction="ifRoom"/>
+
+  <item
+    android:id="@+id/menu_duck"
+    android:enabled="true"
+    android:icon="@drawable/ic_book_black_24dp"
+    android:title="@string/menu_top_duck_page"
+    app:showAsAction="ifRoom"/>
+
+  <item
+    android:id="@+id/menu_etc"
+    android:enabled="true"
+    android:icon="@drawable/ic_cloud_circle_black_24dp"
+    android:title="@string/menu_top_etc_page"
+    app:showAsAction="ifRoom"/>
+</menu>
