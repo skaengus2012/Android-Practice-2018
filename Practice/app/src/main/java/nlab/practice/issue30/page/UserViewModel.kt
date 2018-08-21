@@ -6,10 +6,10 @@ import android.databinding.ObservableField
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import nlab.practice.common.api.mock.MockUserWebService
 import nlab.practice.common.model.User
-import nlab.practice.util.resource.add
 import java.util.*
 
 class UserViewModel(application: Application) : AndroidViewModel(application) {
@@ -38,6 +38,6 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe { user -> this.user.set(user) }
-                .add(_disposable)
+                .addTo(_disposable)
     }
 }

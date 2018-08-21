@@ -75,12 +75,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
-        android:text="@{viewModel.user.ageToString}"
+        android:text="@{viewModel.user.toAgeLabel}"
         android:textColor="@android:color/black"
         android:textSize="14sp"
         app:layout_constraintLeft_toRightOf="@+id/tvLabelAge"
         app:layout_constraintTop_toBottomOf="@+id/tvLabelName"
-        tools:text="29"/>
+        tools:text="29세"/>
 
       <TextView
         android:id="@+id/tvLabelGender"
@@ -98,12 +98,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
-        android:text="@{viewModel.user.genderFlag}"
+        android:text="@{viewModel.user.toGenderLabel}"
         android:textColor="@android:color/black"
         android:textSize="14sp"
         app:layout_constraintLeft_toRightOf="@+id/tvLabelGender"
         app:layout_constraintTop_toBottomOf="@+id/tvLabelAge"
-        tools:text="29"/>
+        tools:text="성별"/>
 
       <Button
         android:id="@+id/btnUserEnd"

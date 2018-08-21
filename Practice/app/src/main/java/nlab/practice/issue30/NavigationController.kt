@@ -91,7 +91,7 @@ class NavigationController(
     /**
      * User 화면으로 이동
      */
-    fun goToUser() = replaceFragment{UserFragment()}
+    fun goToUser() = replaceFragment{ UserFragment() }
 
     /**
      * User End 화면으로 이동
