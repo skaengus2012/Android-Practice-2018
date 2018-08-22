@@ -1,6 +1,8 @@
 package nlab.practice.util.resource
 
+import android.content.Context
 import android.support.annotation.ColorRes
+import android.support.annotation.DimenRes
 import android.support.annotation.StringRes
 import android.support.v4.content.ContextCompat
 import android.widget.Toast
@@ -25,6 +27,23 @@ fun convertString(@StringRes strRes : Int) : String = PracticeApplication.getCon
  * @return
  */
 fun convertColor(@ColorRes colorRes: Int) : Int = ContextCompat.getColor(PracticeApplication.getContext(), (colorRes))
+
+/**
+ * [dimenRes] 를 받아 Pixel 값을 출력
+ *
+ * @param dimenRes
+ * @return
+ */
+fun getDimenPixelSize(@DimenRes dimenRes: Int) : Int = getDimenPixelSize(PracticeApplication.getContext(), dimenRes)
+
+/**
+ * [dimenRes] 를 받아 Pixel 값을 출력
+ *
+ * @param context
+ * @param dimenRes
+ * @return
+ */
+fun getDimenPixelSize(context: Context, @DimenRes dimenRes: Int) : Int = context.resources.getDimensionPixelSize(dimenRes)
 
 /**
  * 토스트를 표시.
