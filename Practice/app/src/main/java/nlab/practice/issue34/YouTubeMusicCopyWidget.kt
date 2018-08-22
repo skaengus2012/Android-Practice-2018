@@ -48,7 +48,7 @@ class YouTubeMusicCopyWidget : AppWidgetProvider() {
             ->
             // 레이아웃 변경에 있어서 기준이 되는 사이즈
             // 위젯의 옵션이 1칸 이상이면 레이아웃 타입을 변경한다
-            val standardLayoutTypeChangedSize = getDimenPixelSize(context, R.dimen.widget_min_size_one)
+            val standardLayoutTypeChangedSize = getDimenPixelSize(context, R.dimen.widget_height_size)
 
             // 변경된 옵션 사이즈
             @LayoutRes val remoteViewLayout : Int =

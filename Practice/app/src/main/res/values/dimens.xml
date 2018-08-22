@@ -2,10 +2,7 @@
 <resources>
 
     <!-- 위젯 최소 사이즈 정의 https://developer.android.com/guide/practices/ui_guidelines/widget_design -->
-    <dimen name="widget_min_size_one">40dp</dimen>
-    <dimen name="widget_min_size_two">110dp</dimen>
-    <dimen name="widget_min_size_three">180dp</dimen>
-    <dimen name="widget_min_size_four">250dp</dimen>
+    <dimen name="widget_height_size">72.5dp</dimen>
 
 
 
