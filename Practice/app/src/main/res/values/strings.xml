@@ -129,5 +129,7 @@
     <!-- Event Bus 관련 화면 정의 -->
     <string name="title_event_bus_text">Event Bus Tutorial 화면</string>
     <string name="label_simple_produce">Simple Produce</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
 
 </resources>
