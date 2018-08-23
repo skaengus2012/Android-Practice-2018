@@ -3,7 +3,7 @@
   android:initialKeyguardLayout="@layout/you_tube_music_copy_widget"
   android:initialLayout="@layout/you_tube_music_copy_widget"
   android:minHeight="40dp"
-  android:minWidth="220dp"
+  android:minWidth="230dp"
   android:previewImage="@drawable/example_appwidget_preview"
   android:resizeMode="horizontal|vertical"
   android:updatePeriodMillis="86400000"

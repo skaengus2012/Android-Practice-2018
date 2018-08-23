@@ -10,6 +10,8 @@ import android.widget.RemoteViews
 import nlab.practice.R
 import nlab.practice.util.resource.getDimenPixelSize
 
+private const val LAYOUT_CHANGED_THREADS_HOLD = 125
+
 /**
  * YouTube Music Copy Widget 정의
  *
@@ -46,14 +48,13 @@ class YouTubeMusicCopyWidget : AppWidgetProvider() {
         context?.let {
             context
             ->
-            // 레이아웃 변경에 있어서 기준이 되는 사이즈
-            // 위젯의 옵션이 1칸 이상이면 레이아웃 타입을 변경한다
-            val standardLayoutTypeChangedSize = getDimenPixelSize(context, R.dimen.widget_height_size)
+            val dimen = getDimenPixelSize(R.dimen.size_one)
+
 
             // 변경된 옵션 사이즈
             @LayoutRes val remoteViewLayout : Int =
                     newOptions?.getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_HEIGHT)
-                        ?.takeIf { it < standardLayoutTypeChangedSize }
+                        ?.takeIf { it < LAYOUT_CHANGED_THREADS_HOLD }
                         ?.let { R.layout.you_tube_music_copy_widget }
                         ?: R.layout.you_tube_music_copy_widget_big
 
