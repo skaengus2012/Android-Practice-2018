@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- 위젯 최소 사이즈 정의 https://developer.android.com/guide/practices/ui_guidelines/widget_design -->
     <dimen name="widget_height_size">75dp</dimen>
-    <dimen name="size_one">1dp</dimen>
 
 </resources>

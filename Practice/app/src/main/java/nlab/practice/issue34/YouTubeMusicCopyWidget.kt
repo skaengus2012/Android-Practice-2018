@@ -8,12 +8,17 @@ import android.support.annotation.LayoutRes
 import android.widget.RemoteViews
 
 import nlab.practice.R
-import nlab.practice.util.resource.getDimenPixelSize
 
+// 기준 사이즈 하드코딩...
+// 사이즈를 정확히 맞출 수가 없음 (해상도 마다 다른 값이 들어오며, 해당 기준은 실험적으로 구글뮤직의 위젯으로 정의)
 private const val LAYOUT_CHANGED_THREADS_HOLD = 125
 
 /**
  * YouTube Music Copy Widget 정의
+ *
+ * 참고 사이트
+ *
+ * @see { https://developer.android.com/guide/practices/ui_guidelines/widget_design }
  *
  * @author Doohyun
  */
@@ -48,9 +53,6 @@ class YouTubeMusicCopyWidget : AppWidgetProvider() {
         context?.let {
             context
             ->
-            val dimen = getDimenPixelSize(R.dimen.size_one)
-
-
             // 변경된 옵션 사이즈
             @LayoutRes val remoteViewLayout : Int =
                     newOptions?.getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_HEIGHT)
