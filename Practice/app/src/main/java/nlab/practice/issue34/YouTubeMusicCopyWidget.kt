@@ -14,6 +14,43 @@ import nlab.practice.R
 private const val LAYOUT_CHANGED_THREADS_HOLD = 125
 
 /**
+ * [appWidgetManager] 에 적용된 옵션으로 레이아웃을 지정한다.
+ *
+ * @param context
+ * @param appWidgetManager
+ * @param appWidgetId
+ */
+fun initRemoteView(context: Context?, appWidgetManager: AppWidgetManager?, appWidgetId: Int) =
+        appWidgetManager
+                ?.getAppWidgetOptions(appWidgetId)
+                ?.let { initRemoteView(context, appWidgetManager, appWidgetId, it) }
+
+/**
+ * [options] 의 높이 값에 따라 분기된 레이아웃으로 remoteView 적용한다.
+ *
+ * @param context
+ * @param appWidgetManager
+ * @param appWidgetId
+ * @param options
+ */
+private fun initRemoteView(
+        context: Context?,
+        appWidgetManager: AppWidgetManager?,
+        appWidgetId: Int,
+        options: Bundle?) = context?.let { context
+    ->
+    // 옵션의 최소 높이로 지정된 임계점을 기준으로 레이아웃을 나눈다.
+    @LayoutRes val remoteViewLayout: Int =
+            options?.getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_HEIGHT)
+                    ?.takeIf { it < LAYOUT_CHANGED_THREADS_HOLD }
+                    ?.let { R.layout.you_tube_music_copy_widget }
+                    ?: R.layout.you_tube_music_copy_widget_big
+
+
+    appWidgetManager?.updateAppWidget(appWidgetId, RemoteViews(context.packageName, remoteViewLayout))
+}
+
+/**
  * YouTube Music Copy Widget 정의
  *
  * 참고 사이트
@@ -24,12 +61,9 @@ private const val LAYOUT_CHANGED_THREADS_HOLD = 125
  */
 class YouTubeMusicCopyWidget : AppWidgetProvider() {
 
-    override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
-        // There may be multiple widgets active, so update all of them
-        for (appWidgetId in appWidgetIds) {
-            updateAppWidget(context, appWidgetManager, appWidgetId)
-        }
-    }
+    override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) =
+            appWidgetIds.forEach { initRemoteView(context, appWidgetManager, it) }
+
 
     override fun onEnabled(context: Context) {
         // Enter relevant functionality for when the first widget is created
@@ -50,35 +84,8 @@ class YouTubeMusicCopyWidget : AppWidgetProvider() {
     override fun onAppWidgetOptionsChanged(context: Context?, appWidgetManager: AppWidgetManager?, appWidgetId: Int, newOptions: Bundle?) {
         super.onAppWidgetOptionsChanged(context, appWidgetManager, appWidgetId, newOptions)
 
-        context?.let {
-            context
-            ->
-            // 변경된 옵션 사이즈
-            @LayoutRes val remoteViewLayout : Int =
-                    newOptions?.getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_HEIGHT)
-                        ?.takeIf { it < LAYOUT_CHANGED_THREADS_HOLD }
-                        ?.let { R.layout.you_tube_music_copy_widget }
-                        ?: R.layout.you_tube_music_copy_widget_big
-
-
-            appWidgetManager?.updateAppWidget(appWidgetId, RemoteViews(context.packageName, remoteViewLayout))
-        }
-    }
-
-    companion object {
-
-        internal fun updateAppWidget(context: Context, appWidgetManager: AppWidgetManager,
-                                     appWidgetId: Int) {
-
-            /**
-            val widgetText = context.getString(R.string.appwidget_text)
-            // Construct the RemoteViews object
-            val views = RemoteViews(context.packageName, R.layout.you_tube_music_copy_widget)
-            views.setTextViewText(R.id.appwidget_text, widgetText)
-
-            // Instruct the widget manager to update the widget
-            appWidgetManager.updateAppWidget(appWidgetId, views)*/
-        }
+        // 리모트 뷰 지정
+        initRemoteView(context, appWidgetManager, appWidgetId, newOptions)
     }
 }
 
