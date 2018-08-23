@@ -113,7 +113,7 @@
     <string name="hint_aac_gender">성별</string>
     <string name="label_aac_male">남자</string>
     <string name="label_aac_female">여자</string>
-    <string name="format_aac_age" formatted="false">%d살</string>
+    <string formatted="false" name="format_aac_age">%d살</string>
     <string name="label_aac_update_profile">유저정보 업데이트</string>
     <string name="label_aac_update_refresh">유저정보 리프레쉬</string>
 
@@ -131,5 +131,11 @@
     <string name="label_simple_produce">Simple Produce</string>
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
+
+    <!-- Widget 관련 정의 -->
+    <string name="title_widget_sync">위젯 동기화 테스트 화면</string>
+    <string name="label_music_name">N\'s Lab Music</string>
+    <string name="label_play_song">재생 중인 노래</string>
+    <string name="label_next_play">다음 곡 이동</string>
 
 </resources>
