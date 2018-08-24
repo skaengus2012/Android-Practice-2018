@@ -1,124 +1,129 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@android:color/transparent">
+
+  <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/transparent">
+    android:layout_height="@dimen/widget_height_size"
+    android:layout_gravity="center"
+    android:background="#e8e8e8"
+    android:orientation="horizontal">
+
+    <ImageView
+      android:id="@+id/ivAlbum"
+      android:layout_width="@dimen/widget_height_size"
+      android:layout_height="@dimen/widget_height_size"
+      android:scaleType="fitXY"
+      android:src="@drawable/ic_music_note_black_24dp"/>
 
     <LinearLayout
+      android:layout_width="0dp"
+      android:layout_height="match_parent"
+      android:layout_weight="1"
+      android:background="@android:color/white"
+      android:gravity="center|bottom"
+      android:orientation="vertical">
+
+      <TextView
+        android:id="@+id/tvSongTitle"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/widget_height_size"
-        android:layout_gravity="center"
-        android:background="#e8e8e8"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:layout_marginLeft="10dp"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textSize="16sp"
+        tools:text="Song Title"/>
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
         android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/ivAlbum"
-            android:layout_width="@dimen/widget_height_size"
-            android:layout_height="@dimen/widget_height_size"
+        <FrameLayout
+          android:id="@+id/btnLike"
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          android:clickable="true">
+
+          <ImageView
+            android:id="@+id/ivLike"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
             android:scaleType="fitXY"
-            android:src="@drawable/ic_music_note_black_24dp" />
+            android:src="@drawable/ic_thumb_up_gray_24dp"/>
+        </FrameLayout>
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@android:color/white"
-            android:gravity="center|bottom"
-            android:orientation="vertical">
+        <FrameLayout
+          android:id="@+id/btnPrev"
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          android:clickable="true">
 
-            <TextView
-                android:id="@+id/tvSongTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="2dp"
-                android:layout_marginLeft="10dp"
-                android:ellipsize="end"
-                android:singleLine="true"
-                android:textSize="16sp"
-                tools:text="Song Title" />
+          <ImageView
+            android:id="@+id/ivPrev"
+            android:layout_width="25dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_chevron_left_gray_24dp"/>
+        </FrameLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="38dp"
-                android:orientation="horizontal">
+        <FrameLayout
+          android:id="@+id/btnPlay"
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          android:clickable="true">
 
-                <FrameLayout
-                    android:id="@+id/btnLike"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:clickable="true">
+          <ImageView
+            android:id="@+id/ivPlay"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_play_arrow_gray_24dp"/>
+        </FrameLayout>
 
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/ic_thumb_up_gray_24dp" />
-                </FrameLayout>
+        <FrameLayout
+          android:id="@+id/btnNext"
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          android:clickable="true">
 
-                <FrameLayout
-                    android:id="@+id/btnPrev"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:clickable="true">
+          <ImageView
+            android:id="@+id/ivNext"
+            android:layout_width="25dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_chevron_right_gray_24dp"/>
+        </FrameLayout>
 
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="28dp"
-                        android:layout_gravity="center"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/ic_chevron_left_gray_24dp" />
-                </FrameLayout>
+        <FrameLayout
+          android:id="@+id/unLike"
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          android:clickable="true">
 
-                <FrameLayout
-                    android:id="@+id/btnPlay"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:clickable="true">
+          <ImageView
+            android:id="@+id/ivUnLike"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_thumb_down_gray_24dp"/>
+        </FrameLayout>
 
-                    <ImageView
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:layout_gravity="center"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/ic_play_arrow_gray_24dp" />
-                </FrameLayout>
-
-                <FrameLayout
-                    android:id="@+id/btnNext"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:clickable="true">
-
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="28dp"
-                        android:layout_gravity="center"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/ic_chevron_right_gray_24dp" />
-                </FrameLayout>
-
-                <FrameLayout
-                    android:id="@+id/unLike"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:clickable="true">
-
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/ic_thumb_down_gray_24dp" />
-                </FrameLayout>
-
-            </LinearLayout>
-        </LinearLayout>
+      </LinearLayout>
     </LinearLayout>
+  </LinearLayout>
 
 </FrameLayout>

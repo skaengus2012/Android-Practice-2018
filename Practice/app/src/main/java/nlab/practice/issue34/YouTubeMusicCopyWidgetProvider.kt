@@ -7,8 +7,12 @@ import android.content.Context
 import android.os.Bundle
 import android.support.annotation.LayoutRes
 import android.widget.RemoteViews
+import com.bumptech.glide.Glide
+import com.bumptech.glide.RequestBuilder
+import com.bumptech.glide.request.target.AppWidgetTarget
 
 import nlab.practice.R
+import nlab.practice.util.resource.convertString
 
 // 기준 사이즈 하드코딩...
 // 사이즈를 정확히 맞출 수가 없음 (해상도 마다 다른 값이 들어오며, 해당 기준은 실험적으로 구글뮤직의 위젯으로 정의)
@@ -19,12 +23,12 @@ private const val LAYOUT_CHANGED_THREADS_HOLD = 125
  *
  * @param context
  */
-fun initRemoteView(context: Context?) {
-    val componentName = ComponentName(context, YouTubeMusicCopyWidgetProvider::javaClass.name)
+fun releaseWidget(context: Context?) {
+    val componentName = ComponentName(context, YouTubeMusicCopyWidgetProvider::class.java.name)
 
     val appWidgetManager = AppWidgetManager.getInstance(context)
 
-    appWidgetManager.getAppWidgetIds(componentName).forEach { initRemoteView(context, appWidgetManager, it) }
+    appWidgetManager.getAppWidgetIds(componentName).forEach { releaseWidget(context, appWidgetManager, it) }
 }
 
 /**
@@ -34,10 +38,10 @@ fun initRemoteView(context: Context?) {
  * @param appWidgetManager
  * @param appWidgetId
  */
-fun initRemoteView(context: Context?, appWidgetManager: AppWidgetManager?, appWidgetId: Int) =
+fun releaseWidget(context: Context?, appWidgetManager: AppWidgetManager?, appWidgetId: Int) =
         appWidgetManager
                 ?.getAppWidgetOptions(appWidgetId)
-                ?.let { initRemoteView(context, appWidgetManager, appWidgetId, it) }
+                ?.let { releaseWidget(context, appWidgetManager, appWidgetId, it) }
 
 /**
  * [options] 의 높이 값에 따라 분기된 레이아웃으로 remoteView 적용한다.
@@ -47,7 +51,7 @@ fun initRemoteView(context: Context?, appWidgetManager: AppWidgetManager?, appWi
  * @param appWidgetId
  * @param options
  */
-private fun initRemoteView(
+private fun releaseWidget(
         context: Context?,
         appWidgetManager: AppWidgetManager?,
         appWidgetId: Int,
@@ -60,8 +64,56 @@ private fun initRemoteView(
                     ?.let { R.layout.you_tube_music_copy_widget }
                     ?: R.layout.you_tube_music_copy_widget_big
 
+    // 리모트뷰 생산
+    val remoteView = createRemoteView(context, remoteViewLayout, appWidgetId)
 
-    appWidgetManager?.updateAppWidget(appWidgetId, RemoteViews(context.packageName, remoteViewLayout))
+    // 위젯 데이터 업데이트
+    appWidgetManager?.updateAppWidget(appWidgetId, remoteView)
+}
+
+/**
+ * RemoteView 생산
+ *
+ * @param context
+ * @param layoutRes
+ * @param appWidgetId
+ * @return
+ */
+private fun createRemoteView(context: Context, @LayoutRes layoutRes: Int, appWidgetId: Int): RemoteViews {
+    val view = RemoteViews(context.packageName, layoutRes)
+
+    // 현재 듣는 음악이 존재할 경우 RemoteView 에 데이터 세팅
+    TrackManager.lastListenedTrack
+            ?.let { track
+                ->
+                // 타이틀 세팅
+                String.format(
+                        "%s - %s",
+                        track.title ?: convertString(R.string.label_error_song_title),
+                        track.artist ?: convertString(R.string.label_error_artist)
+                ).run { view.setTextViewText(R.id.tvSongTitle, this) }
+
+
+                Glide.with(context)
+                        .asBitmap()
+                        .load(track.albumImg)
+                        .into( AppWidgetTarget(context, R.id.ivAlbum, view, appWidgetId))
+
+                view.setImageViewResource(R.id.ivLike, R.drawable.ic_thumb_up_black_24dp)
+                view.setImageViewResource(R.id.ivPrev, R.drawable.ic_chevron_left_black_24dp)
+                view.setImageViewResource(R.id.ivPlay, R.drawable.ic_play_arrow_black_24dp)
+                view.setImageViewResource(R.id.ivNext, R.drawable.ic_chevron_right_black_24dp)
+                view.setImageViewResource(R.id.ivUnLike, R.drawable.ic_thumb_down_black_24dp)
+            }
+            ?: run {
+                view.setImageViewResource(R.id.ivLike, R.drawable.ic_thumb_up_gray_24dp)
+                view.setImageViewResource(R.id.ivPrev, R.drawable.ic_chevron_left_gray_24dp)
+                view.setImageViewResource(R.id.ivPlay, R.drawable.ic_play_arrow_gray_24dp)
+                view.setImageViewResource(R.id.ivNext, R.drawable.ic_chevron_right_gray_24dp)
+                view.setImageViewResource(R.id.ivUnLike, R.drawable.ic_thumb_down_gray_24dp)
+            }
+
+    return view
 }
 
 /**
@@ -76,12 +128,12 @@ private fun initRemoteView(
 class YouTubeMusicCopyWidgetProvider : AppWidgetProvider() {
 
     override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) =
-            appWidgetIds.forEach { initRemoteView(context, appWidgetManager, it) }
+            appWidgetIds.forEach { releaseWidget(context, appWidgetManager, it) }
 
 
-    override fun onEnabled(context: Context) = initRemoteView(context)
+    override fun onEnabled(context: Context) = releaseWidget(context)
 
-    override fun onRestored(context: Context?, oldWidgetIds: IntArray?, newWidgetIds: IntArray?) = initRemoteView(context)
+    override fun onRestored(context: Context?, oldWidgetIds: IntArray?, newWidgetIds: IntArray?) = releaseWidget(context)
 
     /**
      * 위젯의 옵션이 변경될 때 아래 메소드에서 레이아웃을 변경할 수 있음
@@ -95,7 +147,7 @@ class YouTubeMusicCopyWidgetProvider : AppWidgetProvider() {
         super.onAppWidgetOptionsChanged(context, appWidgetManager, appWidgetId, newOptions)
 
         // 리모트 뷰 지정
-        initRemoteView(context, appWidgetManager, appWidgetId, newOptions)
+        releaseWidget(context, appWidgetManager, appWidgetId, newOptions)
     }
 }
 
