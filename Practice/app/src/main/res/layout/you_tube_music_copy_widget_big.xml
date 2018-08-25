@@ -14,10 +14,10 @@
 
     <ImageView
       android:id="@+id/ivAlbum"
-      android:scaleType="centerCrop"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:src="@drawable/ic_music_note_black_24dp"/>
+      android:scaleType="centerCrop"
+      tools:src="@drawable/ic_music_note_black_24dp"/>
 
     <TextView
       android:id="@+id/tvSongTitle"
@@ -28,7 +28,7 @@
       android:background="#99000000"
       android:textColor="@android:color/white"
       android:textSize="18dp"
-      tools:text="Song Title"/>
+      tools:text="@string/label_music_name"/>
 
   </FrameLayout>
 
@@ -46,11 +46,12 @@
       android:clickable="true">
 
       <ImageView
+        android:id="@+id/ivLike"
         android:layout_width="27dp"
         android:layout_height="27dp"
         android:layout_gravity="center"
         android:scaleType="fitXY"
-        android:src="@drawable/ic_thumb_up_gray_24dp"/>
+        tools:src="@drawable/ic_thumb_up_gray_24dp"/>
     </FrameLayout>
 
     <FrameLayout
@@ -61,11 +62,12 @@
       android:clickable="true">
 
       <ImageView
+        android:id="@+id/ivPrev"
         android:layout_width="32dp"
         android:layout_height="35dp"
         android:layout_gravity="center"
         android:scaleType="fitXY"
-        android:src="@drawable/ic_chevron_left_gray_24dp"/>
+        tools:src="@drawable/ic_chevron_left_gray_24dp"/>
     </FrameLayout>
 
     <FrameLayout
@@ -76,11 +78,12 @@
       android:clickable="true">
 
       <ImageView
+        android:id="@+id/ivPlay"
         android:layout_width="42dp"
         android:layout_height="42dp"
         android:layout_gravity="center"
         android:scaleType="fitXY"
-        android:src="@drawable/ic_play_arrow_gray_24dp"/>
+        tools:src="@drawable/ic_play_arrow_gray_24dp"/>
     </FrameLayout>
 
     <FrameLayout
@@ -91,11 +94,12 @@
       android:clickable="true">
 
       <ImageView
+        android:id="@+id/ivNext"
         android:layout_width="32dp"
         android:layout_height="35dp"
         android:layout_gravity="center"
         android:scaleType="fitXY"
-        android:src="@drawable/ic_chevron_right_gray_24dp"/>
+        tools:src="@drawable/ic_chevron_right_gray_24dp"/>
     </FrameLayout>
 
     <FrameLayout
@@ -106,11 +110,12 @@
       android:clickable="true">
 
       <ImageView
+        android:id="@+id/ivUnLike"
         android:layout_width="27dp"
         android:layout_height="27dp"
         android:layout_gravity="center"
         android:scaleType="fitXY"
-        android:src="@drawable/ic_thumb_down_gray_24dp"/>
+        tools:src="@drawable/ic_thumb_down_gray_24dp"/>
     </FrameLayout>
 
   </LinearLayout>

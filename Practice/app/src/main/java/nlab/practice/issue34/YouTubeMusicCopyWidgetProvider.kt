@@ -12,6 +12,7 @@ import com.bumptech.glide.RequestBuilder
 import com.bumptech.glide.request.target.AppWidgetTarget
 
 import nlab.practice.R
+import nlab.practice.util.GlideApp
 import nlab.practice.util.resource.convertString
 
 // 기준 사이즈 하드코딩...
@@ -93,12 +94,14 @@ private fun createRemoteView(context: Context, @LayoutRes layoutRes: Int, appWid
                         track.artist ?: convertString(R.string.label_error_artist)
                 ).run { view.setTextViewText(R.id.tvSongTitle, this) }
 
-
-                Glide.with(context)
+                // 이미지 세팅
+                GlideApp.with(context)
                         .asBitmap()
                         .load(track.albumImg)
-                        .into( AppWidgetTarget(context, R.id.ivAlbum, view, appWidgetId))
+                        .placeholder(R.drawable.ic_music_note_black_24dp)
+                        .into(AppWidgetTarget(context, R.id.ivAlbum, view, appWidgetId))
 
+                // 버튼 색 활성화
                 view.setImageViewResource(R.id.ivLike, R.drawable.ic_thumb_up_black_24dp)
                 view.setImageViewResource(R.id.ivPrev, R.drawable.ic_chevron_left_black_24dp)
                 view.setImageViewResource(R.id.ivPlay, R.drawable.ic_play_arrow_black_24dp)
@@ -106,6 +109,13 @@ private fun createRemoteView(context: Context, @LayoutRes layoutRes: Int, appWid
                 view.setImageViewResource(R.id.ivUnLike, R.drawable.ic_thumb_down_black_24dp)
             }
             ?: run {
+                // 타이틀 세팅
+                view.setTextViewText(R.id.tvSongTitle, convertString(R.string.label_music_name))
+
+                // 이미지 세팅
+                view.setImageViewResource(R.id.ivAlbum, R.drawable.ic_music_note_black_24dp)
+
+                // 버튼 색 활성화
                 view.setImageViewResource(R.id.ivLike, R.drawable.ic_thumb_up_gray_24dp)
                 view.setImageViewResource(R.id.ivPrev, R.drawable.ic_chevron_left_gray_24dp)
                 view.setImageViewResource(R.id.ivPlay, R.drawable.ic_play_arrow_gray_24dp)
