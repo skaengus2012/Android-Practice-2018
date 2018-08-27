@@ -1,17 +1,20 @@
 package nlab.practice.issue34
 
+import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.ComponentName
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.support.annotation.LayoutRes
 import android.widget.RemoteViews
-import com.bumptech.glide.Glide
-import com.bumptech.glide.RequestBuilder
 import com.bumptech.glide.request.target.AppWidgetTarget
 
 import nlab.practice.R
+import nlab.practice.common.CodeDefinition
+import nlab.practice.common.REQUEST_CODE_GO_TO_PLAYLIST
 import nlab.practice.util.GlideApp
 import nlab.practice.util.resource.convertString
 
@@ -56,7 +59,8 @@ private fun releaseWidget(
         context: Context?,
         appWidgetManager: AppWidgetManager?,
         appWidgetId: Int,
-        options: Bundle?) = context?.let { context
+        options: Bundle?) = context?.let {
+    context
     ->
     // 옵션의 최소 높이로 지정된 임계점을 기준으로 레이아웃을 나눈다.
     @LayoutRes val remoteViewLayout: Int =
@@ -82,6 +86,9 @@ private fun releaseWidget(
  */
 private fun createRemoteView(context: Context, @LayoutRes layoutRes: Int, appWidgetId: Int): RemoteViews {
     val view = RemoteViews(context.packageName, layoutRes)
+
+    // 공통 설정영역 세팅
+    view.setOnClickPendingIntent(R.id.ivAlbum, createLaunchingPendingIntent(context))
 
     // 현재 듣는 음악이 존재할 경우 RemoteView 에 데이터 세팅
     TrackManager.lastListenedTrack
@@ -127,6 +134,23 @@ private fun createRemoteView(context: Context, @LayoutRes layoutRes: Int, appWid
 }
 
 /**
+ * 음악 플레이어 화면으로 펜딩인텐트 제너레이트
+ *
+ * @param context
+ * @return
+ */
+private fun createLaunchingPendingIntent(context : Context) : PendingIntent {
+    val intent = Intent(context, YouTubeMusicCopyWidgetProvider::class.java)
+            .apply { action = CodeDefinition.ACTION_INTO.GO_PLAYLIST }
+
+    return PendingIntent.getBroadcast(
+            context,
+            REQUEST_CODE_GO_TO_PLAYLIST,
+            intent,
+            PendingIntent.FLAG_UPDATE_CURRENT)
+}
+
+/**
  * YouTube Music Copy Widget 정의
  *
  * 참고 사이트
@@ -144,6 +168,29 @@ class YouTubeMusicCopyWidgetProvider : AppWidgetProvider() {
     override fun onEnabled(context: Context) = releaseWidget(context)
 
     override fun onRestored(context: Context?, oldWidgetIds: IntArray?, newWidgetIds: IntArray?) = releaseWidget(context)
+
+    override fun onReceive(context: Context?, intent: Intent?) {
+        super.onReceive(context, intent)
+
+        intent?.action?.let {
+            action
+            ->
+            when(action) {
+                CodeDefinition.ACTION_INTO.GO_PLAYLIST -> {
+                    val newIntent = Intent(
+                            Intent.ACTION_VIEW,
+                            Uri.parse("${CodeDefinition.SCHEME_INFO.SCHEME}://${CodeDefinition.SCHEME_INFO.HOST}?${CodeDefinition.SCHEME_INFO.QUERY_TARGET}=$action"))
+
+                    newIntent.flags = (Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    intent?.let { newIntent.putExtras(it) }
+
+                    context?.startActivity(newIntent)
+                }
+
+                else -> {}
+            }
+        }
+    }
 
     /**
      * 위젯의 옵션이 변경될 때 아래 메소드에서 레이아웃을 변경할 수 있음
