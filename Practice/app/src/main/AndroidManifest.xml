@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
   package="nlab.practice">
 
-  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.INTERNET"/>
 
   <application
     android:allowBackup="true"
@@ -13,28 +13,31 @@
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
+
     <activity android:name=".MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
       <intent-filter>
-        <action android:name="android.intent.action.VIEW" />
+        <action android:name="android.intent.action.VIEW"/>
 
-        <category android:name="android.intent.category.DEFAULT" />
-        <category android:name="android.intent.category.BROWSABLE" />
+        <category android:name="android.intent.category.DEFAULT"/>
+        <category android:name="android.intent.category.BROWSABLE"/>
 
         <data
           android:host="open"
-          android:scheme="practice" />
+          android:scheme="practice"/>
       </intent-filter>
 
     </activity>
+
     <activity android:name=".issue8.DevTutorialActivity">
       <intent-filter>
         <action android:name="android.intent.action.VIEW"/>
       </intent-filter>
     </activity>
+
     <activity android:name=".issue8.DisplayMessageActivity">
       <meta-data
         android:name="android.support.PARENT_ACTIVITY"
@@ -44,31 +47,37 @@
         <action android:name="android.intent.action.VIEW"/>
       </intent-filter>
     </activity>
+
     <activity android:name=".issue9.DataConserveActivity">
       <intent-filter>
         <action android:name="android.intent.action.VIEW"/>
       </intent-filter>
     </activity>
+
     <activity android:name=".issue20.FragmentChangeActivity">
       <intent-filter>
         <action android:name="android.intent.action.VIEW"/>
       </intent-filter>
     </activity>
+
     <activity android:name=".issue10.DocumentCentricActivity">
       <intent-filter>
         <action android:name="android.intent.action.VIEW"/>
       </intent-filter>
     </activity>
+
     <activity android:name=".issue10.NewDocumentActivity">
       <intent-filter>
         <action android:name="android.intent.action.VIEW"/>
       </intent-filter>
     </activity>
+
     <activity android:name=".issue11.CustomViewTutorialActivity">
       <intent-filter>
         <action android:name="android.intent.action.VIEW"/>
       </intent-filter>
     </activity>
+
     <activity
       android:name=".issue12.ConstraintLayoutTutorialActivity"
       android:windowSoftInputMode="stateAlwaysHidden">
@@ -76,22 +85,24 @@
         <action android:name="android.intent.action.VIEW"/>
       </intent-filter>
     </activity>
+
     <activity android:name=".issue13.ConstraintSetTutorialActivity">
       <intent-filter>
         <action android:name="android.intent.action.VIEW"/>
       </intent-filter>
     </activity>
+
     <activity
       android:name=".issue14.AppBarTutorialActivity"
       android:theme="@style/CustomActionBarTheme">
       <meta-data
         android:name="android.support.PARENT_ACTIVITY"
         android:value=".MainActivity"/>
-
       <intent-filter>
         <action android:name="android.intent.action.VIEW"/>
       </intent-filter>
     </activity>
+
     <activity
       android:name=".issue17.CustomToolBarTutorialActivity"
       android:theme="@style/Theme.AppCompat.Light.NoActionBar">
@@ -99,21 +110,25 @@
         <action android:name="android.intent.action.VIEW"/>
       </intent-filter>
     </activity>
+
     <activity android:name=".issue15.ViewStubTutorialActivity">
       <intent-filter>
         <action android:name="android.intent.action.VIEW"/>
       </intent-filter>
     </activity>
+
     <activity android:name=".issue16.ShadowClippingActivity">
       <intent-filter>
         <action android:name="android.intent.action.VIEW"/>
       </intent-filter>
     </activity>
+
     <activity android:name=".issue18.DragAndDropTutorialActivity">
       <intent-filter>
         <action android:name="android.intent.action.VIEW"/>
       </intent-filter>
     </activity>
+
     <activity
       android:name=".issue22.UserActivity"
       android:windowSoftInputMode="adjustResize">
@@ -121,16 +136,19 @@
         <action android:name="android.intent.action.VIEW"/>
       </intent-filter>
     </activity>
+
     <activity android:name=".issue24.ObservableDataBindingActivity">
       <intent-filter>
         <action android:name="android.intent.action.VIEW"/>
       </intent-filter>
     </activity>
+
     <activity android:name=".issue24.LiveEventTutorialActivity">
       <intent-filter>
         <action android:name="android.intent.action.VIEW"/>
       </intent-filter>
     </activity>
+
     <activity
       android:name=".issue28.LongTextEllipsizeTestActivity"
       android:windowSoftInputMode="adjustResize">
@@ -138,16 +156,19 @@
         <action android:name="android.intent.action.VIEW"/>
       </intent-filter>
     </activity>
+
     <activity android:name=".issue29.EventBusTutorialActivity">
       <intent-filter>
         <action android:name="android.intent.action.VIEW"/>
       </intent-filter>
     </activity>
+
     <activity android:name=".issue34.PlayListManageActivity">
       <intent-filter>
         <action android:name="android.intent.action.VIEW"/>
       </intent-filter>
     </activity>
+
     <receiver android:name=".issue34.YouTubeMusicCopyWidgetProvider">
       <intent-filter>
         <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
@@ -157,6 +178,20 @@
         android:name="android.appwidget.provider"
         android:resource="@xml/you_tube_music_copy_widget_info"/>
     </receiver>
+
+    <service
+      android:exported="false"
+      android:name=".issue34.SimplePlayService">
+      <intent-filter>
+        <action android:name="nlab.practice.common.CodeDefinition.ACTION_INTO.playPrev"/>
+        <action android:name="nlab.practice.common.CodeDefinition.ACTION_INTO.playNext"/>
+        <action android:name="nlab.practice.common.CodeDefinition.ACTION_INTO.play"/>
+        <action android:name="nlab.practice.common.CodeDefinition.ACTION_INTO.pause"/>
+
+        <action android:name="android.intent.action.MEDIA_BUTTON" />
+      </intent-filter>
+    </service>
+
 
   </application>
 

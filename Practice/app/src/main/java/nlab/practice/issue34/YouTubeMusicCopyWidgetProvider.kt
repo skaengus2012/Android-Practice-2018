@@ -9,6 +9,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.support.annotation.LayoutRes
+import android.view.View
 import android.widget.RemoteViews
 import com.bumptech.glide.request.target.AppWidgetTarget
 
@@ -17,6 +18,8 @@ import nlab.practice.common.CodeDefinition
 import nlab.practice.common.REQUEST_CODE_GO_TO_PLAYLIST
 import nlab.practice.util.GlideApp
 import nlab.practice.util.resource.convertString
+import com.bumptech.glide.request.RequestOptions
+
 
 // 기준 사이즈 하드코딩...
 // 사이즈를 정확히 맞출 수가 없음 (해상도 마다 다른 값이 들어오며, 해당 기준은 실험적으로 구글뮤직의 위젯으로 정의)
@@ -27,7 +30,7 @@ private const val LAYOUT_CHANGED_THREADS_HOLD = 125
  *
  * @param context
  */
-fun releaseWidget(context: Context?) {
+internal fun releaseWidget(context: Context?) {
     val componentName = ComponentName(context, YouTubeMusicCopyWidgetProvider::class.java.name)
 
     val appWidgetManager = AppWidgetManager.getInstance(context)
@@ -42,7 +45,7 @@ fun releaseWidget(context: Context?) {
  * @param appWidgetManager
  * @param appWidgetId
  */
-fun releaseWidget(context: Context?, appWidgetManager: AppWidgetManager?, appWidgetId: Int) =
+internal fun releaseWidget(context: Context?, appWidgetManager: AppWidgetManager?, appWidgetId: Int) =
         appWidgetManager
                 ?.getAppWidgetOptions(appWidgetId)
                 ?.let { releaseWidget(context, appWidgetManager, appWidgetId, it) }
@@ -88,7 +91,10 @@ private fun createRemoteView(context: Context, @LayoutRes layoutRes: Int, appWid
     val view = RemoteViews(context.packageName, layoutRes)
 
     // 공통 설정영역 세팅
-    view.setOnClickPendingIntent(R.id.ivAlbum, createLaunchingPendingIntent(context))
+    view.setOnClickPendingIntent(
+            R.id.ivAlbum,
+            createLaunchingPendingIntent(context, CodeDefinition.ACTION_INTO.PARAM_GO_PLAYLIST)
+    )
 
     // 현재 듣는 음악이 존재할 경우 RemoteView 에 데이터 세팅
     TrackManager.lastListenedTrack
@@ -101,11 +107,19 @@ private fun createRemoteView(context: Context, @LayoutRes layoutRes: Int, appWid
                         track.artist ?: convertString(R.string.label_error_artist)
                 ).run { view.setTextViewText(R.id.tvSongTitle, this) }
 
+
+                val requestOptions = RequestOptions()
+                    .placeholder(R.drawable.ic_music_note_black_24dp)
+                    .error(R.drawable.ic_music_note_black_24dp)
+
                 // 이미지 세팅
+                view.setImageViewResource(R.id.ivAlbum, R.drawable.ic_music_note_black_24dp)
                 GlideApp.with(context)
                         .asBitmap()
+                        .apply(requestOptions)
                         .load(track.albumImg)
-                        .placeholder(R.drawable.ic_music_note_black_24dp)
+                        .override(500, 500)
+                        .timeout(1000)
                         .into(AppWidgetTarget(context, R.id.ivAlbum, view, appWidgetId))
 
                 // 버튼 색 활성화
@@ -114,6 +128,23 @@ private fun createRemoteView(context: Context, @LayoutRes layoutRes: Int, appWid
                 view.setImageViewResource(R.id.ivPlay, R.drawable.ic_play_arrow_black_24dp)
                 view.setImageViewResource(R.id.ivNext, R.drawable.ic_chevron_right_black_24dp)
                 view.setImageViewResource(R.id.ivUnLike, R.drawable.ic_thumb_down_black_24dp)
+
+                // 플레이 상태에 따른 플레이 버튼 처리
+                if (TrackManager.isPlayed) {
+                    view.setViewVisibility(R.id.btnPlay, View.GONE)
+                    view.setViewVisibility(R.id.btnPause, View.VISIBLE)
+                } else {
+                    view.setViewVisibility(R.id.btnPlay, View.VISIBLE)
+                    view.setViewVisibility(R.id.btnPause, View.GONE)
+                }
+
+                view.setOnClickPendingIntent(R.id.btnPlay, createCommandActionPendingIntent(context, CodeDefinition.ACTION_INTO.ACTION_PLAY))
+                view.setOnClickPendingIntent(R.id.btnPause, createCommandActionPendingIntent(context, CodeDefinition.ACTION_INTO.ACTION_PAUSE))
+                view.setOnClickPendingIntent(R.id.btnLike, createCommandActionPendingIntent(context, CodeDefinition.ACTION_INTO.ACTION_LIKE))
+                view.setOnClickPendingIntent(R.id.btnUnLike, createCommandActionPendingIntent(context, CodeDefinition.ACTION_INTO.ACTION_UNLIKE))
+                view.setOnClickPendingIntent(R.id.btnNext, createCommandActionPendingIntent(context, CodeDefinition.ACTION_INTO.ACTION_PLAY_NEXT))
+                view.setOnClickPendingIntent(R.id.btnPrev, createCommandActionPendingIntent(context, CodeDefinition.ACTION_INTO.ACTION_PLAY_PREVIOUS))
+
             }
             ?: run {
                 // 타이틀 세팅
@@ -128,26 +159,44 @@ private fun createRemoteView(context: Context, @LayoutRes layoutRes: Int, appWid
                 view.setImageViewResource(R.id.ivPlay, R.drawable.ic_play_arrow_gray_24dp)
                 view.setImageViewResource(R.id.ivNext, R.drawable.ic_chevron_right_gray_24dp)
                 view.setImageViewResource(R.id.ivUnLike, R.drawable.ic_thumb_down_gray_24dp)
+
+                view.setViewVisibility(R.id.btnPlay, View.VISIBLE)
+                view.setViewVisibility(R.id.btnPause, View.GONE)
             }
 
     return view
 }
 
 /**
- * 음악 플레이어 화면으로 펜딩인텐트 제너레이트
+ * [actionCode] 에 해당하는 화면으로 이동하는 처리 인텐트 실행
  *
  * @param context
+ * @param actionCode
  * @return
  */
-private fun createLaunchingPendingIntent(context : Context) : PendingIntent {
+private fun createLaunchingPendingIntent(context : Context, actionCode : String) : PendingIntent {
     val intent = Intent(context, YouTubeMusicCopyWidgetProvider::class.java)
-            .apply { action = CodeDefinition.ACTION_INTO.GO_PLAYLIST }
+            .apply { action = actionCode }
 
     return PendingIntent.getBroadcast(
             context,
             REQUEST_CODE_GO_TO_PLAYLIST,
             intent,
             PendingIntent.FLAG_UPDATE_CURRENT)
+}
+
+/**
+ * [actionCode] 를 이용하여 서비스에 액션을 수행한다.
+ *
+ * @param context
+ * @param actionCode
+ * @return
+ */
+private fun createCommandActionPendingIntent(context: Context, actionCode: String) : PendingIntent {
+    val intent = Intent(context, SimplePlayService::class.java)
+            .apply { action = actionCode }
+
+    return PendingIntent.getService(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 }
 
 /**
@@ -176,13 +225,14 @@ class YouTubeMusicCopyWidgetProvider : AppWidgetProvider() {
             action
             ->
             when(action) {
-                CodeDefinition.ACTION_INTO.GO_PLAYLIST -> {
+                CodeDefinition.ACTION_INTO.PARAM_GO_PLAYLIST -> {
                     val newIntent = Intent(
                             Intent.ACTION_VIEW,
-                            Uri.parse("${CodeDefinition.SCHEME_INFO.SCHEME}://${CodeDefinition.SCHEME_INFO.HOST}?${CodeDefinition.SCHEME_INFO.QUERY_TARGET}=$action"))
+                            Uri.parse("${CodeDefinition.SCHEME_INFO.SCHEME}://${CodeDefinition.SCHEME_INFO.HOST}?${CodeDefinition.SCHEME_INFO.QUERY_TARGET}=$action")
+                    )
 
                     newIntent.flags = (Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                    intent?.let { newIntent.putExtras(it) }
+                    newIntent.putExtras(intent)
 
                     context?.startActivity(newIntent)
                 }

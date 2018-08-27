@@ -35,7 +35,13 @@ public final class CodeDefinition {
      * (3) ACTION 정보 정의
      */
     public static final class ACTION_INTO {
-        public static final String GO_PLAYLIST = "goPlayList"; // 플레이리스트로 이동
+        public static final String PARAM_GO_PLAYLIST = "goPlayList";                                                           // 플레이리스트로 이동
+        public static final String ACTION_PLAY_PREVIOUS = "nlab.practice.common.CodeDefinition.ACTION_INTO.playPrev";        // 이전 곡 재생
+        public static final String ACTION_PLAY_NEXT = "nlab.practice.common.CodeDefinition.ACTION_INTO.playNext";              // 다음 곡 재생
+        public static final String ACTION_PLAY = "nlab.practice.common.CodeDefinition.ACTION_INTO.play";                       // 플레이 수행
+        public static final String ACTION_PAUSE = "nlab.practice.common.CodeDefinition.ACTION_INTO.pause";                     // 중지 수행
+        public static final String ACTION_LIKE = "nlab.practice.common.CodeDefinition.ACTION_INTO.like";                       // 좋아요 수행
+        public static final String ACTION_UNLIKE = "nlab.practice.common.CodeDefinition.ACTION_INTO.unlike";                   // 좋아요 취소 수행
     }
 
     /**

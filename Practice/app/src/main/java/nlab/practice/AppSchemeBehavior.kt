@@ -17,7 +17,7 @@ fun doAppSchemeBehavior(activity: Activity, uri : Uri) {
         target
         ->
         when(target) {
-            CodeDefinition.ACTION_INTO.GO_PLAYLIST -> goToPlayList(activity)
+            CodeDefinition.ACTION_INTO.PARAM_GO_PLAYLIST -> goToPlayList(activity)
         }
 
     }

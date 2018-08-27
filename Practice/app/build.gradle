@@ -60,8 +60,13 @@ dependencies {
     implementation 'com.jakewharton.rxrelay2:rxrelay:2.0.0'
 
     // image loader
-    implementation 'com.github.bumptech.glide:glide:4.8.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0'
+    implementation('com.github.bumptech.glide:glide:4.8.0') {
+        exclude group: 'com.android.support'
+    }
+    implementation('com.github.bumptech.glide:okhttp3-integration:4.8.0') {
+        exclude group: 'com.android.support'
+    }
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
     kapt 'com.github.bumptech.glide:compiler:4.8.0'
 
     //android arch component.

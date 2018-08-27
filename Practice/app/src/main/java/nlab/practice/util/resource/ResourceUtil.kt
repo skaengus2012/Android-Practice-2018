@@ -3,6 +3,7 @@ package nlab.practice.util.resource
 import android.content.Context
 import android.support.annotation.ColorRes
 import android.support.annotation.DimenRes
+import android.support.annotation.DrawableRes
 import android.support.annotation.StringRes
 import android.support.v4.content.ContextCompat
 import android.widget.Toast
@@ -29,12 +30,12 @@ fun convertString(@StringRes strRes : Int) : String = PracticeApplication.getCon
 fun convertColor(@ColorRes colorRes: Int) : Int = ContextCompat.getColor(PracticeApplication.getContext(), (colorRes))
 
 /**
- * [dimenRes] 를 받아 Pixel 값을 출력
+ * [drawableRes] 에서 Color 값을 추출
  *
- * @param dimenRes
+ * @param drawableRes
  * @return
  */
-fun getDimenPixelSize(@DimenRes dimenRes: Int) : Int = getDimenPixelSize(PracticeApplication.getContext(), dimenRes)
+fun convertDrawable(@DrawableRes drawableRes: Int) = ContextCompat.getDrawable(PracticeApplication.getContext(), drawableRes)
 
 /**
  * [dimenRes] 를 받아 Pixel 값을 출력

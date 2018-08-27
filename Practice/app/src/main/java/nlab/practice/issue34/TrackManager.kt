@@ -2,6 +2,7 @@ package nlab.practice.issue34
 
 import nlab.practice.PracticeApplication
 import nlab.practice.common.model.Track
+import nlab.practice.common.repository.PlayListMockRepository
 
 /**
  * Track 을 관리하는 매니저 모듈 정의
@@ -12,6 +13,8 @@ import nlab.practice.common.model.Track
  * @since 2018. 08. 23
  */
 object TrackManager {
+
+    var isPlayed = false
 
     var lastListenedTrack: Track? = null
         set(value) {
@@ -29,4 +32,48 @@ object TrackManager {
                 releaseWidget(PracticeApplication.getContext())
             }
         }
+
+    /**
+     * 다음 포지션으로 이동
+     */
+    fun playNext() {
+        val isEmptyPlayList = PlayListMockRepository.playLists.isEmpty()
+        if (!isEmptyPlayList) {
+            val playListSize = PlayListMockRepository.playLists.size
+
+            // 선택된 포지션에서 1 증가 처리, 없다면 0
+            val selectedPosition = PlayListMockRepository.currentPosition
+                        ?.let { (it + 1) % playListSize }
+                        ?:0
+
+            PlayListMockRepository.currentPosition = selectedPosition
+            lastListenedTrack = PlayListMockRepository.playLists[selectedPosition]
+        }
+    }
+
+    /**
+     * 이전 포지션으로 이동
+     */
+    fun playPrev() {
+        val isEmptyPlayList = PlayListMockRepository.playLists.isEmpty()
+        if (!isEmptyPlayList) {
+            val playListSize = PlayListMockRepository.playLists.size
+
+            // 선택된 포지션에서 1 증가 처리, 없다면 0
+            val selectedPosition= PlayListMockRepository.currentPosition
+                            ?.let {
+                                val minusOne = it - 1
+
+                                if (minusOne < 0) {
+                                    (minusOne + playListSize) % playListSize
+                                } else {
+                                    minusOne % playListSize
+                                }
+                            }
+                            ?:0
+
+            PlayListMockRepository.currentPosition = selectedPosition
+            lastListenedTrack = PlayListMockRepository.playLists[selectedPosition]
+        }
+    }
 }

@@ -91,6 +91,23 @@
         </FrameLayout>
 
         <FrameLayout
+          android:id="@+id/btnPause"
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          android:clickable="true"
+          tools:visibility="gone">
+
+          <ImageView
+            android:id="@+id/ivPause"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_stop_black_24dp"/>
+        </FrameLayout>
+
+        <FrameLayout
           android:id="@+id/btnNext"
           android:layout_width="0dp"
           android:layout_height="match_parent"
@@ -107,7 +124,7 @@
         </FrameLayout>
 
         <FrameLayout
-          android:id="@+id/unLike"
+          android:id="@+id/btnUnLike"
           android:layout_width="0dp"
           android:layout_height="match_parent"
           android:layout_weight="1"

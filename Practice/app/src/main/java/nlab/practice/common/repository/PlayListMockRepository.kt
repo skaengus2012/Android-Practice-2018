@@ -34,12 +34,11 @@ object PlayListMockRepository {
 
             Track(
                     id = 4,
-                    albumImg = "http://hiphople.com/files/attach/images/2531590/951/265/010/4e973a5455a6fdaa524739e666258607.jpg",
+                    albumImg = null,
                     title = "Sample 4",
                     artist = "윤호"
             )
     )
 
     var currentPosition : Int? = null
-
 }
