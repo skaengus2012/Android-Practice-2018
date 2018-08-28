@@ -11,6 +11,7 @@ import android.os.Bundle
 import android.support.annotation.LayoutRes
 import android.view.View
 import android.widget.RemoteViews
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.target.AppWidgetTarget
 
 import nlab.practice.R
@@ -112,14 +113,18 @@ private fun createRemoteView(context: Context, @LayoutRes layoutRes: Int, appWid
                     .placeholder(R.drawable.ic_music_note_black_24dp)
                     .error(R.drawable.ic_music_note_black_24dp)
 
-                // 이미지 세팅
+                // FIXME 20180828
+                // 해당 모듈을 사용할 시, 이미지 로드 실패 시, placeHolder 를 세팅해주지 않고 있음...
                 view.setImageViewResource(R.id.ivAlbum, R.drawable.ic_music_note_black_24dp)
+
+                // 이미지 세팅
                 GlideApp.with(context)
                         .asBitmap()
                         .apply(requestOptions)
                         .load(track.albumImg)
                         .override(500, 500)
                         .timeout(1000)
+                        .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                         .into(AppWidgetTarget(context, R.id.ivAlbum, view, appWidgetId))
 
                 // 버튼 색 활성화
