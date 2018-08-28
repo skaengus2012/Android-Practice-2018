@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity(){
      *
      * @param intent
      */
-    fun performAppScheme(intent: Intent?) = intent?.data?.let {
+    private fun performAppScheme(intent: Intent?) = intent?.data?.let {
         doAppSchemeBehavior(this, it)
     }
 
