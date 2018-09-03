@@ -113,7 +113,7 @@
   <string name="hint_aac_gender">성별</string>
   <string name="label_aac_male">남자</string>
   <string name="label_aac_female">여자</string>
-  <string formatted="false" name="format_aac_age">%d살</string>
+  <string formatted="false" name="format_aac_age">%d세</string>
   <string name="label_aac_update_profile">유저정보 업데이트</string>
   <string name="label_aac_update_refresh">유저정보 리프레쉬</string>
 
@@ -159,5 +159,4 @@
 
   <!-- TODO: Remove or change this placeholder text -->
   <string name="hello_blank_fragment">Hello blank fragment</string>
-
 </resources>
