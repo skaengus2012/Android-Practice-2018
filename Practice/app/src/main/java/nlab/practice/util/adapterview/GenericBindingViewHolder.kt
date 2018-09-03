@@ -15,10 +15,12 @@ open class GenericBindingViewHolder(
         private const val NONE_VIEW_VAR_ID = -1
     }
 
-    fun onBindView(item : Any?) {
+    fun onBindView(item : BindAbleItem?) {
         item?.let {
             viewDataBinding.setVariable(variableId, item)
             viewDataBinding.executePendingBindings()
+
+            item.setBindingBehavior(viewDataBinding)
         }
     }
 }

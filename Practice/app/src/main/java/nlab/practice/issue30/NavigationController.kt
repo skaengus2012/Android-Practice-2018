@@ -4,6 +4,9 @@ import android.support.annotation.IdRes
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentTransaction
+import android.support.v4.view.ViewCompat
+import android.util.Log
+import android.view.View
 import nlab.practice.issue30.page.NoteFragment
 import nlab.practice.issue30.page.ShareFragment
 import nlab.practice.issue30.page.UserEndFragment
@@ -33,14 +36,14 @@ class NavigationController(
     /**
      * [supplier] 타입의 Fragment 를 담은 FragmentTransaction 를 출력한다.
      *
+     * @param fragmentTransaction
      * @param supplier
      * @return
      */
-    private inline fun <reified T : Fragment> getCommonFragmentTransaction(supplier : () -> T) : FragmentTransaction {
+    private inline fun <reified T : Fragment> setCommonFragmentTransaction(
+            fragmentTransaction: FragmentTransaction, supplier : () -> T) {
 
         val navigationTag = getNavigationTagName<T>()
-
-        val fragmentTransaction = _fragmentManager.beginTransaction()
 
         // 태그로 프래그먼트 찾고, 해당 프로그래먼트를 표시
         // 입력된 프래그먼트가 존재하지 않을 경우, 파라미터를 트랜잭션에 추가
@@ -59,7 +62,7 @@ class NavigationController(
                 ?.let { fragmentTransaction.hide(it) }
 
         // 최상단 프래그먼트로 담기
-        return fragmentTransaction.setPrimaryNavigationFragment(currentShowFragment)
+        fragmentTransaction.setPrimaryNavigationFragment(currentShowFragment)
     }
 
     /**
@@ -69,11 +72,13 @@ class NavigationController(
      *
      * @param supplier
      */
-    private inline fun <reified T : Fragment> replaceFragment(supplier : () -> T) =
-            getCommonFragmentTransaction(supplier)
-                .setReorderingAllowed(true)
-                .commitNowAllowingStateLoss()
+    private inline fun <reified T : Fragment> replaceFragment(supplier : () -> T) {
+        val fragmentTransaction = _fragmentManager.beginTransaction().apply {
+            setCommonFragmentTransaction(this, supplier)
+        }
 
+        fragmentTransaction.setReorderingAllowed(true).commitAllowingStateLoss()
+    }
 
     /**
      * [T] 에 해당하는 프래그먼트 추가.
@@ -82,11 +87,26 @@ class NavigationController(
      *
      * @param supplier
      */
-    private inline fun <reified T : Fragment> addFragment(supplier : () -> T) =
-            getCommonFragmentTransaction(supplier)
-                    .addToBackStack(null)
-                    .commit()
+    private inline fun <reified T : Fragment> addFragment(supplier : () -> T) {
+        val fragmentTransaction = _fragmentManager.beginTransaction().apply {
+            setCommonFragmentTransaction(this, supplier)
+        }
 
+        fragmentTransaction.addToBackStack(null).commit()
+    }
+
+    private inline fun <reified T : Fragment> addShardFragmentFragment(view : View, transitionName : String, supplier : () -> T) {
+        Log.e("sdadsa", "$transitionName")
+
+        ViewCompat.setTransitionName(view, transitionName)
+
+        val fragmentTransaction = _fragmentManager
+                .beginTransaction()
+                .addSharedElement(view, "testtesttest$transitionName")
+
+        setCommonFragmentTransaction(fragmentTransaction, supplier)
+        fragmentTransaction.addToBackStack(null).commit()
+    }
 
     /**
      * User 화면으로 이동
@@ -96,7 +116,7 @@ class NavigationController(
     /**
      * User End 화면으로 이동
      */
-    fun goToUserEnd() = addFragment {UserEndFragment()}
+    fun goToUserEnd(view : View, userId : String) = addShardFragmentFragment(view, userId) {UserEndFragment()}
 
     /**
      * Note 화면으로 이동

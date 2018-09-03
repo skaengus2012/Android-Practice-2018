@@ -12,18 +12,31 @@ import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import nlab.practice.common.api.mock.MockUserWebService
 import nlab.practice.common.model.User
+import nlab.practice.issue30.NavigationController
+import nlab.practice.util.databinding.LiveEvent
 import java.util.*
 
+/**
+ * 유저의 총 데이터 목록을 조회하는 뷰모델 정의
+ *
+ * @author Doohyun
+ */
 class UserViewModel(application: Application) : AndroidViewModel(application) {
 
     private val _disposable : CompositeDisposable by lazy { CompositeDisposable() }
+    private var _navigationController : NavigationController? = null
 
     val users : ObservableArrayList<UserInfoItem> = ObservableArrayList()
+    val goToUserEndEvent = LiveEvent<UserInfoItem>()
 
     override fun onCleared() {
         super.onCleared()
 
         _disposable.clear()
+    }
+
+    fun setNavigationController(navigationController: NavigationController) {
+        _navigationController = navigationController
     }
 
     /**
@@ -34,7 +47,7 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
             .observeOn(AndroidSchedulers.mainThread())
             .map { users
                 ->
-                users.map { UserInfoItem(it) }
+                users.map { UserInfoItem(it, goToUserEndEvent) }
             }
             .doOnSuccess {
                 users.clear()
