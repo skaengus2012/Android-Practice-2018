@@ -21,6 +21,7 @@ abstract class PracticeDataBase : RoomDatabase() {
                             PracticeApplication.getContext(),
                             PracticeDataBase::class.java,
                             CodeDefinition.DB_INFO.NAME)
+                        .addMigrations(MIGRATION_1_2)
                         .build()
 
         fun getInstance() : PracticeDataBase = instance
