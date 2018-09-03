@@ -2,7 +2,9 @@ package nlab.practice.issue30.page
 
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
+import android.databinding.ObservableArrayList
 import android.databinding.ObservableField
+import android.databinding.ObservableList
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -16,7 +18,7 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
 
     private val _disposable : CompositeDisposable by lazy { CompositeDisposable() }
 
-    val user : ObservableField<User> = ObservableField()
+    val users : ObservableArrayList<UserInfoItem> = ObservableArrayList()
 
     override fun onCleared() {
         super.onCleared()
@@ -27,17 +29,18 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
     /**
      * 유저 정보 조회
      */
-    fun initUser() {
-        Single.fromCallable {
-                    val users = MockUserWebService.getUsers()
+    fun initUser() = Single.fromCallable { MockUserWebService.getUsers() }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .map { users
+                ->
+                users.map { UserInfoItem(it) }
+            }
+            .doOnSuccess {
+                users.clear()
+                users.addAll(it)
+            }
+            .subscribe()
+            .addTo(_disposable)
 
-                    Collections.shuffle(users)
-
-                    users[0]
-                }
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { user -> this.user.set(user) }
-                .addTo(_disposable)
-    }
 }

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+    <import type="nlab.practice.common.model.User"/>
+    <import type="android.view.View"/>
+
+    <variable
+      name="viewModel"
+      type="nlab.practice.issue30.page.UserInfoItem"/>
+  </data>
+
+  <android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp">
+
+    <ImageView
+      android:id="@+id/ivProfile"
+      android:layout_width="60dp"
+      android:layout_height="60dp"
+      android:layout_marginLeft="10dp"
+      android:scaleType="fitCenter"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:setProfile="@{viewModel.user.profile}"
+      tools:src="@drawable/ic_face_black_24dp"/>
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginLeft="10dp"
+      android:text="@{viewModel.user.name}"
+      android:textColor="@android:color/black"
+      android:textSize="14sp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintLeft_toRightOf="@+id/ivProfile"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:text="Name"/>
+
+    <View
+      android:layout_width="match_parent"
+      android:layout_height="0.5dp"
+      android:background="@color/gray"
+      app:layout_constraintBottom_toBottomOf="parent"/>
+
+  </android.support.constraint.ConstraintLayout>
+</layout>

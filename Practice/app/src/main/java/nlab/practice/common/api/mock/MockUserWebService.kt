@@ -34,10 +34,10 @@ object MockUserWebService {
         SystemClock.sleep(1500)
 
         return listOf(
-                User("N", "Doohyun", 29, CodeDefinition.GENDER_FLAG.Male),
-                User("K", "Hyunji", 26, CodeDefinition.GENDER_FLAG.FeMale),
-                User("U", "broduck", 28, CodeDefinition.GENDER_FLAG.Male),
-                User("S", "sjyoon", 34, CodeDefinition.GENDER_FLAG.Male)
+                User("N", "Doohyun", 29, CodeDefinition.GENDER_FLAG.Male, "https://pbs.twimg.com/profile_images/2297754865/bm1u7mg20v8t6wywyqnn_400x400.jpeg"),
+                User("U", "broduck", 28, CodeDefinition.GENDER_FLAG.Male, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgviwaJ9UXrJn7Wl7TeLeogh6V2A7R7sHWSb81k1jXXgd9Z0cdqQ"),
+                User("K", "Hyunji", 26, CodeDefinition.GENDER_FLAG.FeMale, "http://mblogthumb1.phinf.naver.net/20160203_20/papero2_1454475327245xUJXD_JPEG/%BA%ED%B7%A2%C0%A7%B5%B5%BF%EC.jpg?type=w2"),
+                User("S", "sjyoon", 34, CodeDefinition.GENDER_FLAG.Male, "https://i.ytimg.com/vi/HXpgp4eeelE/maxresdefault.jpg")
         )
 
     }

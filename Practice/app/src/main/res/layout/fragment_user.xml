@@ -11,114 +11,14 @@
   <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.constraint.ConstraintLayout
+    <android.support.v7.widget.RecyclerView
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:paddingLeft="10dp"
-      android:paddingRight="10dp"
-      android:background="#ffb700"
-      tools:context=".issue30.page.UserFragment">
-
-      <TextView
-        android:id="@+id/tvTitle"
-        android:textStyle="bold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="@string/label_top_user_page"
-        android:textColor="@android:color/black"
-        android:textSize="20sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-      <TextView
-        android:id="@+id/tvLabelName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="@string/label_top_user_name"
-        android:textColor="@android:color/black"
-        android:textSize="14sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitle"/>
-
-      <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:text="@{viewModel.user.name}"
-        android:textColor="@android:color/black"
-        android:textSize="14sp"
-        app:layout_constraintLeft_toRightOf="@+id/tvLabelName"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
-        tools:text="the name of user"/>
-
-      <TextView
-        android:id="@+id/tvLabelAge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="@string/label_top_user_age"
-        android:textColor="@android:color/black"
-        android:textSize="14sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvLabelName"/>
-
-      <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:text="@{viewModel.user.toAgeLabel}"
-        android:textColor="@android:color/black"
-        android:textSize="14sp"
-        app:layout_constraintLeft_toRightOf="@+id/tvLabelAge"
-        app:layout_constraintTop_toBottomOf="@+id/tvLabelName"
-        tools:text="29세"/>
-
-      <TextView
-        android:id="@+id/tvLabelGender"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="@string/label_top_user_gender"
-        android:textColor="@android:color/black"
-        android:textSize="14sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvLabelAge"/>
-
-      <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:text="@{viewModel.user.toGenderLabel}"
-        android:textColor="@android:color/black"
-        android:textSize="14sp"
-        app:layout_constraintLeft_toRightOf="@+id/tvLabelGender"
-        app:layout_constraintTop_toBottomOf="@+id/tvLabelAge"
-        tools:text="성별"/>
-
-      <Button
-        android:id="@+id/btnUserEnd"
-        android:textStyle="bold"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:background="@color/colorAccent"
-        android:text="@string/label_go_to_user_end"
-        android:textColor="@android:color/white"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-    </android.support.constraint.ConstraintLayout>
+      app:bindAdapterViewItems="@{viewModel.users}"
+      app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
 
     <FrameLayout
       android:id="@+id/layoutFragment"

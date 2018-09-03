@@ -31,7 +31,6 @@ class UserFragment : Fragment() {
 
         val binding = FragmentUserBinding.inflate(inflater, container, false)
         _viewModel = ViewModelProviders.of(this).get(UserViewModel::class.java)
-
         binding.viewModel = _viewModel
 
         return binding.root
@@ -39,7 +38,6 @@ class UserFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.btnUserEnd.setOnClickListener { _navigationController.goToUserEnd() }
 
         _viewModel.initUser()
     }
