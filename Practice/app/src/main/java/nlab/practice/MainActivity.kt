@@ -1,5 +1,6 @@
 package nlab.practice
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -16,5 +17,23 @@ class MainActivity : AppCompatActivity(){
         setContentView(R.layout.activity_main)
 
         lvLabels.adapter = MainItemListAdapter()
+
+        performAppScheme(intent)
     }
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+
+        performAppScheme(intent)
+    }
+
+    /**
+     * [intent] 내부의 스킴을 이용한 행위를 수행한다.
+     *
+     * @param intent
+     */
+    private fun performAppScheme(intent: Intent?) = intent?.data?.let {
+        doAppSchemeBehavior(this, it)
+    }
+
 }
