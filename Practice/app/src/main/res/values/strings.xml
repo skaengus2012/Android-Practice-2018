@@ -143,6 +143,11 @@
   <string name="label_top_user_gender">성별 : </string>
   <string name="label_go_to_user_end">유저 엔드로 이동</string>
 
+  <!-- shared Element 관련 예제 정의 -->
+  <string name="title_shared_element">Shared Element 심플 예제</string>
+  <string name="label_shared_element_current">현재는 current 화면입니다.</string>
+  <string name="label_shared_element_target">현재는 current 화면입니다.</string>
+
   <!-- Widget 관련 정의 -->
   <string name="title_widget_sync">위젯 동기화 테스트 화면</string>
   <string name="label_music_name">N\'s Lab Music</string>
@@ -150,12 +155,12 @@
   <string name="label_next_play">다음 곡 이동</string>
   <string name="label_error_song_title">알 수 없는 트랙</string>
   <string name="label_error_artist">Various artist</string>
-  <string name="msg_play" formatted="false">%s 음악을 재생합니다.</string>
+  <string formatted="false" name="msg_play">%s 음악을 재생합니다.</string>
   <string name="msg_play_next">다음 곡을 재생합니다.</string>
   <string name="msg_play_prev">이전 곡을 재생합니다.</string>
   <string name="msg_play_pause">음악을 중지합니다.</string>
-  <string name="msg_like" formatted="false">%s를 즐겨찾기 하였습니다.</string>
-  <string name="msg_unlike" formatted="false">%s를 즐겨찾기에서 취소하였습니다.</string>
+  <string formatted="false" name="msg_like">%s를 즐겨찾기 하였습니다.</string>
+  <string formatted="false" name="msg_unlike">%s를 즐겨찾기에서 취소하였습니다.</string>
 
   <!-- TODO: Remove or change this placeholder text -->
   <string name="hello_blank_fragment">Hello blank fragment</string>
