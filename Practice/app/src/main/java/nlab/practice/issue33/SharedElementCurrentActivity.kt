@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.activity_shared_element_current.*
 import nlab.practice.R
 import nlab.practice.util.GlideApp
 
-const val IMAGE_URL = "http://mblogthumb1.phinf.naver.net/20160203_20/papero2_1454475327245xUJXD_JPEG/%BA%ED%B7%A2%C0%A7%B5%B5%BF%EC.jpg?type=w2"
+private const val IMAGE_URL = "http://mblogthumb1.phinf.naver.net/20160203_20/papero2_1454475327245xUJXD_JPEG/%BA%ED%B7%A2%C0%A7%B5%B5%BF%EC.jpg?type=w2"
 
 /**
  * SharedTargetElement 를 부를 화면

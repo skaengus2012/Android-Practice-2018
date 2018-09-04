@@ -16,6 +16,8 @@ import nlab.practice.util.GlideApp
  *
  * @author Doohyun
  */
+private const val IMAGE_URL = "http://thumbnail.egloos.net/600x0/http://pds21.egloos.com/pds/201805/15/21/f0041321_5afaeddcd6541.jpg"
+
 class SharedElementTargetActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
