@@ -3,18 +3,14 @@ package nlab.practice.issue30.page
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.databinding.ObservableArrayList
-import android.databinding.ObservableField
-import android.databinding.ObservableList
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import nlab.practice.common.api.mock.MockUserWebService
-import nlab.practice.common.model.User
-import nlab.practice.issue30.NavigationController
+import nlab.practice.util.view.NavigationController
 import nlab.practice.util.databinding.LiveEvent
-import java.util.*
 
 /**
  * 유저의 총 데이터 목록을 조회하는 뷰모델 정의
@@ -26,8 +22,8 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
     private val _disposable : CompositeDisposable by lazy { CompositeDisposable() }
     private var _navigationController : NavigationController? = null
 
-    val users : ObservableArrayList<UserInfoItem> = ObservableArrayList()
-    val goToUserEndEvent = LiveEvent<UserInfoItem>()
+    val users : ObservableArrayList<UserInfoItemViewModel> = ObservableArrayList()
+    val goToUserEndEvent = LiveEvent<UserInfoItemViewModel>()
 
     override fun onCleared() {
         super.onCleared()
@@ -47,7 +43,7 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
             .observeOn(AndroidSchedulers.mainThread())
             .map { users
                 ->
-                users.map { UserInfoItem(it, goToUserEndEvent) }
+                users.map { UserInfoItemViewModel(it, goToUserEndEvent) }
             }
             .doOnSuccess {
                 users.clear()

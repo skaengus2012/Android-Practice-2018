@@ -177,12 +177,19 @@
       </intent-filter>
     </activity>
 
-    <activity android:name=".issue33.SharedElementCurrentActivity">
+    <activity android:name=".issue33.activity.SharedElementCurrentActivity">
       <intent-filter>
         <action android:name="android.intent.action.VIEW"/>
       </intent-filter>
     </activity>
-    <activity android:name=".issue33.SharedElementTargetActivity">
+
+    <activity android:name=".issue33.activity.SharedElementTargetActivity">
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW"/>
+      </intent-filter>
+    </activity>
+
+    <activity android:name=".issue33.fragment.SharedElementFragmentToFragmentActivity">
       <intent-filter>
         <action android:name="android.intent.action.VIEW"/>
       </intent-filter>

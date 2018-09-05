@@ -1,4 +1,4 @@
-package nlab.practice.issue33
+package nlab.practice.issue33.activity
 
 import android.graphics.drawable.Drawable
 import android.support.v7.app.AppCompatActivity

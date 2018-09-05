@@ -6,7 +6,7 @@
   android:id="@+id/layoutCurrent"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
-  tools:context=".issue33.SharedElementCurrentActivity">
+  tools:context=".issue33.activity.SharedElementCurrentActivity">
 
   <ImageView
     android:id="@+id/ivProfile"

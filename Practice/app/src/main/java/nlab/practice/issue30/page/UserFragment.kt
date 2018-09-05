@@ -3,18 +3,18 @@ package nlab.practice.issue30.page
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
-import android.databinding.BindingAdapter
+import android.os.Build
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import kotlinx.android.synthetic.main.fragment_user.view.*
+import nlab.practice.PracticeApplication
 import nlab.practice.R
 
 import nlab.practice.databinding.FragmentUserBinding
-import nlab.practice.issue30.NavigationController
+import nlab.practice.util.view.NavigationController
 
 /**
  * User 의 데이터를 표시하는 프래그먼트 정의
@@ -22,6 +22,10 @@ import nlab.practice.issue30.NavigationController
  * @author Doohyun
  */
 class UserFragment : Fragment() {
+
+    companion object {
+        fun getTag() : String = UserEndFragment::class.java.canonicalName
+    }
 
     private lateinit var _viewModel : UserViewModel
 
@@ -46,8 +50,6 @@ class UserFragment : Fragment() {
         _viewModel.goToUserEndEvent.observe(this, Observer {
             userItem
             ->
-            userItem?.getSharedElementView()?.let { _navigationController.goToUserEnd(it, userItem.user.userId) }
         })
     }
-
 }

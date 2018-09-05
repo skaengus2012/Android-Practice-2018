@@ -8,7 +8,7 @@
 
     <variable
       name="viewModel"
-      type="nlab.practice.issue30.page.UserInfoItem"/>
+      type="nlab.practice.issue30.page.UserInfoItemViewModel"/>
   </data>
 
   <android.support.constraint.ConstraintLayout

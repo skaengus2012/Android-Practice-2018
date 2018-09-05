@@ -1,4 +1,4 @@
-package nlab.practice.util.adapterview
+package nlab.practice.util.databinding.adapterview
 
 import android.databinding.ViewDataBinding
 import android.support.v7.widget.RecyclerView
