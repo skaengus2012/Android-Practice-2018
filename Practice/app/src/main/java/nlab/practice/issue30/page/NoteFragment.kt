@@ -14,8 +14,8 @@ import kotlinx.android.synthetic.main.fragment_note.view.*
 import nlab.practice.R
 import nlab.practice.issue30.NavigationActivity
 import nlab.practice.util.V4Pair
-import nlab.practice.util.view.NavigationController
 import nlab.practice.util.view.SharedElementFragmentSupportable
+import nlab.practice.util.view.getDefaultNavigationTagName
 
 private const val USER_ID = "N"
 
@@ -28,8 +28,6 @@ class NoteFragment : Fragment() {
 
     private var _view : View? = null
 
-    private lateinit var _navigationController : NavigationController
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         if (_view == null) {
             _view = inflater.inflate(R.layout.fragment_note, container, false)
@@ -41,19 +39,28 @@ class NoteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        _navigationController = NavigationController(R.id.layoutFragment, childFragmentManager)
-
         val isNavigationSupport = activity is NavigationActivity
         val isSdkSupportSharedElement = Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP
         if (isNavigationSupport && isSdkSupportSharedElement) {
             // 클릭리스너들의 지원은 오직 NavigationActivity 를 통해 조회되었을 때만 행위 수행.
 
-            view.ivProfile.setOnClickListener { _navigationController.goToUserEnd(USER_ID) }
-        }
-    }
+            view.ivProfile.setOnClickListener {
+                view
+                ->
+                val sharedElementPair =
+                        V4Pair.create(view.ivProfile,  UserEndFragment.createProfileTransitionName(USER_ID))
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    fun initializeTransitionName(view : View) {
-        view.ivProfile.transitionName = UserEndFragment.createProfileTransitionName(USER_ID)
+                val parentNavigationController = (activity as NavigationActivity).navigationController
+
+                parentNavigationController.replaceWithSharedElement(
+                        getDefaultNavigationTagName<NoteFragment>(),
+                        object: SharedElementFragmentSupportable {
+                            override fun getSharedElementPairs(): List<V4Pair<out View, String>> = listOf(sharedElementPair)
+                        }) {
+
+                    UserEndFragment.create(USER_ID)
+                }
+            }
+        }
     }
 }

@@ -73,7 +73,7 @@ class NavigationController(
     /**
      * 현재 Primary Fragment 가 [fragment] 와 다르다면 숨김 처리를 한다.
      */
-    private fun FragmentTransaction.hideFragmentIfPrimaryFragmentNoneEquals(fragment : Fragment) : FragmentTransaction {
+    fun FragmentTransaction.hideFragmentIfPrimaryFragmentNoneEquals(fragment : Fragment) : FragmentTransaction {
         _fragmentManager.primaryNavigationFragment?.takeIf { it != fragment }?.let { hide(it) }
 
         return this
@@ -105,13 +105,17 @@ class NavigationController(
      */
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     inline fun <reified T : Fragment> replaceWithSharedElement(
-            sharedElementSupportable: SharedElementFragmentSupportable,
             tag: String?,
+            sharedElementSupportable: SharedElementFragmentSupportable,
             supplier : () -> T) {
+
+        val fragment = supplier()
 
         _fragmentManager.beginTransaction()
                 .addSharedElements(sharedElementSupportable)
-                .replace(_containerIdRes, supplier(), tag)
+                .replace(_containerIdRes, fragment, tag)
+                .hideFragmentIfPrimaryFragmentNoneEquals(fragment)
+                .setPrimaryNavigationFragment(fragment)
                 .addToBackStack(null)
                 .setReorderingAllowed(true)
                 .commitAllowingStateLoss()
