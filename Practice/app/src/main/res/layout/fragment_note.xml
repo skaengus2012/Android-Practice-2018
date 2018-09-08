@@ -14,8 +14,7 @@
       android:id="@+id/ivProfile"
       android:layout_width="50dp"
       android:layout_height="50dp"
-      android:scaleType="centerCrop"
-      android:src="@drawable/gorilla"/>
+      android:scaleType="centerCrop"/>
 
     <TextView
       android:layout_width="match_parent"

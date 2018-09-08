@@ -30,7 +30,6 @@
           android:layout_width="match_parent"
           android:layout_height="0dp"
           android:scaleType="centerCrop"
-          android:src="@drawable/gorilla"
           app:layout_constraintDimensionRatio="1:1"/>
 
         <LinearLayout

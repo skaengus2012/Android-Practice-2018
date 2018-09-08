@@ -149,7 +149,7 @@
   <string name="label_shared_element_target">Target 화면입니다.</string>
   <string name="title_shared_element_fragment">Shared Element Fragment</string>
   <string name="label_shared_element_fragment_next">다음 페이지</string>
-  <string name="label_shared_element_fragment_description">고릴라에 대한 설명을 해야 합니다.\n해당 예제가 다행히 잘 작동해서 좋습니다.\n감사합니다.</string>
+  <string name="label_shared_element_fragment_description">수지에 대한 설명을 해야 합니다.\n해당 예제가 다행히 잘 작동해서 좋습니다.\n감사합니다.</string>
 
   <string name="simple_transition_name">simple_transition_name</string>
 

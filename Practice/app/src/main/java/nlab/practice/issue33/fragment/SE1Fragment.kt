@@ -11,6 +11,8 @@ import kotlinx.android.synthetic.main.fragment_se1.*
 import kotlinx.android.synthetic.main.fragment_se1.view.*
 
 import nlab.practice.R
+import nlab.practice.util.GlideApp
+
 /**
  * Shared Element 첫번째 페이지
  *
@@ -29,9 +31,13 @@ class SE1Fragment : Fragment() {
                     ?.beginTransaction()
                     ?.replace(R.id.layoutFragment, SE2Fragment(), SE1Fragment::class.java.canonicalName)
                     ?.setReorderingAllowed(true)
-                    ?.addSharedElement(view.ivLauncher, ViewCompat.getTransitionName(view.ivLauncher))
+                    ?.addSharedElement(view.ivPhoto, ViewCompat.getTransitionName(view.ivPhoto))
                     ?.addToBackStack(null)
                     ?.commit()
         }
+
+        GlideApp.with(this)
+                .load(SHARED_ELEMENT_FRAGMENT_IMAGE_URL)
+                .into(view.ivPhoto)
     }
 }

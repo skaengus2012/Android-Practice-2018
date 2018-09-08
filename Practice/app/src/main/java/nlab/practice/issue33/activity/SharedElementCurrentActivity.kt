@@ -10,6 +10,7 @@ import nlab.practice.R
 import nlab.practice.util.GlideApp
 import nlab.practice.util.V4Pair
 
+
 const val SHARED_ELEMENT_ACTIVITY_IMAGE_URL = "https://newsbang.com/resources/2017/03/08/30304216649680536305147929.gif"
 
 /**
