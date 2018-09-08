@@ -14,7 +14,7 @@
     android:layout_centerHorizontal="true"
     android:layout_marginBottom="80dp"
     android:scaleType="fitXY"
-    android:transitionName="@string/simple_fragment_transition"
+    android:transitionName="@string/simple_transition_name"
     tools:ignore="UnusedAttribute"
     android:src="@drawable/gorilla" />
 

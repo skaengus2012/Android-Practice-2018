@@ -4,13 +4,13 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.ActivityOptionsCompat
-import android.view.View
+import android.support.v4.view.ViewCompat
 import kotlinx.android.synthetic.main.activity_shared_element_current.*
 import nlab.practice.R
 import nlab.practice.util.GlideApp
 import nlab.practice.util.V4Pair
 
-private const val IMAGE_URL = "http://mblogthumb1.phinf.naver.net/20160203_20/papero2_1454475327245xUJXD_JPEG/%BA%ED%B7%A2%C0%A7%B5%B5%BF%EC.jpg?type=w2"
+const val SHARED_ELEMENT_ACTIVITY_IMAGE_URL = "https://newsbang.com/resources/2017/03/08/30304216649680536305147929.gif"
 
 /**
  * SharedTargetElement 를 부를 화면
@@ -23,19 +23,18 @@ class SharedElementCurrentActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shared_element_current)
 
-        layoutCurrent.setOnClickListener {
+        btnNextPage.setOnClickListener {
             val intent = Intent(this, SharedElementTargetActivity::class.java)
 
-            val p1 : V4Pair<View, String> = V4Pair.create(ivProfile, "profile")
-            val p2 : V4Pair<View, String> = V4Pair.create(tvText, "text")
-
-            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(SharedElementCurrentActivity@this, p1, p2)
+            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                    SharedElementCurrentActivity@ this,
+                    V4Pair.create(ivProfile, ViewCompat.getTransitionName(ivProfile)))
 
             startActivity(intent, options.toBundle())
         }
 
         GlideApp.with(this)
-                .load(IMAGE_URL)
+                .load(SHARED_ELEMENT_ACTIVITY_IMAGE_URL)
                 .dontAnimate()
                 .into(ivProfile)
     }

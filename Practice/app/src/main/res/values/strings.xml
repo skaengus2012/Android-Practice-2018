@@ -145,13 +145,13 @@
 
   <!-- shared Element 관련 예제 정의 -->
   <string name="title_shared_element">Shared Element Activity</string>
-  <string name="label_shared_element_current">현재는 current 화면입니다.</string>
-  <string name="label_shared_element_target">현재는 current 화면입니다.</string>
+  <string name="label_shared_element_current">Current 화면입니다.</string>
+  <string name="label_shared_element_target">Target 화면입니다.</string>
   <string name="title_shared_element_fragment">Shared Element Fragment</string>
   <string name="label_shared_element_fragment_next">다음 페이지</string>
   <string name="label_shared_element_fragment_description">고릴라에 대한 설명을 해야 합니다.\n해당 예제가 다행히 잘 작동해서 좋습니다.\n감사합니다.</string>
 
-  <string name="simple_fragment_transition">simple_fragment_transition</string>
+  <string name="simple_transition_name">simple_transition_name</string>
 
   <!-- Widget 관련 정의 -->
   <string name="title_widget_sync">위젯 동기화 테스트 화면</string>

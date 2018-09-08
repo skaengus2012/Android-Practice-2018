@@ -13,7 +13,7 @@
     android:layout_height="250dp"
     android:scaleType="centerCrop"
     android:src="@drawable/gorilla"
-    android:transitionName="@string/simple_fragment_transition"
+    android:transitionName="@string/simple_transition_name"
     tools:ignore="UnusedAttribute"/>
 
   <TextView

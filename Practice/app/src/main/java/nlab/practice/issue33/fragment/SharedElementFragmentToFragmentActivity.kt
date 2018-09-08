@@ -3,7 +3,6 @@ package nlab.practice.issue33.fragment
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import nlab.practice.R
-import nlab.practice.issue30.page.NoteFragment
 
 /**
  * 프래그먼트 간 이동에서 Shared Element 를 사용하는 예제 제시
@@ -19,7 +18,7 @@ class SharedElementFragmentToFragmentActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             supportFragmentManager
                     .beginTransaction()
-                    .add(R.id.layoutFragment, NoteFragment())
+                    .add(R.id.layoutFragment, SE1Fragment())
                     .commit()
         }
     }

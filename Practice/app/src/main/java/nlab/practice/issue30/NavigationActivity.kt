@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_navigation.*
 import nlab.practice.R
-import nlab.practice.issue30.page.NoteFragment
 import nlab.practice.util.view.NavigationController
 
 /**
@@ -40,6 +39,6 @@ class NavigationActivity : AppCompatActivity() {
             true
         }
 
-        navigationView.selectedItemId = R.id.menu_note
+        navigationView.selectedItemId = R.id.menu_user
     }
 }
