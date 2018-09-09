@@ -43,9 +43,5 @@ class UserFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         _viewModel.initUser()
-        _viewModel.goToUserEndEvent.observe(this, Observer {
-            userItem
-            ->
-        })
     }
 }

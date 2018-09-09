@@ -20,6 +20,7 @@ import nlab.practice.util.GlideApp
 fun setProfile(view: ImageView, profileUrl: String?) =
         GlideApp.with(PracticeApplication.getContext())
                 .load(profileUrl)
-                .placeholder(R.drawable.ic_face_black_24dp)
-                .centerCrop().override(200, 200)
+                .placeholder(R.drawable.common_img_user_circle)
+                .circleCrop()
+                .override(100, 100)
                 .into(view)

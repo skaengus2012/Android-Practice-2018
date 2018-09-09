@@ -13,7 +13,7 @@ import android.support.v7.widget.RecyclerView
  * @param config
  */
 @BindingAdapter(value = ["bindAdapterViewItems", "bindHeaderViewItem", "bindAdapterViewConfig"], requireAll = false)
-fun <T : BindAbleItem> setItems(recyclerView: RecyclerView, items: List<T>?, headerViewModel: T, config: GenericRecyclerViewConfig?) {
+fun <T : BindAbleItem> setItems(recyclerView: RecyclerView, items: List<T>?, headerViewModel: T?, config: GenericRecyclerViewConfig?) {
     // 설정 처리
     bindAdapterViewConfig(recyclerView, config)
     recyclerView.takeIf { it.adapter == null }?.let { it.adapter = GenericBindingRecyclerAdapter<T>() }

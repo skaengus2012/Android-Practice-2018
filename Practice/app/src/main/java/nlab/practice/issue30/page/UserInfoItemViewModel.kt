@@ -1,8 +1,6 @@
 package nlab.practice.issue30.page
 
-import android.databinding.ViewDataBinding
 import android.view.View
-import kotlinx.android.synthetic.main.item_user_info.view.*
 import nlab.practice.R
 import nlab.practice.common.model.User
 import nlab.practice.util.V4Pair
@@ -16,22 +14,17 @@ import nlab.practice.util.view.SharedElementFragmentSupportable
  * @author Doohyun
  * @since 2018. 09. 03
  */
-class UserInfoItemViewModel(val user: User, private val onclickEvent : LiveEvent<UserInfoItemViewModel>) : BindAbleItem, SharedElementFragmentSupportable {
+class UserInfoItemViewModel(val user: User, private val onclickEvent : LiveEvent<UserInfoItemViewModel>)
+    : BindAbleItem, SharedElementFragmentSupportable {
 
     private var sharedElementView : View? = null
 
     override fun getLayoutRes(): Int = R.layout.item_user_info
 
-    override fun setBindingBehavior(binding: ViewDataBinding) {
-        sharedElementView = binding.root.ivProfile
-    }
-
     override fun getSharedElementPairs(): List<V4Pair<out View, String>> = sharedElementView
             ?.let { V4Pair.create(it, UserEndFragment.createProfileTransitionName(user.userId)) }
             ?.let { listOf(it) }
             ?: emptyList()
-
-    fun getSharedElementView() : View? = sharedElementView
 
     fun onClickBehavior() {
         onclickEvent.value = this

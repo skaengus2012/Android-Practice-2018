@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+  <data>
+    <variable
+      name="viewModel"
+      type="nlab.practice.issue30.page.NavigationPageLabelItemViewModel"/>
+  </data>
+  <android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#a0efefef">
+
+    <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:paddingTop="5dp"
+      android:paddingBottom="5dp"
+      android:paddingStart="10dp"
+      android:paddingLeft="10dp"
+      android:text="@{viewModel.label}"
+      android:textColor="@android:color/black"
+      android:textSize="14sp"
+      tools:text="Label"/>
+
+  </android.support.constraint.ConstraintLayout>
+</layout>

@@ -1,6 +1,5 @@
 package nlab.practice.util.databinding.adapterview
 
-import android.databinding.ViewDataBinding
 import android.support.annotation.LayoutRes
 
 /**
@@ -9,6 +8,4 @@ import android.support.annotation.LayoutRes
  */
 interface BindAbleItem {
     @LayoutRes fun getLayoutRes() : Int
-
-    fun setBindingBehavior(binding: ViewDataBinding){}
 }

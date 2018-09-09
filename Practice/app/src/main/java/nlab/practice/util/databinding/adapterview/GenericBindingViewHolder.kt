@@ -19,8 +19,6 @@ open class GenericBindingViewHolder(
         item?.let {
             viewDataBinding.setVariable(variableId, item)
             viewDataBinding.executePendingBindings()
-
-            item.setBindingBehavior(viewDataBinding)
         }
     }
 }
