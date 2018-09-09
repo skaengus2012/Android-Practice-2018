@@ -16,11 +16,22 @@ import nlab.practice.util.GlideApp
 /**
  * [view] 에 [profileUrl] 에 해당하는 사진 첨부
  */
-@BindingAdapter("setProfile")
-fun setProfile(view: ImageView, profileUrl: String?) =
+@BindingAdapter("bindProfileCircleCrop")
+fun bindProfileCircleCrop(view: ImageView, profileUrl: String?) =
         GlideApp.with(PracticeApplication.getContext())
                 .load(profileUrl)
                 .placeholder(R.drawable.common_img_user_circle)
                 .circleCrop()
                 .override(100, 100)
+                .into(view)
+
+/**
+ * [view] 에 [profileUrl] 에 해당하는 사진 첨부
+ */
+@BindingAdapter("bindProfile")
+fun bindProfile(view: ImageView, profileUrl: String?) =
+        GlideApp.with(PracticeApplication.getContext())
+                .load(profileUrl)
+                .placeholder(R.drawable.common_img_user_circle)
+                .centerCrop()
                 .into(view)

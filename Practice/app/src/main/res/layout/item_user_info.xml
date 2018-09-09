@@ -15,7 +15,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="70dp"
-    android:onClick="@{() -> viewModel.onClickBehavior()}">
+    android:onClick="@{viewModel::onClickEvent}">
 
     <ImageView
       android:id="@+id/ivProfile"
@@ -27,7 +27,7 @@
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:setProfile="@{viewModel.user.profile}"
+      app:bindProfileCircleCrop="@{viewModel.user.profile}"
       tools:src="@drawable/common_img_user_circle"/>
 
     <TextView

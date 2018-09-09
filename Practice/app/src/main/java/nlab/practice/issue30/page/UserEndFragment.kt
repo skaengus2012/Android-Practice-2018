@@ -1,6 +1,7 @@
 package nlab.practice.issue30.page
 
 
+import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -8,13 +9,16 @@ import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.Target
 import kotlinx.android.synthetic.main.fragment_user_end.view.*
-import nlab.practice.PracticeApplication
-import nlab.practice.R
+import nlab.practice.common.model.User
 
 import nlab.practice.databinding.FragmentUserEndBinding
-
-private const val PARAM_USER_ID = "paramUserId"
+import nlab.practice.util.GlideApp
 
 /**
  * User End 페이지 프래그먼트
@@ -33,35 +37,54 @@ class UserEndFragment : Fragment() {
          */
         fun createProfileTransitionName(userId : String) : String = "USER_END_FRAGMENT_$userId"
 
-        fun create(userId : String) : UserEndFragment = UserEndFragment().apply {
-            arguments = Bundle().apply {
-                putString(PARAM_USER_ID, userId)
-            }
+        fun create(user : User) : UserEndFragment = UserEndFragment().apply {
+            _user = user
         }
     }
 
-    private lateinit var _binding : FragmentUserEndBinding
+    private lateinit var _user : User
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             sharedElementEnterTransition = TransitionInflater.from(context).inflateTransition(android.R.transition.move)
+            sharedElementReturnTransition = TransitionInflater.from(context).inflateTransition(android.R.transition.no_transition)
         }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_user_end, container, false)
+        var binding =
+                FragmentUserEndBinding.inflate(LayoutInflater.from(context), container, false)
+
+        _user.run { binding.user = this }
+
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        arguments?.getString(PARAM_USER_ID)?.run {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                view.ivProfile.transitionName = createProfileTransitionName(this)
-            }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            view.ivProfile.transitionName = createProfileTransitionName(_user.userId)
         }
+
+        postponeEnterTransition()
+        GlideApp.with(this)
+                .load(_user.profile)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .listener(object: RequestListener<Drawable> {
+                    override fun onLoadFailed(e: GlideException?, model: Any?, target: Target<Drawable>?, isFirstResource: Boolean): Boolean {
+                        startPostponedEnterTransition()
+                        return false
+                    }
+
+                    override fun onResourceReady(resource: Drawable?, model: Any?, target: Target<Drawable>?, dataSource: DataSource?, isFirstResource: Boolean): Boolean {
+                        startPostponedEnterTransition()
+                        return false
+                    }
+                })
+                .into(view.ivProfile)
     }
 }

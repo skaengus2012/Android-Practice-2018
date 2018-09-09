@@ -3,6 +3,7 @@ package nlab.practice.issue30.page
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.databinding.ObservableArrayList
+import android.view.View
 import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -11,6 +12,7 @@ import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import nlab.practice.R
 import nlab.practice.common.api.mock.MockUserWebService
+import nlab.practice.common.model.User
 import nlab.practice.util.databinding.LiveEvent
 import nlab.practice.util.databinding.adapterview.BindAbleItem
 import nlab.practice.util.resource.convertString
@@ -28,7 +30,7 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
     private val friendLineLabelModel = NavigationPageLabelItemViewModel(convertString(R.string.label_top_user_friends))
 
     val items : ObservableArrayList<BindAbleItem> = ObservableArrayList()
-    val goToUserEndEvent = LiveEvent<UserInfoItemViewModel>()
+    val goToUserEndEvent = LiveEvent<Pair<View, User>>()
 
     override fun onCleared() {
         super.onCleared()
@@ -55,9 +57,7 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
                         .flatMapObservable {
                             users
                             ->
-                            // 아이템 10개 반복 추가
                             Observable.fromIterable(users)
-                                    .repeat(10)
                                     .map { UserInfoItemViewModel(it, goToUserEndEvent) }
                         }
         )

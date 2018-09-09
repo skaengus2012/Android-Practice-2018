@@ -4,8 +4,8 @@
 
   <data>
     <variable
-      name="translateName"
-      type="String"/>
+      name="user"
+      type="nlab.practice.common.model.User"/>
   </data>
 
   <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -30,7 +30,8 @@
           android:layout_width="match_parent"
           android:layout_height="0dp"
           android:scaleType="centerCrop"
-          app:layout_constraintDimensionRatio="1:1"/>
+          app:layout_constraintDimensionRatio="1:1"
+          tools:src="@drawable/common_img_user_circle"/>
 
         <LinearLayout
           android:layout_width="0dp"
@@ -56,6 +57,7 @@
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:layout_marginLeft="10dp"
+              android:text="@{user.name}"
               android:textSize="16sp"
               tools:text="이름 데이터"/>
           </LinearLayout>
@@ -73,6 +75,7 @@
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:layout_marginLeft="10dp"
+              android:text="@{user.toAgeLabel}"
               android:textSize="16sp"
               tools:text="나이 데이터"/>
           </LinearLayout>
@@ -90,6 +93,7 @@
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:layout_marginLeft="10dp"
+              android:text="@{user.toGenderLabel}"
               android:textSize="16sp"
               tools:text="성별 데이터"/>
           </LinearLayout>

@@ -6,6 +6,7 @@ import android.support.annotation.RequiresApi
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentTransaction
+import nlab.practice.common.model.User
 import nlab.practice.issue30.page.NoteFragment
 import nlab.practice.issue30.page.ShareFragment
 import nlab.practice.issue30.page.UserEndFragment
@@ -127,8 +128,8 @@ class NavigationController(
 
     fun goToShare() = replace { ShareFragment() }
 
-    fun goToUserEnd(userId: String) = add("${getDefaultNavigationTagName<UserEndFragment>()}:$userId") {
-        UserEndFragment.create(userId)
+    fun goToUserEnd(user: User) = add("${getDefaultNavigationTagName<UserEndFragment>()}:${user.userId}") {
+        UserEndFragment.create(user)
     }
 }
 

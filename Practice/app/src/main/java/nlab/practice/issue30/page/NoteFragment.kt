@@ -51,15 +51,6 @@ class NoteFragment : Fragment() {
                         V4Pair.create(view.ivProfile,  UserEndFragment.createProfileTransitionName(USER_ID))
 
                 val parentNavigationController = (activity as NavigationActivity).navigationController
-
-                parentNavigationController.replaceWithSharedElement(
-                        getDefaultNavigationTagName<NoteFragment>(),
-                        object: SharedElementFragmentSupportable {
-                            override fun getSharedElementPairs(): List<V4Pair<out View, String>> = listOf(sharedElementPair)
-                        }) {
-
-                    UserEndFragment.create(USER_ID)
-                }
             }
         }
     }
