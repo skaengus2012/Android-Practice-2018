@@ -5,9 +5,9 @@ import android.arch.lifecycle.AndroidViewModel
 import android.databinding.ObservableArrayList
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import nlab.practice.common.repository.UserRepository
-import nlab.practice.util.resource.add
 
 /**
  * 옵저버블 데이터 테스트를 위한 뷰모델 클래스 정의
@@ -39,6 +39,6 @@ class ObservableDataBindingViewModel(application: Application) : AndroidViewMode
                                 this.users.addAll(it)
                             }
                 }
-                .add(_disposable)
+                .addTo(_disposable)
     }
 }

@@ -3,7 +3,7 @@ package nlab.practice.issue24
 import android.databinding.Bindable
 import nlab.practice.R
 import nlab.practice.common.model.User
-import nlab.practice.util.adapterview.ItemViewModel
+import nlab.practice.util.databinding.adapterview.ItemViewModel
 
 /**
  * 유저 뷰모델 정의

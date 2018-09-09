@@ -19,7 +19,11 @@ import nlab.practice.issue24.LiveEventTutorialActivity
 import nlab.practice.issue24.ObservableDataBindingActivity
 import nlab.practice.issue28.LongTextEllipsizeTestActivity
 import nlab.practice.issue29.EventBusTutorialActivity
+import nlab.practice.issue30.NavigationActivity
+import nlab.practice.issue33.activity.SharedElementCurrentActivity
+import nlab.practice.issue33.fragment.SharedElementFragmentToFragmentActivity
 import nlab.practice.issue34.PlayListManageActivity
+
 import kotlin.reflect.KClass
 
 /**
@@ -51,6 +55,9 @@ object AppBarConfigManager {
                     LiveEventTutorialActivity::class to convertString(R.string.title_action_live_event_tutorial),
                     LongTextEllipsizeTestActivity::class to convertString(R.string.title_long_text_ellipsize_test),
                     EventBusTutorialActivity::class to convertString(R.string.title_event_bus_text),
+                    NavigationActivity::class to convertString(R.string.title_single_activity_multiple_fragments_test),
+                    SharedElementCurrentActivity::class to convertString(R.string.title_shared_element),
+                    SharedElementFragmentToFragmentActivity::class to convertString(R.string.title_shared_element_fragment),
                     PlayListManageActivity::class to convertString(R.string.title_widget_sync)
             )
 

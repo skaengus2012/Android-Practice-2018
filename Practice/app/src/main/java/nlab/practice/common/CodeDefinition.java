@@ -19,7 +19,7 @@ public final class CodeDefinition {
      */
     public static final class DB_INFO {
         public static final String NAME ="practice-db";     // DB 이름
-        public static final int VERSION = 1;                // 버전
+        public static final int VERSION = 2;                // 버전
     }
 
     /**

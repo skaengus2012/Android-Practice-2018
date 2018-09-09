@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+  <android.support.constraint.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".issue30.page.NoteFragment">
+
+    <ImageView
+      android:id="@+id/ivProfile"
+      android:layout_width="128dp"
+      android:layout_height="128dp"
+      android:layout_marginBottom="80dp"
+      android:layout_alignParentBottom="true"
+      android:layout_centerHorizontal="true"
+      android:scaleType="centerCrop"
+      android:transitionName="@string/simple_transition_name"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.5"
+      tools:ignore="UnusedAttribute"
+      tools:src="@drawable/common_img_user_circle"/>
+
+    <Button
+      android:id="@+id/btnNext"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/label_shared_element_fragment_next"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.7"/>
+  </android.support.constraint.ConstraintLayout>
+
+  <FrameLayout
+    android:id="@+id/layoutFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>
+</FrameLayout>

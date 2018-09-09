@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+
+  <data>
+    <variable
+      name="viewModel"
+      type="nlab.practice.issue30.page.UserViewModel"/>
+  </data>
+
+  <FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.RecyclerView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      app:bindAdapterViewItems="@{viewModel.items}"
+      app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
+
+    <FrameLayout
+      android:id="@+id/layoutFragment"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"/>
+  </FrameLayout>
+</layout>

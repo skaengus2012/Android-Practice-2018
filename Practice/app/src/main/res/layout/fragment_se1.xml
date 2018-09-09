@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@android:color/white"
+  tools:context=".issue33.fragment.SE1Fragment">
+
+  <ImageView
+    android:id="@+id/ivPhoto"
+    android:layout_width="128dp"
+    android:layout_height="96dp"
+    android:layout_marginBottom="80dp"
+    android:layout_alignParentBottom="true"
+    android:layout_centerHorizontal="true"
+    android:scaleType="centerCrop"
+    android:transitionName="@string/simple_transition_name"
+    tools:ignore="UnusedAttribute"/>
+
+  <Button
+    android:id="@+id/btnNext"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="24dp"
+    android:layout_alignParentBottom="true"
+    android:layout_centerHorizontal="true"
+    android:text="@string/label_shared_element_fragment_next"/>
+
+</RelativeLayout>

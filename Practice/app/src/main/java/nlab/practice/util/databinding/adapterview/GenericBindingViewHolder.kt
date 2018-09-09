@@ -1,4 +1,4 @@
-package nlab.practice.util.adapterview
+package nlab.practice.util.databinding.adapterview
 
 import android.databinding.ViewDataBinding
 import android.support.v7.widget.RecyclerView
@@ -15,7 +15,7 @@ open class GenericBindingViewHolder(
         private const val NONE_VIEW_VAR_ID = -1
     }
 
-    fun onBindView(item : Any?) {
+    fun onBindView(item : BindAbleItem?) {
         item?.let {
             viewDataBinding.setVariable(variableId, item)
             viewDataBinding.executePendingBindings()

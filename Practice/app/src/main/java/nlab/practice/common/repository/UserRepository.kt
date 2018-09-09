@@ -98,7 +98,7 @@ object UserRepository {
                 }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ resultFunction(it) })
+                .subscribe{ resultFunction(it) }
     }
 
     /**
