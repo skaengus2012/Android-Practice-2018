@@ -37,6 +37,8 @@ class UserEndFragment : Fragment() {
          */
         fun createProfileTransitionName(userId : String) : String = "USER_END_FRAGMENT_$userId"
 
+        // TODO 코틀린 클래스가 Parcels 어노테이션을 지원못받음.. 앞으로 VO 는 자바로 만들 것을 고려해봄.
+        // 혹은 다른방법을..
         fun create(user : User) : UserEndFragment = UserEndFragment().apply {
             _user = user
         }
