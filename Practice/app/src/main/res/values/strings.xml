@@ -143,6 +143,7 @@
   <string name="label_top_user_gender">성별 : </string>
   <string name="label_top_user_friends">Friends</string>
   <string name="label_go_to_user_end">유저 엔드로 이동</string>
+  <string name="label_share_page">Navigation 증명을 위한 페이지</string>
 
   <!-- shared Element 관련 예제 정의 -->
   <string name="title_shared_element">Shared Element Activity</string>
@@ -167,7 +168,4 @@
   <string name="msg_play_pause">음악을 중지합니다.</string>
   <string formatted="false" name="msg_like">%s를 즐겨찾기 하였습니다.</string>
   <string formatted="false" name="msg_unlike">%s를 즐겨찾기에서 취소하였습니다.</string>
-
-  <!-- TODO: Remove or change this placeholder text -->
-  <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

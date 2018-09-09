@@ -114,7 +114,7 @@ class NavigationController(
 
         _fragmentManager.beginTransaction()
                 .addSharedElements(sharedElementSupportable)
-                .replace(_containerIdRes, fragment, tag)
+                .add(_containerIdRes, fragment, tag)
                 .hideFragmentIfPrimaryFragmentNoneEquals(fragment)
                 .setPrimaryNavigationFragment(fragment)
                 .addToBackStack(null)

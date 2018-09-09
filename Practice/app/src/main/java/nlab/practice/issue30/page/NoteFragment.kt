@@ -1,23 +1,23 @@
 package nlab.practice.issue30.page
 
 
-import android.annotation.TargetApi
-import android.os.Build
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v4.view.ViewCompat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import io.reactivex.Single
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_note.view.*
 
 import nlab.practice.R
-import nlab.practice.issue30.NavigationActivity
-import nlab.practice.util.V4Pair
-import nlab.practice.util.view.SharedElementFragmentSupportable
-import nlab.practice.util.view.getDefaultNavigationTagName
-
-private const val USER_ID = "N"
+import nlab.practice.common.api.mock.MockUserWebService
+import nlab.practice.common.model.User
+import nlab.practice.util.databinding.bindProfile
+import nlab.practice.util.view.NavigationController
 
 /**
  * Note 화면 정의
@@ -26,32 +26,32 @@ private const val USER_ID = "N"
  */
 class NoteFragment : Fragment() {
 
-    private var _view : View? = null
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        if (_view == null) {
-            _view = inflater.inflate(R.layout.fragment_note, container, false)
-        }
-
-        return _view
+    private val _disposable : CompositeDisposable by lazy {
+        CompositeDisposable()
     }
+
+    private val _navigationController : NavigationController by lazy {
+        NavigationController(R.id.layoutFragment, childFragmentManager)
+    }
+
+    private var user : User? = null
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
+            inflater.inflate(R.layout.fragment_note, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val isNavigationSupport = activity is NavigationActivity
-        val isSdkSupportSharedElement = Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP
-        if (isNavigationSupport && isSdkSupportSharedElement) {
-            // 클릭리스너들의 지원은 오직 NavigationActivity 를 통해 조회되었을 때만 행위 수행.
+        Single.fromCallable {  MockUserWebService.getUser("ID") }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSuccess {
+                    user = it
+                    bindProfile(view.ivProfile, it.profile)
+                }
+                .subscribe()
+                .addTo(_disposable)
 
-            view.ivProfile.setOnClickListener {
-                view
-                ->
-                val sharedElementPair =
-                        V4Pair.create(view.ivProfile,  UserEndFragment.createProfileTransitionName(USER_ID))
-
-                val parentNavigationController = (activity as NavigationActivity).navigationController
-            }
-        }
+        view.btnNext.setOnClickListener { user?.run {  _navigationController.goToUserEnd(this) } }
     }
 }
