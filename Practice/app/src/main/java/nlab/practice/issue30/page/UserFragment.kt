@@ -23,10 +23,6 @@ import nlab.practice.util.view.NavigationController
  */
 class UserFragment : Fragment() {
 
-    companion object {
-        fun getTag() : String = UserEndFragment::class.java.canonicalName
-    }
-
     private lateinit var _viewModel : UserViewModel
 
     private val _navigationController : NavigationController by lazy {
