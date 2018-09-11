@@ -59,7 +59,7 @@ class DragAndDropTutorialActivity : AppCompatActivity() {
      *
      * @return
      */
-    private fun createDragEventListener() : View.OnDragListener = View.OnDragListener({
+    private fun createDragEventListener() : View.OnDragListener = View.OnDragListener {
         v, event ->
 
         when(event.action) {
@@ -86,6 +86,6 @@ class DragAndDropTutorialActivity : AppCompatActivity() {
             else -> false
 
         }
-    })
+    }
 
 }
