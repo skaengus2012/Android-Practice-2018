@@ -1,5 +1,7 @@
 package nlab.practice.issue34
 
+import android.graphics.Bitmap
+import android.util.LruCache
 import nlab.practice.PracticeApplication
 import nlab.practice.common.model.Track
 import nlab.practice.common.repository.PlayListMockRepository
@@ -15,6 +17,7 @@ import nlab.practice.common.repository.PlayListMockRepository
 object TrackManager {
 
     var isPlayed = false
+    private val _BitmapCache : LruCache<String, Bitmap> = LruCache(1)
 
     var lastListenedTrack: Track? = null
         set(value) {
@@ -75,5 +78,14 @@ object TrackManager {
             PlayListMockRepository.currentPosition = selectedPosition
             lastListenedTrack = PlayListMockRepository.playLists[selectedPosition]
         }
+    }
+
+    /**
+     * [url] 에 해당하는 캐시가 있다면 조회
+     */
+    fun getBitmapCache(url: String) : Bitmap? = _BitmapCache[url]
+
+    fun setBitmapCache(url: String, bitmap: Bitmap) {
+        _BitmapCache.put(url, bitmap)
     }
 }

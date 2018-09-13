@@ -6,13 +6,16 @@ import android.appwidget.AppWidgetProvider
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.support.annotation.LayoutRes
 import android.view.View
 import android.widget.RemoteViews
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.request.target.AppWidgetTarget
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
 
 import nlab.practice.R
 import nlab.practice.common.CodeDefinition
@@ -20,6 +23,7 @@ import nlab.practice.common.REQUEST_CODE_GO_TO_PLAYLIST
 import nlab.practice.util.GlideApp
 import nlab.practice.util.resource.convertString
 import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.request.target.Target
 
 
 // 기준 사이즈 하드코딩...
@@ -63,8 +67,7 @@ private fun releaseWidget(
         context: Context?,
         appWidgetManager: AppWidgetManager?,
         appWidgetId: Int,
-        options: Bundle?) = context?.let {
-    context
+        options: Bundle?) = context?.let { context
     ->
     // 옵션의 최소 높이로 지정된 임계점을 기준으로 레이아웃을 나눈다.
     @LayoutRes val remoteViewLayout: Int =
@@ -110,22 +113,15 @@ private fun createRemoteView(context: Context, @LayoutRes layoutRes: Int, appWid
 
 
                 val requestOptions = RequestOptions()
-                    .placeholder(R.drawable.ic_music_note_black_24dp)
-                    .error(R.drawable.ic_music_note_black_24dp)
+                        .placeholder(R.drawable.ic_music_note_black_24dp)
+                        .error(R.drawable.ic_music_note_black_24dp)
 
                 // FIXME 20180828
                 // 해당 모듈을 사용할 시, 이미지 로드 실패 시, placeHolder 를 세팅해주지 않고 있음...
-                view.setImageViewResource(R.id.ivAlbum, R.drawable.ic_music_note_black_24dp)
-
-                // 이미지 세팅
-                GlideApp.with(context)
-                        .asBitmap()
-                        .apply(requestOptions)
-                        .load(track.albumImg)
-                        .override(500, 500)
-                        .timeout(1000)
-                        .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
-                        .into(AppWidgetTarget(context, R.id.ivAlbum, view, appWidgetId))
+                val thumbnailUrl = track.albumImg ?: ""
+                TrackManager.getBitmapCache(thumbnailUrl)
+                        ?.let { view.setImageViewBitmap(R.id.ivAlbum, it) }
+                        ?: run { refreshThumbnail(context, thumbnailUrl) }
 
                 // 버튼 색 활성화
                 view.setImageViewResource(R.id.ivLike, R.drawable.ic_thumb_up_black_24dp)
@@ -173,13 +169,46 @@ private fun createRemoteView(context: Context, @LayoutRes layoutRes: Int, appWid
 }
 
 /**
+ * [thumbnailImage] 에 대한 이미지 조회
+ *
+ * 이미지 조회에 성공 혹은 실패에 대하여 캐시 저장을 수행함
+ */
+private fun refreshThumbnail(context: Context, thumbnailImage: String) {
+    GlideApp.with(context)
+            .asBitmap()
+            .load(thumbnailImage)
+            .override(500, 500)
+            .listener(object : RequestListener<Bitmap> {
+                override fun onLoadFailed(e: GlideException?, model: Any?, target: Target<Bitmap>?, isFirstResource: Boolean): Boolean {
+                    TrackManager.setBitmapCache(thumbnailImage, createDefaultBitmap(context))
+                    releaseWidget(context)
+                    return false
+                }
+
+                override fun onResourceReady(resource: Bitmap?, model: Any?, target: Target<Bitmap>?, dataSource: DataSource?, isFirstResource: Boolean): Boolean {
+                    TrackManager.setBitmapCache(thumbnailImage, resource?: createDefaultBitmap(context))
+                    releaseWidget(context)
+                    return false
+                }
+            })
+            .submit()
+}
+
+/**
+ * 기본 Bitmap 이미지 세팅
+ *
+ * // note : 해당 이미지는 오직 png 이어야함
+ */
+private fun createDefaultBitmap(context: Context) = BitmapFactory.decodeResource(context.resources, R.mipmap.common_img_track_default)
+
+/**
  * [actionCode] 에 해당하는 화면으로 이동하는 처리 인텐트 실행
  *
  * @param context
  * @param actionCode
  * @return
  */
-private fun createLaunchingPendingIntent(context : Context, actionCode : String) : PendingIntent {
+private fun createLaunchingPendingIntent(context: Context, actionCode: String): PendingIntent {
     val intent = Intent(context, YouTubeMusicCopyWidgetProvider::class.java)
             .apply { action = actionCode }
 
@@ -197,7 +226,7 @@ private fun createLaunchingPendingIntent(context : Context, actionCode : String)
  * @param actionCode
  * @return
  */
-private fun createCommandActionPendingIntent(context: Context, actionCode: String) : PendingIntent {
+private fun createCommandActionPendingIntent(context: Context, actionCode: String): PendingIntent {
     val intent = Intent(context, SimplePlayService::class.java)
             .apply { action = actionCode }
 
@@ -226,10 +255,9 @@ class YouTubeMusicCopyWidgetProvider : AppWidgetProvider() {
     override fun onReceive(context: Context?, intent: Intent?) {
         super.onReceive(context, intent)
 
-        intent?.action?.let {
-            action
+        intent?.action?.let { action
             ->
-            when(action) {
+            when (action) {
                 CodeDefinition.ACTION_INTO.PARAM_GO_PLAYLIST -> {
                     val newIntent = Intent(
                             Intent.ACTION_VIEW,
@@ -242,7 +270,8 @@ class YouTubeMusicCopyWidgetProvider : AppWidgetProvider() {
                     context?.startActivity(newIntent)
                 }
 
-                else -> {}
+                else -> {
+                }
             }
         }
     }
