@@ -1,6 +1,7 @@
-package nlab.practice.dagger.injection
+package nlab.practice.dagger.component
 
 import dagger.Component
+import nlab.practice.dagger.module.CoffeeMakerModule
 import nlab.practice.dagger.model.CoffeeMaker
 import javax.inject.Singleton
 
@@ -10,11 +11,11 @@ import javax.inject.Singleton
  * @author Doohyun
  */
 @Singleton  // Singleton Injection 사용을 위해서는 해당 어노테이션이 필요해보임
-@Component(modules = [DefaultCoffeeMakerModule::class])
+@Component(modules = [CoffeeMakerModule::class])
 interface CoffeeMakerComponent {
 
     /**
-     * Inject 된 상태의 객체 생성
+     * CoffeeMaker 제공
      */
     fun maker() : CoffeeMaker
 

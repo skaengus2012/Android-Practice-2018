@@ -35,4 +35,8 @@ class CoffeeMaker {
         println(" [_]P coffee! [_]P ")
         heater.off()
     }
+
+    fun brew(coffeeBean: CoffeeBean) {
+        println("CoffeeBean ${coffeeBean.getName()} Coffee")
+    }
 }

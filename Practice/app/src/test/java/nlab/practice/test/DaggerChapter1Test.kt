@@ -1,17 +1,19 @@
 package nlab.practice.test
 
-import nlab.practice.dagger.injection.DaggerCoffeeMakerComponent
-import nlab.practice.dagger.injection.provideCoffeeMaker
+import nlab.practice.dagger.component.DaggerCoffeeMakerComponent
+import nlab.practice.dagger.provideCoffeeMaker
 import nlab.practice.dagger.model.CoffeeMaker
 import nlab.practice.dagger.model.DefaultHeaterImpl
 import nlab.practice.dagger.model.DefaultPumpImpl
 import org.junit.Test
 
 /**
- * Dagger Test Class 정의
+ * 기본적인 Dagger Test Class 정의
+ *
+ * inject, Module, Component  주요 모듈 사용
  *
  * 참고 URL
- * @see { https://cmcmcmcm.blog/2017/07/27/didependency-injection-와-dagger2/comment-page-1/#comment-18 }
+ * @see { https://cmcmcmcm.blog/2017/07/27/didependency-injection-와-dagger2/ }
  *
  * @author Doohyun
  * @since 2018. 09. 21

@@ -1,4 +1,4 @@
-package nlab.practice.dagger.injection
+package nlab.practice.dagger
 
 import nlab.practice.dagger.model.*
 
