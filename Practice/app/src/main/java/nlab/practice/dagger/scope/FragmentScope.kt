@@ -3,9 +3,9 @@ package nlab.practice.dagger.scope
 import javax.inject.Scope
 
 /**
- * SubComponent 지정을 위한 CustomScope 정의
+ * Fragment 생명주기를 따라가는 Scope 레벨 정의
  *
  * @author Doohyun
  */
 @Scope
-annotation class CoffeeScope
+annotation class FragmentScope

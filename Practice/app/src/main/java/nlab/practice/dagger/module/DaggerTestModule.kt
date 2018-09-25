@@ -1,10 +1,16 @@
 package nlab.practice.dagger.module
 
+import android.support.v4.app.Fragment
 import dagger.Binds
 import dagger.Module
+import dagger.android.AndroidInjector
+import dagger.android.support.FragmentKey
+import dagger.multibindings.IntoMap
+import nlab.practice.dagger.component.DaggerTestFragmentComponent
 import nlab.practice.dagger.scope.ActivityScope
 import nlab.practice.issue32.DaggerTestActivity
 import nlab.practice.issue32.DaggerTestActivityContract
+import nlab.practice.issue32.DaggerTestFragment
 import nlab.practice.issue32.DaggerTestPresenterImpl
 
 /**
@@ -12,7 +18,7 @@ import nlab.practice.issue32.DaggerTestPresenterImpl
  *
  * @author Doohyun
  */
-@Module
+@Module(subcomponents = [DaggerTestFragmentComponent::class])
 abstract class DaggerTestModule {
 
     @ActivityScope
@@ -22,4 +28,9 @@ abstract class DaggerTestModule {
     @ActivityScope
     @Binds
     abstract fun providePresenter(presenter: DaggerTestPresenterImpl) : DaggerTestActivityContract.Presenter
+
+    @Binds
+    @IntoMap
+    @FragmentKey(DaggerTestFragment::class)
+    abstract fun bindMoviesFragment(builder: DaggerTestFragmentComponent.Builder): AndroidInjector.Factory<out Fragment>
 }

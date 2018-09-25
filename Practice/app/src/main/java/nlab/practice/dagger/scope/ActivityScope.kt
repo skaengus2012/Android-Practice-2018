@@ -8,5 +8,4 @@ import javax.inject.Scope
  * @author Doohyun
  */
 @Scope
-@Retention(value = AnnotationRetention.RUNTIME)
 annotation class ActivityScope

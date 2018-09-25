@@ -13,13 +13,29 @@
     android:textStyle="bold"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:gravity="center"
     android:textColor="@android:color/white"
     android:textSize="15sp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.4"
+    app:layout_constraintVertical_bias="0.35"
     tools:text="메인 정보를 입력하는 곳 입니다."/>
+
+  <android.support.constraint.Guideline
+    android:id="@+id/guidelineHorizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.5"/>
+
+  <FrameLayout
+    android:id="@+id/layoutFragment"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:background="@android:color/white"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/guidelineHorizontal"/>
 
 </android.support.constraint.ConstraintLayout>

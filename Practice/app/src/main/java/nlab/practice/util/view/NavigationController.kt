@@ -11,6 +11,7 @@ import nlab.practice.issue30.page.NoteFragment
 import nlab.practice.issue30.page.ShareFragment
 import nlab.practice.issue30.page.UserEndFragment
 import nlab.practice.issue30.page.UserFragment
+import nlab.practice.issue32.DaggerTestFragment
 
 
 /**
@@ -131,6 +132,8 @@ class NavigationController(
     fun goToUserEnd(user: User) = add("${getDefaultNavigationTagName<UserEndFragment>()}:${user.userId}") {
         UserEndFragment.create(user)
     }
+
+    fun goToDaggerTestFragment() = replace { DaggerTestFragment() }
 }
 
 inline fun <reified T> getDefaultNavigationTagName() : String = T::class.java.canonicalName
