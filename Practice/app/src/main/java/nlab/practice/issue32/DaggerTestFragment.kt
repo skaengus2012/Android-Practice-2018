@@ -1,19 +1,16 @@
 package nlab.practice.issue32
 
-
-import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import dagger.android.support.AndroidSupportInjection
+import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_dagger_test.*
 
 import nlab.practice.R
 import javax.inject.Inject
 
-class DaggerTestFragment : Fragment(), DaggerTestFragmentContract.View {
+class DaggerTestFragment : DaggerFragment(), DaggerTestFragmentContract.View {
 
     @Inject
     lateinit var presenter : DaggerTestFragmentContract.Presenter
@@ -26,7 +23,6 @@ class DaggerTestFragment : Fragment(), DaggerTestFragmentContract.View {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        AndroidSupportInjection.inject(this)
         presenter.requestMessage()
     }
 

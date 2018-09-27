@@ -175,6 +175,11 @@
         <action android:name="android.intent.action.VIEW"/>
       </intent-filter>
     </activity>
+    <activity android:name=".issue32.DaggerTestContributeActivity">
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW"/>
+      </intent-filter>
+    </activity>
 
     <receiver android:name=".issue34.YouTubeMusicCopyWidgetProvider">
       <intent-filter>
