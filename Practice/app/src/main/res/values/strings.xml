@@ -173,4 +173,9 @@
   <string name="msg_play_pause">음악을 중지합니다.</string>
   <string formatted="false" name="msg_like">%s를 즐겨찾기 하였습니다.</string>
   <string formatted="false" name="msg_unlike">%s를 즐겨찾기에서 취소하였습니다.</string>
+
+  <!-- anko -->
+  <string name="title_anko_layout">anko 로 레이아웃 구성하기</string>
+  <string name="hint_anko_search">검색어를 입력하세요.</string>
+  <string name="label_anko_search">검색</string>
 </resources>

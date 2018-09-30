@@ -25,6 +25,7 @@ import nlab.practice.issue32.DaggerTestContributeActivity
 import nlab.practice.issue33.activity.SharedElementCurrentActivity
 import nlab.practice.issue33.fragment.SharedElementFragmentToFragmentActivity
 import nlab.practice.issue34.PlayListManageActivity
+import nlab.practice.issue39.AnkoTestActivity
 
 import kotlin.reflect.KClass
 
@@ -61,7 +62,8 @@ object AppBarConfigManager {
                     DaggerTestContributeActivity::class to convertString(R.string.title_dagger_test),
                     SharedElementCurrentActivity::class to convertString(R.string.title_shared_element),
                     SharedElementFragmentToFragmentActivity::class to convertString(R.string.title_shared_element_fragment),
-                    PlayListManageActivity::class to convertString(R.string.title_widget_sync)
+                    PlayListManageActivity::class to convertString(R.string.title_widget_sync),
+                    AnkoTestActivity::class to convertString(R.string.title_anko_layout)
             )
 
     /**
