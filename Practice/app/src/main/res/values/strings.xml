@@ -132,11 +132,6 @@
   <string name="appwidget_text">EXAMPLE</string>
   <string name="add_widget">Add widget</string>
 
-  <!-- Dagger Test 화면 정의 -->
-  <string name="title_dagger_test">Dagger 테스트 화면 정의</string>
-  <string name="label_dagger_fragment_test_none">static 으로 정의된 프래그먼트입니다.</string>
-  <string name="label_dagger_fragment_test">Dagger 로 주입된 프리젠터를 이용했습니다.</string>
-
   <!-- Single Activity - Multiple Fragments 패턴 테스트 정의 -->
   <string name="title_single_activity_multiple_fragments_test">Single Activity - Multiple Fragments 회고</string>
   <string name="menu_top_user_page">USER</string>
