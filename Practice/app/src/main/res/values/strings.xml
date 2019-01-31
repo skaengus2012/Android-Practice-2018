@@ -1,5 +1,5 @@
 <resources>
-  <string name="app_name">Android-Practice-2018</string>
+  <string name="app_name">AP-2018</string>
 
   <!-- 개발자 튜토리얼 -->
   <string name="title_dev_tutorial">개발자 튜토리얼</string>
