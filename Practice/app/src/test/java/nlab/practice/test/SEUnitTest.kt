@@ -223,4 +223,56 @@ class SEUnitTest {
         // 블록 내부에서는 해당 객체에 대한 컨디션을 판단 후 객체에 대한 옵셔널 값을 출력.
         numbers?.takeIf { numbers.size == 2 }?.let { println(it) }
     }
+
+    @Test
+    fun testDownToRange() {
+        for (index in 20 downTo 0 step 2) {
+            println(index)
+        }
+    }
+
+    @Test
+    fun testIteratorTuple() {
+        val list = listOf("A", "B", "C", "D")
+
+        // original
+        println("Original")
+        for ((index, value) in list.withIndex()) {
+            println("Index : $index, item: $value")
+        }
+        println()
+        println()
+
+        // functional
+        println("Functional")
+        list.forEachIndexed { index, str -> println("Index : $index, item: $str") }
+    }
+
+    @Test
+    fun testMapIteratorTuple() {
+        val map = mapOf(
+                1 to "A",
+                2 to "B",
+                3 to "C")
+
+        // original
+        println("Original")
+        for ((key, value) in map.entries) {
+            println("Index : $key, item: $value")
+        }
+        println()
+        println()
+
+        // functional
+        println("Functional")
+        map.forEach { key, value -> println("Index : $key, item: $value") }
+    }
+
+    @Test
+    fun testStringRange() {
+        val range = "Android" .. "Oreo"
+
+        println("Pie is contains : ${"Pie" in range}")
+        println("ButterKnife is contains : ${"ButterKnife" in range}")
+    }
 }
