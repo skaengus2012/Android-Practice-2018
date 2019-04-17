@@ -161,4 +161,17 @@ class FunctionalUnitTest {
                     accumulator.copy(name = "$accumulatorElementName $currentElementName")
                 }.prettyPrintGroup()
     }
+
+    /**
+     * flatMap 관련 Flatten 처리
+     */
+    @Test
+    fun testFlatten() {
+        val listOfList = listOf(listOf(1,2,3,4), listOf(5,6,7,8), listOf(9,10,11,12))
+
+        // java stream 같은 효과를 볼 수 있음
+        listOfList.asSequence()
+                .flatten()     // 평준화 처리
+                .forEach { println(it) }
+    }
 }
