@@ -48,24 +48,24 @@ dependencies {
     implementation 'com.andkulikov:transitionseverywhere:1.7.9'
     // Ndroid 구축.
     implementation 'com.github.skaengus2012:Ndroid:v0.5.2-beta'
-    implementation 'io.reactivex.rxjava2:rxkotlin:2.2.0'
+    implementation 'io.reactivex.rxjava2:rxkotlin:2.3.0'
 
     implementation 'com.hwangjr.rxbus:rxbus:2.0.0'
-    implementation 'com.jakewharton.rxrelay2:rxrelay:2.0.0'
+    implementation 'com.jakewharton.rxrelay2:rxrelay:2.1.0'
     implementation 'com.jakewharton.rxbinding2:rxbinding-kotlin:2.1.1'
     implementation 'com.jakewharton.rxbinding2:rxbinding-support-v4-kotlin:2.1.1'
     implementation 'com.jakewharton.rxbinding2:rxbinding-recyclerview-v7-kotlin:2.1.1'
-    implementation 'com.jakewharton.rxrelay2:rxrelay:2.0.0'
+    implementation 'com.jakewharton.rxrelay2:rxrelay:2.1.0'
 
     // image loader
-    implementation('com.github.bumptech.glide:glide:4.8.0') {
+    implementation('com.github.bumptech.glide:glide:4.9.0') {
         exclude group: 'com.android.support'
     }
-    implementation('com.github.bumptech.glide:okhttp3-integration:4.8.0') {
+    implementation('com.github.bumptech.glide:okhttp3-integration:4.9.0') {
         exclude group: 'com.android.support'
     }
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
-    kapt 'com.github.bumptech.glide:compiler:4.8.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+    kapt 'com.github.bumptech.glide:compiler:4.9.0'
 
     //android arch component.
     implementation 'android.arch.lifecycle:extensions:1.1.1'
@@ -83,8 +83,8 @@ dependencies {
     kapt "com.google.dagger:dagger-android-processor:2.17"
 
     // Parceler
-    implementation 'org.parceler:parceler-api:1.1.11'
-    annotationProcessor 'org.parceler:parceler:1.1.11'
+    implementation 'org.parceler:parceler-api:1.1.12'
+    annotationProcessor 'org.parceler:parceler:1.1.12'
 
     // Test
     testImplementation 'android.arch.persistence.room:testing:1.1.1'
