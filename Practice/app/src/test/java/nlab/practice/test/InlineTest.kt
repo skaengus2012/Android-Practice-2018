@@ -3,6 +3,10 @@ package nlab.practice.test
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
+import java.io.BufferedReader
+import java.io.File
+import java.io.FileReader
+import java.nio.file.Paths
 import kotlin.collections.ArrayList
 
 /**
@@ -112,6 +116,18 @@ class InlineTest {
         })
 
         return false
+    }
+
+    /**
+     * Kotlin 의 Try-with-resource
+     */
+    @Test
+    fun testResource() {
+        val currentFile = "${Paths.get("").toAbsolutePath()}/src/test/java/nlab/practice/test/InlineTest.kt"
+
+        BufferedReader(FileReader(currentFile)).useLines {
+            it.forEach { text -> println(text) }
+        }
     }
 
 }
