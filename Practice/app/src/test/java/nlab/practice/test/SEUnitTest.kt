@@ -265,7 +265,7 @@ class SEUnitTest {
 
         // functional
         println("Functional")
-        map.forEach { key, value -> println("Index : $key, item: $value") }
+        map.forEach { println("Index : ${it.key}, item: ${it.value}") }
     }
 
     @Test
@@ -274,5 +274,12 @@ class SEUnitTest {
 
         println("Pie is contains : ${"Pie" in range}")
         println("ButterKnife is contains : ${"ButterKnife" in range}")
+    }
+
+    @Test
+    fun testCharIterator() {
+        for (c in "ABC") {
+            println(c)
+        }
     }
 }
