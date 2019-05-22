@@ -4,7 +4,6 @@ import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import java.io.BufferedReader
-import java.io.File
 import java.io.FileReader
 import java.nio.file.Paths
 import kotlin.collections.ArrayList
@@ -130,4 +129,51 @@ class InlineTest {
         }
     }
 
+
+    /**
+     * Inline class 관련 테스트
+     */
+    @Test
+    fun testInlineClass() {
+        Name("Doohyun").run {
+            println(length)
+
+            greet()
+            asInline(this)
+            id(this).greet()
+        }
+    }
+
+    /**
+     * 오직 이 형태만이, unboxing 상태를 유지한체로 기능을 수행할 수 있음
+     */
+    private fun asInline(name: Name) {
+        name.greet()
+    }
+
+    /**
+     * 파라미터 [x] 로 들어올땐 박싱됨. return 될 때는 unboxing 상태
+     */
+    private fun <T> id(x: T) = x
 }
+
+interface Greet {
+    fun greet()
+}
+
+/**
+ * 테스트 작성 시점 : 아직은 실험단계
+ *
+ * - Interface 구현은 됨, 상속은 안됨
+ * - init 은 사용불가
+ * - 오로지 final class 여야만 함
+ */
+inline class Name(private val _text: String): Greet {
+    val length: Int
+    get() = _text.length
+
+    override fun greet() {
+        println(_text)
+    }
+}
+
