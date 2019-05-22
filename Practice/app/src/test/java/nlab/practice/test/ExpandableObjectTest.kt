@@ -1,12 +1,13 @@
 package nlab.practice.test
 
-import org.junit.Assert
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 /**
  * 확장 가능한 객체 테스트
  *
- * Kotlin in Action 7장에 나오는 내용
+ * Kotlin in Action 7장
+ * 위임 프로퍼티의 기타 예제 (Lazy 와 Delegate.observable 은 대중적이기 때문에 따로 하지 않음)
  *
  * @author Doohyun
  * @since 2019. 05. 21
@@ -22,7 +23,7 @@ class ExpandableObjectTest {
             person.setAttribute(key, value)
         }
 
-        person.name.run { Assert.assertTrue(this == "Doohyun") }
+        person.name.run { assertTrue(this == "Doohyun") }
     }
 
 }
@@ -35,5 +36,5 @@ class Person {
         _attribute[attrName] = value
     }
 
-    val name: String by _attribute
+    var name: String by _attribute
 }
