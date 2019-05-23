@@ -1,5 +1,8 @@
 package nlab.practice.test
 
+import nlab.practice.db.model.erp.MemberVO
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 /**
@@ -265,7 +268,7 @@ class SEUnitTest {
 
         // functional
         println("Functional")
-        map.forEach { key, value -> println("Index : $key, item: $value") }
+        map.forEach { println("Index : ${it.key}, item: ${it.value}") }
     }
 
     @Test
@@ -274,5 +277,21 @@ class SEUnitTest {
 
         println("Pie is contains : ${"Pie" in range}")
         println("ButterKnife is contains : ${"ButterKnife" in range}")
+    }
+
+    @Test
+    fun testCharIterator() {
+        for (c in "ABC") {
+            println(c)
+        }
+    }
+
+    @Test
+    fun testCompareValueBy() {
+        val doohyun = MemberVO(1, "Doohyun", "KR19179")
+        val steeve = MemberVO(1, "Steeve", "KR19179")
+
+        assertTrue(compareValuesBy(doohyun, steeve, MemberVO::employeeId, MemberVO::memberSn) == 0)
+        assertFalse(compareValuesBy(doohyun, steeve, MemberVO::employeeId, MemberVO::name) == 0)
     }
 }
