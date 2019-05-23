@@ -1,5 +1,8 @@
 package nlab.practice.test
 
+import nlab.practice.db.model.erp.MemberVO
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 /**
@@ -281,5 +284,14 @@ class SEUnitTest {
         for (c in "ABC") {
             println(c)
         }
+    }
+
+    @Test
+    fun testCompareValueBy() {
+        val doohyun = MemberVO(1, "Doohyun", "KR19179")
+        val steeve = MemberVO(1, "Steeve", "KR19179")
+
+        assertTrue(compareValuesBy(doohyun, steeve, MemberVO::employeeId, MemberVO::memberSn) == 0)
+        assertFalse(compareValuesBy(doohyun, steeve, MemberVO::employeeId, MemberVO::name) == 0)
     }
 }
