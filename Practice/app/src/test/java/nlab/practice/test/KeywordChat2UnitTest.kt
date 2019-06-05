@@ -17,9 +17,8 @@ class KeywordChat2UnitTest {
      * 재귀함수 최적화 테스트.
      */
     @Test
-    fun testRecursive() {
-        val factorialResult = getFactorialResult(5)
-        println(factorialResult)
+    fun testFindFixPoint() {
+        println(findFixPoint(2.0))
     }
 
     /**
@@ -31,16 +30,22 @@ class KeywordChat2UnitTest {
      *
      * @param number
      */
-    private tailrec fun getFactorialResult(number : Int) : Int {
+    private val eps = 1E-10
 
-        check(number >= 1) {"잘못된 접근입니다."}
+    private tailrec fun findFixPoint(x: Double = 1.0): Double
+            = if (Math.abs(x - Math.cos(x)) < eps) x else findFixPoint(Math.cos(x))
 
-        // TODO 꼬리가 호출이 안된다는 데, 원인 찾아봐야함..
-        return when(number) {
-            1 -> 1
-            else -> number * getFactorialResult(number - 1)
+    /**
+    // 아래와 같이 변경됨
+    private fun findFixPoint(): Double {
+        var x = 1.0
+        while (true) {
+            val y = Math.cos(x)
+            if (Math.abs(x - y) < eps) return x
+            x = Math.cos(x)
         }
     }
+    */
 
     /**
      * 가변인자 테스트.
